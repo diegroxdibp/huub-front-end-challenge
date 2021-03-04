@@ -1,0 +1,39 @@
+$hamburger-layer-color: #fff !default;
+@import '../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss';
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.mat-tab-body-content {
+  max-height: calc(100vh - 48px)!important;
+}
+
+.mat-tab-group {
+  flex: 1!important;
+}
+
+.mat-tab-body-wrapper {
+  flex: 1!important;
+}
+
+.display-none {
+  display: none;
+}
+
+nav a.active {
+  color:blueviolet!important;
+}

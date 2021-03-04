@@ -1,0 +1,28 @@
+body {
+  max-height:100vh;
+  max-width: 100%;
+  overflow: hidden;
+
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 66px);
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    color: blueviolet;
+  }
+
+  .bg{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -5;
+  }
+};
