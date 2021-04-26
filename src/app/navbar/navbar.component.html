@@ -1,23 +1,23 @@
 <nav class="header">
   <a href="index.html" class="logo animateDown">Diego Braga Ponte</a>
   <button class="hamburger hamburger--elastic" type="button" (click)="toggleActive()"
-  [ngClass]="{'is-active': isActive}">
+    [ngClass]="{'is-active': isActive}">
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
   </button>
-      <ul *ngIf="small" [@menuAnimation]="stateUl" class="menu" id="test">
-          <div  class="nav-items-wrapper">
-            <li ><a class="nav-items" routerLink="home" routerLinkActive="active">Home</a></li>
-            <li ><a class="nav-items" routerLink="about" routerLinkActive="active">About</a></li>
-            <li ><a class="nav-items" routerLink="portfolio" routerLinkActive="active">Portfolio</a></li>
-            <li ><a class="nav-items" routerLink="contact" routerLinkActive="active">Contact</a></li>
-          </div>
-        </ul>
-      <ul *ngIf="large" class="menu">
-          <li><a routerLink="home" routerLinkActive="active">Home</a></li>
-          <li><a routerLink="about" routerLinkActive="active">About</a></li>
-          <li><a routerLink="portfolio" routerLinkActive="active">Portfolio</a></li>
-          <li><a routerLink="contact" routerLinkActive="active">Contact</a></li>
-        </ul>
+  <ul *ngIf="isActive" [@menuAnimation]="stateUl" class="menu" id="test">
+    <li><a routerLink="home" routerLink="" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="about" routerLinkActive="active">About</a></li>
+    <li><a routerLink="blog" routerLinkActive="active">Blog</a></li>
+    <li><a routerLink="portfolio" routerLinkActive="active">Portfolio</a></li>
+    <li><a routerLink="contact" routerLinkActive="active">Contact</a></li>
+  </ul>
+  <ul *ngIf="large" class="menu">
+    <li><a routerLink="home" routerLink="" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="about" routerLinkActive="active">About</a></li>
+    <li><a routerLink="blog" routerLinkActive="active">Blog</a></li>
+    <li><a routerLink="portfolio" routerLinkActive="active">Portfolio</a></li>
+    <li><a routerLink="contact" routerLinkActive="active">Contact</a></li>
+  </ul>
 </nav>

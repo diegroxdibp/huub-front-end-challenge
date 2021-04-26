@@ -14,14 +14,12 @@ export class AppComponent {
 
   title = 'webfolio-angular';
 
-  isActive:boolean = false;
+  isActive = false;
 
   toggleActive(): void {
     this.isActive = !this.isActive;
   }
   // constructor(public dialog: MatDialog) { }
-
-  images = [700, 800, 807].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   constructor(config: NgbCarouselConfig) {
     config.interval = 2000;

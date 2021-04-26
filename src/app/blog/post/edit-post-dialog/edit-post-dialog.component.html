@@ -1,0 +1,32 @@
+<div mat-dialog-title class="header">
+  <div class="filler"></div>
+  <h1 class="title">New post</h1>
+  <button class="close-button" mat-raised-button mat-dialog-close mat-fab color="accent" matTooltip="Close">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="form">
+  <mat-form-field color="accent">
+    <mat-label>Post's title:</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <mat-label>Poster's email:</mat-label>
+    <input type="email" matInput formControlName="email">
+    <mat-error *ngIf="form.get('email').hasError('pattern')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="form.get('email').hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+</form> -->
+<mat-dialog-actions align="center">
+  <button mat-raised-button type="submit" color="accent" class="submit">Confirm changes</button>
+  <button mat-raised-button class="aaa">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,32 @@
+.widget-bar {
+  display: flex;
+  height: 40px;
+  font-size: 1.3em;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.25em 0 0.25em 0;
+
+  .info {
+    display: flex;
+    font-size: 0.8em;
+    font-weight: 200;
+    color: #606060;
+
+    .separator{
+      padding: 0 5px;
+    }
+  }
+
+  .icons-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px 0 5px 30px;
+
+    i {
+      color: blueviolet;
+      padding: 0 0 0 10px;
+      cursor: pointer;
+    }
+  }
+}

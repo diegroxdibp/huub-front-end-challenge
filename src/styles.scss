@@ -1,3 +1,137 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+
+$my-black: (
+  50: #ececed,
+  100: #e0e0e0,
+  200: #cccccd,
+  300: #a7a7a8,
+  400: #868687,
+  500: #5f5f60,
+  600: #4c4c4d,
+  700: #353535,
+  800: #0e0e0f,
+  900: #000000,
+  A100: #8a2be2,
+  A200: #8a2be2,
+  A400: #8a2be2,
+  A700: #8a2be2,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  ),
+);
+
+$my-purple: (
+  50: #f2e8fc,
+  100: #ddc6f6,
+  200: #c69ff2,
+  300: #af75ed,
+  400: #9c52e8,
+  500: #8a2be2,
+  600: #7f25db,
+  700: #711ad3,
+  800: #630fcd,
+  900: #4d00c4,
+  A100: #8a2be2,
+  A200: #8a2be2,
+  A400: #8a2be2,
+  A700: #8a2be2,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  ),
+);
+
+$md-mypurple: (
+    50 : #f1e6fc,
+    100 : #dcbff6,
+    200 : #c595f1,
+    300 : #ad6beb,
+    400 : #9c4be6,
+    500 : #8a2be2,
+    600 : #8226df,
+    700 : #7720da,
+    800 : #6d1ad6,
+    900 : #5a10cf,
+    A100 : #fdfcff,
+    A200 : #dcc9ff,
+    A400 : #bb96ff,
+    A700 : #aa7dff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$webfolio-angular-primary: mat-palette($my-black, 800, 700, 900);
+$webfolio-angular-accent: mat-palette($my-purple, 500, 300, 900);
+
+// The warn palette is optional (defaults to red).
+$webfolio-angular-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$webfolio-angular-theme: mat-light-theme((
+  color: (
+    primary: $webfolio-angular-primary,
+    accent: $webfolio-angular-accent,
+    warn: $webfolio-angular-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($webfolio-angular-theme);
+
 $hamburger-layer-color: #fff !default;
 @import '../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss';
 
@@ -37,3 +171,6 @@ img {
 nav a.active {
   color:blueviolet!important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

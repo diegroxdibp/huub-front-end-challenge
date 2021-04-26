@@ -1,0 +1,30 @@
+.new-comment-area {
+  margin: 10px 0;
+
+  .leave-a-comment {
+    width: 100%;
+  }
+
+  .email-row {
+    display: flex;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .submit {
+    width: 100%;
+  }
+
+  i {
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    font-size: 1.4em;
+
+    &:before {
+      margin: 0;
+    }
+  }
+}

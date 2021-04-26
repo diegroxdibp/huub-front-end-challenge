@@ -1,0 +1,19 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "empty title button";
+
+  .filler {
+    grid-area: empty;
+  }
+
+  .title {
+    grid-area: title;
+    justify-self: center;
+  }
+
+  .close-button {
+    grid-area: button;
+    justify-self: flex-end;
+  }
+}

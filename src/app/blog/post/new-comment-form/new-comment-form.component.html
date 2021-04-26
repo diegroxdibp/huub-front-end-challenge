@@ -1,0 +1,36 @@
+<div class="new-comment-area">
+  <button *ngIf="!showCommentForm" class="leave-a-comment" (click)="toggleNewCommentForm()"
+  mat-raised-button type="submit" color="accent">Leave a comment</button>
+
+  <mat-card *ngIf="showCommentForm">
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+      <div class="email-row">
+        <mat-form-field color="accent">
+          <mat-label>Email:</mat-label>
+          <input type="email" matInput formControlName="author">
+          <mat-error *ngIf="commentForm.get('author').hasError('pattern')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="commentForm.get('author').hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <div (click)="toggleNewCommentForm()" title="Close new post area">
+          <button mat-raised-button color="accent"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <mat-form-field color="accent">
+        <mat-label>Comment:</mat-label>
+        <textarea matInput placeholder="Ex. In this post we will talk about..." formControlName="comment"></textarea>
+        <mat-hint align="end">{{commentForm.value.text?.length}} / 500</mat-hint>
+        <mat-error *ngIf="commentForm.get('comment').hasError('maxLength')">
+          Maximum of <strong>500</strong> characters
+        </mat-error>
+        <mat-error *ngIf="commentForm.get('comment').hasError('required')">
+          Text is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button class="submit" mat-raised-button type="submit" [disabled]="!commentForm.valid" color="accent">Submit</button>
+    </form>
+  </mat-card>
+</div>

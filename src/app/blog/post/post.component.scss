@@ -1,0 +1,106 @@
+.post {
+  position: relative;
+  border-radius: 10px;
+  padding: 15px 0;
+
+  &:hover > .options i {
+    display: flex;
+  }
+
+  &:hover button {
+    padding: 1em;
+  }
+  .options {
+    position: absolute;
+    right: 0;
+    display: flex;
+    color: white;
+    margin: 0.4em 0;
+
+    button {
+      min-height: 0;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    i {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 1;
+      font-size: 1.4em;
+
+      &:before {
+        margin: 0;
+      }
+    }
+
+    & > div {
+      padding-right: 0.4em;
+    }
+  }
+
+  h1 {
+    color: rgb(138, 43, 226);
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.4em;
+    font-weight: 500;
+    margin: 0.4em 0;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+
+    h5 {
+      display: flex;
+      font-size: 1em;
+      font-weight: 200;
+      color: #606060;
+    }
+
+    .posting-info {
+      flex-direction: column;
+
+      .author-name {
+        display: inline-block;
+        color: blueviolet;
+        font-weight: strong;
+      }
+    }
+  }
+
+  picture {
+    width: 100px;
+    height: 100px;
+
+    img {
+      margin: auto;
+    }
+  }
+
+  p {
+    font-family: "Open Sans", sans-serif;
+    color: #33475b;
+    border-radius: 0 0 10px 10px;
+    font-size: 1.125rem;
+    line-height: 1.6em;
+    margin: 0.4em 0;
+  }
+}
+
+.editTextInput {
+  width: 100%;
+}
+
+.comments-area {
+  display: flex;
+  flex-direction: column;
+
+  app-new-comment-form {
+    width: 100%;
+  }
+}

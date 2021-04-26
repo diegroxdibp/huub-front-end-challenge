@@ -1,0 +1,37 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "empty title button";
+
+  .filler {
+    grid-area: empty;
+  }
+
+  .title {
+    grid-area: title;
+    justify-self: center;
+  }
+
+  .close-button {
+    grid-area: button;
+    justify-self: flex-end;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .submit {
+    width: 100%;
+  }
+}
+
+mat-checkbox {
+  margin-bottom: 1em;
+}
+
+.img-preview {
+  padding-bottom: 5px;
+}

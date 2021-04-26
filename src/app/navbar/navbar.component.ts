@@ -118,27 +118,22 @@ export class NavbarComponent {
   }
 
   @HostListener('window:resize', ['$event'])
-  getScreenSize(event?) {
+  getScreenSize(event?): void {
     this.screenHeight = window.innerHeight;
     this.screenWidth = window.innerWidth;
     console.log(this.screenHeight, this.screenWidth);
 
     if (this.screenWidth >= 800) {
       this.large = true;
-      this.small = !this.large;
+      this.small = false;
     } else {
       this.small = true;
-      this.large = !this.small;
+      this.large = false;
     }
   }
 
   toggleActive(): void {
     this.isActive = !this.isActive;
-    // if(this.isActive) {
-    //   hamburguer.classList.add('isActive');
-    // } else {
-    //   hamburguer.classList.remove('isActive');
-    // }
     this.stateUl === 'collapsed' ? this.stateUl = 'expanded' : this.stateUl = 'collapsed';
     this.stateLi === 'collapsed' ? this.stateLi = 'expanded' : this.stateLi = 'collapsed';
     console.log('ul : ' + this.stateUl);

@@ -1,0 +1,33 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "empty title button";
+
+  .title {
+    grid-area: title;
+    justify-self: center;
+  }
+
+  .close-button {
+    grid-area: button;
+    justify-self: flex-end;
+  }
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-buttons-wrapper {
+  display: flex;
+
+  mat-radio-button,
+  label {
+    padding: 0 5px 0 0;
+  }
+  mat-radio-button,
+  label {
+    padding: 0 5px 0 0;
+  }
+}

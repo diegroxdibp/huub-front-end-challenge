@@ -4,12 +4,19 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ContactComponent } from './contact/contact.component';
+import { BlogComponent } from './blog/blog.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PostComponent } from './blog/post/post.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
-  { path: 'about', component: AboutComponent},
-  { path: 'contact', component: ContactComponent},
-  { path: 'portfolio', component: PortfolioComponent}
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'blog/:id', component: PostComponent },
+  { path: 'portfolio', component: PortfolioComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

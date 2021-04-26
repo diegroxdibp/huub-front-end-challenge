@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
+  likes: HTMLDivElement;
+  likesButton: HTMLInputElement;
+  dislikes: HTMLDivElement;
+  dislikesButton: HTMLInputElement;
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

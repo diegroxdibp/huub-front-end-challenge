@@ -1,0 +1,13 @@
+.overlay {
+  position: fixed;
+  display: flex;
+  right: 25px;
+  bottom: 25px;
+  flex-direction: column;
+  align-items: flex-end;
+
+
+  button {
+    margin-top: 10px;
+  }
+}
