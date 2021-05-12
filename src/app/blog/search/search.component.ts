@@ -13,11 +13,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class SearchComponent implements OnInit {
 
-
-  constructor(private blogManager: BlogManagerService,
-              public dialog: MatDialog,
-              private dialogRef: MatDialogRef<SearchComponent>) { }
-
   searchInputValue: string;
   myControl = new FormControl();
   options: string[] = [];
@@ -26,8 +21,17 @@ export class SearchComponent implements OnInit {
   postsDates = [];
   postsTags = [];
   postsId = [];
+  activeRadioButton: string;
+
+  constructor(
+    private blogManager: BlogManagerService,
+    public dialog: MatDialog,
+    private dialogRef: MatDialogRef<SearchComponent>,
+  ) { }
 
   ngOnInit(): void {
+    this.activeRadioButton = '1';
+    this.options = this.blogManager.getListOfPostTitles();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -41,38 +45,47 @@ export class SearchComponent implements OnInit {
   }
 
   radioButtonChange(event: MatRadioChange): void {
-    console.log(this.myControl.value);
-    const key = event.value;
-    this.emptyQueryArrays();
-    this.searchInputValue =  ' ';
-
-    switch (key) {
-      case '1':
-        this.blogManager.blogPosts.forEach(post => this.postsTitles.push(post.title));
-        this.options = this.postsTitles;
-        console.log(this.options);
-        break;
-      case '2':
-        this.blogManager.blogPosts.forEach(post => this.postsDates.push(post.date.toLocaleString()));
-        this.options = this.postsDates;
-        console.log(this.options);
-        break;
-      case '3':
-        this.blogManager.blogPosts.forEach(post => post.postTags.forEach(tag => this.postsTags.push(tag)));
-        this.options = this.postsTags;
-        console.log(this.postsTags);
-        break;
-      case '4':
-        this.blogManager.blogPosts.forEach(post => this.postsId.push(post.id.toString()));
-        this.options = this.postsId;
-        console.log(this.postsId);
-        break;
-    }
+    this.activeRadioButton = event.value;
+    const selectedOption = event.value;
+    this.changeOptions(selectedOption);
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+    this.searchInputValue = '';
   }
 
   private _filter(value: string): string[] {
+    this.changeOptions(this.activeRadioButton);
     const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    switch (this.activeRadioButton) {
+      case '1':
+        return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+      case '2':
+        return this.options.filter(option => option.toLocaleString().toLowerCase().indexOf(filterValue) === 0);
+      case '3':
+        return this.options.filter(option => option[0].toLowerCase().indexOf(filterValue) === 0);
+      case '4':
+        return this.options.filter(option => option.toString().toLowerCase().indexOf(filterValue) === 0);
+    }
+  }
+
+  changeOptions(option: string): void {
+    const key = option;
+    switch (key) {
+      case '1':
+        this.options = this.blogManager.getListOfPostTitles();
+        break;
+      case '2':
+        this.options = this.blogManager.getListOfPostDatesToLocaleString();
+        break;
+      case '3':
+        this.options = this.blogManager.getListOfPostTags();
+        break;
+      case '4':
+        this.options = this.blogManager.getListOfPostId();
+        break;
+    }
   }
 
   emptyQueryArrays(): void {
@@ -84,5 +97,25 @@ export class SearchComponent implements OnInit {
 
   onCancel(): void {
     this.dialogRef.close();
+  }
+
+  search(): void {
+    const filterValue = this.searchInputValue.toLowerCase();
+    let filterResult: string[] = [];
+    switch (this.activeRadioButton) {
+      case '1':
+        filterResult = this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+        break;
+      case '2':
+        filterResult = this.options.filter(option => option.toLocaleString().toLowerCase().indexOf(filterValue) === 0);
+        break;
+      case '3':
+        filterResult = this.options.filter(option => option[0].toLowerCase().indexOf(filterValue) === 0);
+        break;
+      case '4':
+        filterResult = this.options.filter(option => option.toString().toLowerCase().indexOf(filterValue) === 0);
+        break;
+    }
+    console.log(filterResult);
   }
 }

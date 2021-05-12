@@ -1,19 +1,41 @@
-.header {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "empty title button";
+form {
+  margin-bottom: 16px;
 
-  .filler {
-    grid-area: empty;
+  mat-form-field,
+  text-area,
+  input {
+    width: 100%;
   }
 
-  .title {
-    grid-area: title;
-    justify-self: center;
+  img {
+    padding-bottom: 16px;
   }
 
-  .close-button {
-    grid-area: button;
-    justify-self: flex-end;
+  mat-accordion {
+    mat-expansion-panel {
+      h2 {
+        color: blueviolet;
+        margin: 16px 0;
+        font-weight: 500;
+      }
+      h3 {
+        margin: 16px 0;
+        span {
+          color: blueviolet;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+.checkout {
+  h2 {
+    color: blueviolet;
+    font-weight: 500;
+  }
+  .checkbox-wrapper {
+    display: flex;
+    justify-content: space-around;
   }
 }

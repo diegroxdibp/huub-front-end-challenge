@@ -17,7 +17,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -25,7 +30,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { HamburguerToggleDirective } from './shared/hamburguer-toggle.directive';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 
@@ -36,7 +40,6 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AboutComponent } from './about/about.component';
 import { BlogComponent } from './blog/blog.component';
 import { PostComponent } from './blog/post/post.component';
-import { StandModalComponent } from './stand-modal/stand-modal.component';
 import { WidgetBarComponent } from './blog/post/widget-bar/widget-bar.component';
 import { NewPostFormComponent } from './blog/new-post-form/new-post-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -46,14 +49,20 @@ import { OverlayComponent } from './blog/overlay/overlay.component';
 import { SearchComponent } from './blog/search/search.component';
 import { NewCommentFormComponent } from './blog/post/new-comment-form/new-comment-form.component';
 import { EditPostDialogComponent } from './blog/post/edit-post-dialog/edit-post-dialog.component';
+import { AppPlaygroundComponent } from './portfolio/dev/app-playground/app-playground.component';
+import { GraphicDesignComponent } from './portfolio/design/graphic-design/graphic-design.component';
+import { ExpenseTrackerComponent } from './portfolio/dev/app-playground/expense-tracker/expense-tracker.component';
+import { BalanceManagerComponent } from './portfolio/dev/app-playground/expense-tracker/balance-manager/balance-manager.component';
+import { ExpensesDetailsComponent } from './portfolio/dev/app-playground/expense-tracker/expenses-details/expenses-details.component';
+import { HistoryComponent } from './portfolio/dev/app-playground/expense-tracker/history/history.component';
+import { TransactionsTableComponent } from './portfolio/dev/app-playground/expense-tracker/transactions-table/transactions-table.component';
+import { TodoComponent } from './portfolio/dev/app-playground/todo/todo.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    StandModalComponent,
-    HamburguerToggleDirective,
     HomeComponent,
     PortfolioComponent,
     AboutComponent,
@@ -66,7 +75,15 @@ import { EditPostDialogComponent } from './blog/post/edit-post-dialog/edit-post-
     OverlayComponent,
     SearchComponent,
     NewCommentFormComponent,
-    EditPostDialogComponent
+    EditPostDialogComponent,
+    AppPlaygroundComponent,
+    GraphicDesignComponent,
+    ExpenseTrackerComponent,
+    BalanceManagerComponent,
+    ExpensesDetailsComponent,
+    HistoryComponent,
+    TransactionsTableComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +111,13 @@ import { EditPostDialogComponent } from './blog/post/edit-post-dialog/edit-post-
     MatRadioModule,
     MatTooltipModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

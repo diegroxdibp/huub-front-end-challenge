@@ -3,6 +3,14 @@
   border-radius: 10px;
   padding: 15px 0;
 
+  a {
+    text-decoration: none;
+
+    &:visited {
+      color: blueviolet;
+    }
+  }
+
   &:hover > .options i {
     display: flex;
   }
@@ -10,6 +18,7 @@
   &:hover button {
     padding: 1em;
   }
+
   .options {
     position: absolute;
     right: 0;
@@ -19,9 +28,7 @@
 
     button {
       min-height: 0;
-      &:hover {
-        opacity: 0.8;
-      }
+      margin-left: 5px;
     }
 
     i {
@@ -63,13 +70,34 @@
     }
 
     .posting-info {
-      flex-direction: column;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
 
-      .author-name {
-        display: inline-block;
-        color: blueviolet;
-        font-weight: strong;
+      .post-date{
+        display: flex;
+        flex-direction: column;
       }
+
+      .separator {
+        margin: 0 5px;
+        font-size: 1.5em;
+
+        @media screen and (max-width: 580px) {
+          opacity: 0;
+        }
+      }
+      .author {
+        display: flex;
+
+        .author-name {
+          color: blueviolet;
+        }
+      }
+    }
+    .post-id {
+      flex-direction: row;
+      margin-left: 10px;
     }
   }
 

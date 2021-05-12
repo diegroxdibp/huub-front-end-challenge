@@ -7,6 +7,7 @@ import { ContactComponent } from './contact/contact.component';
 import { BlogComponent } from './blog/blog.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PostComponent } from './blog/post/post.component';
+import { ExpenseTrackerComponent } from './portfolio/dev/app-playground/expense-tracker/expense-tracker.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,9 +15,10 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'blog', component: BlogComponent },
-  { path: 'blog/:id', component: PostComponent },
+  // { path: 'blog/:id', component: PostComponent },
   { path: 'portfolio', component: PortfolioComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: 'dev/app-playground/expense-tracker', component: ExpenseTrackerComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

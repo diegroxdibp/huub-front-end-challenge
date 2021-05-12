@@ -9,19 +9,19 @@ import { animate, state, style, transition, trigger, query, stagger } from '@ang
     trigger('fade', [
       transition('void => *', [
         style({ opacity: 0 }),
-        animate(2000)
+        animate(4000)
       ])
     ]),
     trigger('menuAnimation', [
       transition(':enter', [
-          query('.li', [
-              style({ opacity: 0 }),
-              stagger('500ms', [
-                animate('1100ms', style({ opacity: 1 }))
-              ])
+        query('.li', [
+          style({ opacity: 0 }),
+          stagger('1000ms', [
+            animate('1000ms', style({ opacity: 1 }))
           ])
+        ])
       ])
-  ])
+    ])
   ]
 })
 export class HomeComponent implements OnInit {

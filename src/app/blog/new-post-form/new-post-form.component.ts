@@ -36,15 +36,16 @@ export class NewPostFormComponent implements OnInit {
   tags: string[] = [];
   alltags: string[];
 
-  constructor(private blogManager: BlogManagerService,
-              private dialogRef: MatDialogRef<NewPostFormComponent>) {
+  constructor(
+    private blogManager: BlogManagerService,
+    private dialogRef: MatDialogRef<NewPostFormComponent>) {
 
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]),
-      scheduleCheckbox: new FormControl('', ),
+      scheduleCheckbox: new FormControl(),
       date: new FormControl('', isPriorToDate(this.form?.value?.date)),
-      tags: new FormControl('', ),
+      tags: new FormControl(),
       text: new FormControl('', [Validators.required, Validators.maxLength(500)]),
       image: new FormControl('', [Validators.required, Validators.pattern(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)]),
     });

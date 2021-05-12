@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { backToTop } from 'src/app/shared/utilty';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { animate, state, style, group, transition, trigger, query, stagger, animateChild } from '@angular/animations';
 
@@ -105,6 +106,9 @@ import { animate, state, style, group, transition, trigger, query, stagger, anim
   ]
 })
 export class NavbarComponent {
+
+  @HostBinding('class.navbar-opened') navbarOpened = false;
+  isFixedNavbar;
   screenHeight: number;
   screenWidth: number;
   isActive = false;
@@ -114,29 +118,46 @@ export class NavbarComponent {
   small = false;
 
   constructor() {
-    this.getScreenSize();
+    // this.getScreenSize();
   }
 
-  @HostListener('window:resize', ['$event'])
-  getScreenSize(event?): void {
-    this.screenHeight = window.innerHeight;
-    this.screenWidth = window.innerWidth;
-    console.log(this.screenHeight, this.screenWidth);
+  // @HostListener('window:scroll', [])
+  // onWindowScroll(): void {
+  //   const offset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  //   if (offset > 10) {
+  //     this.isFixedNavbar = true;
+  //   } else {
+  //     this.isFixedNavbar = false;
+  //   }
+  // }
+  // @HostListener('window:resize', ['$event'])
+  // getScreenSize(event?): void {
+  //   this.screenHeight = window.innerHeight;
+  //   this.screenWidth = window.innerWidth;
+  //   console.log(this.screenHeight, this.screenWidth);
 
-    if (this.screenWidth >= 800) {
-      this.large = true;
-      this.small = false;
-    } else {
-      this.small = true;
-      this.large = false;
-    }
+  //   if (this.screenWidth >= 800) {
+  //     this.large = true;
+  //     this.small = false;
+  //   } else {
+  //     this.small = true;
+  //     this.large = false;
+  //   }
+  // }
+
+  // toggleActive(): void {
+  //   this.isActive = !this.isActive;
+  //   this.stateUl === 'collapsed' ? this.stateUl = 'expanded' : this.stateUl = 'collapsed';
+  //   this.stateLi === 'collapsed' ? this.stateLi = 'expanded' : this.stateLi = 'collapsed';
+  //   console.log('ul : ' + this.stateUl);
+  //   console.log('li : ' + this.stateLi);
+  // }
+
+  toggleNavbar(): void {
+    this.navbarOpened = !this.navbarOpened;
   }
 
-  toggleActive(): void {
-    this.isActive = !this.isActive;
-    this.stateUl === 'collapsed' ? this.stateUl = 'expanded' : this.stateUl = 'collapsed';
-    this.stateLi === 'collapsed' ? this.stateLi = 'expanded' : this.stateLi = 'collapsed';
-    console.log('ul : ' + this.stateUl);
-    console.log('li : ' + this.stateLi);
+  backToTop(): void {
+    backToTop();
   }
 }

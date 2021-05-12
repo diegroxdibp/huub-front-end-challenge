@@ -1,0 +1,39 @@
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: blueviolet;
+
+  mat-card {
+    width: 90%;
+    margin: 10px 0;
+
+    mat-card-content {
+      margin-left: 16px;
+    }
+
+    mat-form-field,
+    mat-checkbox {
+      margin-right: 10px;
+    }
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+
+    h3 {
+      font-weight: bold;
+      margin: 0 5px 0 0;
+    }
+
+    mat-divider {
+      height: 20px;
+      margin: 0 10px;
+    }
+  }
+}

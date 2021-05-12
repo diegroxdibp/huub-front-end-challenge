@@ -90,4 +90,34 @@ export abstract class BlogManagerService {
     const sortedArray = arrayToBeSorted.sort((a, b) => b.id - a.id);
     return sortedArray;
   }
+
+  getListOfPostTitles(): Array<string> {
+    const listOfPostTitles = [];
+    this.blogPosts.forEach(post => listOfPostTitles.push(post.title));
+    return listOfPostTitles;
+  }
+
+  getListOfPostDates(): Array<string> {
+    const listOfPostDates = [];
+    this.blogPosts.forEach(post => listOfPostDates.push(post.date));
+    return listOfPostDates;
+  }
+
+  getListOfPostDatesToLocaleString(): Array<string> {
+    const listOfPostDates = [];
+    this.blogPosts.forEach(post => listOfPostDates.push(post.date.toLocaleString()));
+    return listOfPostDates;
+  }
+
+  getListOfPostTags(): Array<string> {
+    const listOfPostTags = [];
+    this.blogPosts.forEach(post => listOfPostTags.push(post.postTags));
+    return listOfPostTags;
+  }
+
+  getListOfPostId(): Array<string> {
+    const listOfPostId = [];
+    this.blogPosts.forEach(post => listOfPostId.push(post.id));
+    return listOfPostId;
+  }
 }

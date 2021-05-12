@@ -1,149 +1,203 @@
 <body>
   <main class="main">
-    <section class="sec-portfolio_intro">
-        <div class="sec-portfolio_intro-txt">
-          <h1 class="animateUp">Welcome to my Portfolio</h1>
-          <h2 class="animateUp">Here you can find some work I have done</h2>
+    <section class="portfolio_intro">
+      <!-- <ul @welcomeAnimation class="portfolio_intro_welcome">
+          <li class="li" ><h1>Welcome to my Portfolio</h1></li>
+          <li class="li" ><h2>Here you can find some work I have done</h2></li>
+        </ul> -->
+      <div class="porfolio_selection">
+        <div class="dev">
+          <h1>DEV</h1>
+          <div class="app-playground">
+            <h2>Expense Manager</h2>
+            <input routerLink="dev/app-playground/expense-tracker" routerLinkActive="active" type="button">
+            <button mat-raised-button type="submit" color="accent" class="submit">Submit</button>
+          </div>
+          <div class="app-playground">
+            <h2>To do list</h2>
+            <input type="button">
+          </div>
         </div>
+        <div class="design">
+          <h1>DESIGN</h1>
+        </div>
+      </div>
     </section>
-    
-    <section class="sec-portfolio">
 
-        <div class="portfolio-post-wraper">
+    <app-expense-tracker></app-expense-tracker>
+    <app-todo></app-todo>
+
+    <section class="portfolio">
+
+      <div class="portfolio-post-wraper">
+        <div class="portfolio-post">
+          <div class="text">
+            <h1 class="animateUp">Design Week Poster</h1>
+            <p class="animateUp">Poster made for the Fanor DeVry XII Design Week.</p>
+          </div>
+          <div class="img-container animateUp">
+            <img src="assets/img/MockUp_XII_Poster-Art.png" alt="O design que se importa">
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-post-wraper">
+        <div class="portfolio-post ">
+          <div class="text">
+            <h1>Advertisement for ACAM Mandacaru</h1>
+            <p>Poster made for the XII Design Week</p>
+          </div>
+          <div class="img-container">
+            <img src="assets/img/convite seleiro.png" alt="" class="Convite da exposição - Espedito Seleiro">
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-post-wraper">
+        <div class="portfolio-post">
+          <div class="text">
+            <h1>ACAM Mandacaru</h1>
+            <p>Advertisement made for the NGO ACAM Mandacaru and to be featured in the magazine Vós. </p>
+          </div>
+          <div class="img-container">
+            <img src="assets/img/Anuncio Acam.jpg" alt="" class="Anuncio Acam">
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-post-wraper">
+        <div class="portfolio-post">
+          <div class="text">
+            <h1>Arien Gazette </h1>
+            <p>A thematic newspaper for an RPG fantasy world.</p>
+          </div>
+          <div class="img-container">
+            <img class="brightnessUp" src="assets/img/Gazeta de Arien MockUpFront.png" alt="" class="des-img">
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-post-wraper">
+        <mat-tab-group mat-stretch-tabs mat-align-tabs="center" class="stretched-tabs">
+          <mat-tab label="First">
             <div class="portfolio-post">
-                <div class="text">
-                    <h1 class="animateUp">Design Week Poster</h1>
-                    <p class="animateUp">Poster made for the Fanor DeVry XII Design Week.</p>
-                </div>
-                <div class="img-container animateUp">
-                    <img src="assets/img/MockUp_XII_Poster-Art.png" alt="O design que se importa">
-            </div>
-        </div>
-    </div>
-
-        <div class="portfolio-post-wraper">
-            <div class="portfolio-post ">
-                <div class="text">
-                    <h1>Advertisement for ACAM Mandacaru</h1>
-                    <p>Poster made for the XII Design Week</p>
-                </div>
-                <div class="img-container">
-                    <img src="assets/img/convite seleiro.png" alt="" class="Convite da exposição - Espedito Seleiro">
-                </div>
-            </div>
-        </div>
-
-        <div class="portfolio-post-wraper">
-            <div class="portfolio-post">
-                <div class="text">
-                    <h1>ACAM Mandacaru</h1>
-                    <p>Advertisement made for the NGO ACAM Mandacaru and to be featured in the magazine Vós. </p>
-                </div>
-                <div class="img-container">
-                    <img src="assets/img/Anuncio Acam.jpg" alt="" class="Anuncio Acam">
-                </div>
-            </div>
-        </div>
-
-        <div class="portfolio-post-wraper">
-            <div class="portfolio-post">
-                <div class="text">
-                    <h1>Arien Gazette </h1>
-                    <p>A thematic newspaper for an RPG fantasy world.</p>
-                </div>
-                <div class="img-container">
-                    <img class="brightnessUp" src="assets/img/Gazeta de Arien MockUpFront.png" alt="" class="des-img">
-                </div>
-            </div>
-        </div>
-
-        <div class="portfolio-post-wraper">
-          <mat-tab-group mat-stretch-tabs mat-align-tabs="center" class="stretched-tabs">
-            <mat-tab label="First">
-              <div class="portfolio-post">
-                <div class="text-tab">
-                  <h1>Coca Cola stand</h1>
-                  <p>Conceptual stand for Coca Cola in Rock in Rio.</p>
-                </div>
-                <div class="img-container">
-                  <div class="flip">
-                    <img class="front brightnessUp" src="assets/img/cocaO1.jpg">
-                    <img class="back" src="assets/img/cocaO1overlay.jpg">
-                  </div>
+              <div class="text-tab">
+                <h1>Coca Cola stand</h1>
+                <p>Conceptual stand for Coca Cola in Rock in Rio.</p>
+              </div>
+              <div class="img-container">
+                <div class="flip">
+                  <img class="front brightnessUp" src="assets/img/cocaO1.jpg">
+                  <img class="back" src="assets/img/cocaO1overlay.jpg">
                 </div>
               </div>
-            </mat-tab>
-              <mat-tab label="Second">
-                <div class="portfolio-post">
-                  <div class="text-tab">
-                    <h1>Coca Cola stand</h1>
-                    <p>Conceptual stand for Coca Cola in Rock in Rio.</p>
-                  </div>
-                  <div class="img-container">
-                    <div class="flip">
-                      <img class="front brightnessUp" src="assets/img/cocaO2.jpg">
-                      <img class="back" src="assets/img/cocaO2overlay.jpg">
-                    </div>
-                  </div>
-                </div>
-              </mat-tab>
-            <mat-tab label="Third">
-              <div class="portfolio-post">
-                <div class="text-tab">
-                  <h1>Coca Cola stand</h1>
-                  <p>Conceptual stand for Coca Cola in Rock in Rio.</p>
-                </div>
-                <div class="img-container">
-                  <div class="flip">
-                    <img class="front brightnessUp" src="assets/img/cocaO31.jpg">
-                    <img class="back" src="assets/img/cocaO3overlay.jpg">
-                  </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Second">
+            <div class="portfolio-post">
+              <div class="text-tab">
+                <h1>Coca Cola stand</h1>
+                <p>Conceptual stand for Coca Cola in Rock in Rio.</p>
+              </div>
+              <div class="img-container">
+                <div class="flip">
+                  <img class="front brightnessUp" src="assets/img/cocaO2.jpg">
+                  <img class="back" src="assets/img/cocaO2overlay.jpg">
                 </div>
               </div>
-            </mat-tab>
-          </mat-tab-group>
-        </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Third">
+            <div class="portfolio-post">
+              <div class="text-tab">
+                <h1>Coca Cola stand</h1>
+                <p>Conceptual stand for Coca Cola in Rock in Rio.</p>
+              </div>
+              <div class="img-container">
+                <div class="flip">
+                  <img class="front brightnessUp" src="assets/img/cocaO3.jpg">
+                  <img class="back" src="assets/img/cocaO3overlay.jpg">
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
 
-        <div class="portfolio-post-wraper">
-          <mat-tab-group mat-stretch-tabs mat-align-tabs="center" class="stretched-tabs">
-            <mat-tab label="First">
-              <div class="portfolio-post">
-                <div class="text-tab">
-                  <h1>Sleipnir</h1>
-                  <p>Conceptual gesture controller gloves done in a college project.</p>
-                </div>
-                <div class="img-container">
-                  <img class="brightnessUp" src="assets/img/sleip1cut.png" alt="" class="des-img">
-                </div>
-                </div>
-            </mat-tab>
-            <mat-tab label="Second">
-              <div class="portfolio-post">
-                <div class="text">
-                  <h1>Sleipnir</h1>
-                  <p>The tip of the thumb touches a finger segment closing the circuit and computing an click.</p>
-                </div>
-                  <div class="img-container">
-                    <img class="brightnessUp" src="assets/img/sleip2cut.png" alt="" class="des-img">
-                  </div>
-                </div>
-              </mat-tab>
-              <mat-tab label="Third">
-                <div class="portfolio-post">
-                  <div class="text">
-                    <h1>Sleipnir</h1>
-                    <p> Fingertips touching a thumb segment also compute clicks.</p>
-                  </div>
-                    <div class="img-container">
-                      <img class="brightnessUp" src="assets/img/hsegments.jpg" class="des-img">
-                    </div>
-                  </div>                      </mat-tab>
-            </mat-tab-group>
-              <!-- <mat-tab label="Third">
-                <button mat-button (click)="openDialog()">Open dialog</button>
-              </mat-tab>
-            </mat-tab-group> -->
-        </div>
+      <div class="portfolio-post-wraper">
+        <mat-tab-group mat-stretch-tabs mat-align-tabs="center" class="stretched-tabs">
+          <mat-tab label="First">
+            <div class="portfolio-post">
+              <div class="text-tab">
+                <h1>Sleipnir</h1>
+                <p>Conceptual gesture controller gloves done in a college project.</p>
+              </div>
+              <div class="img-container">
+                <img class="brightnessUp" src="assets/img/sleip1cut.png" alt="" class="des-img">
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Second">
+            <div class="portfolio-post">
+              <div class="text">
+                <h1>Sleipnir</h1>
+                <p>The tip of the thumb touches a finger segment closing the circuit and computing an click.</p>
+              </div>
+              <div class="img-container">
+                <img class="brightnessUp" src="assets/img/sleip2cut.png" alt="" class="des-img">
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Third">
+            <div class="portfolio-post">
+              <div class="text">
+                <h1>Sleipnir</h1>
+                <p> Fingertips touching a thumb segment also compute clicks.</p>
+              </div>
+              <div class="img-container">
+                <img class="brightnessUp" src="assets/img/hsegments.jpg" class="des-img">
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="portfolio-post-wraper">
+        <mat-tab-group mat-stretch-tabs mat-align-tabs="center" class="stretched-tabs">
+          <mat-tab label="First">
+            <div class="portfolio-post">
+              <div class="text-tab">
+                <h1>Sleipnir</h1>
+                <p>Conceptual gesture controller gloves done in a college project.</p>
+              </div>
+              <div class="img-container">
+                <img class="brightnessUp" src="assets/img/sleip1cut.png" alt="" class="des-img">
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Second">
+            <div class="portfolio-post">
+              <div class="text">
+                <h1>Sleipnir</h1>
+                <p>The tip of the thumb touches a finger segment closing the circuit and computing an click.</p>
+              </div>
+              <div class="img-container">
+                <img class="brightnessUp" src="assets/img/sleip2cut.png" alt="" class="des-img">
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Third">
+            <div class="portfolio-post">
+              <div class="text">
+                <h1>Sleipnir</h1>
+                <p> Fingertips touching a thumb segment also compute clicks.</p>
+              </div>
+              <div class="img-container">
+                <img class="brightnessUp" src="assets/img/hsegments.jpg" class="des-img">
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
     </section>
   </main>
 

@@ -1,8 +1,7 @@
 body {
-  max-height:100vh;
+  max-height: 100vh;
   max-width: 100%;
   overflow: hidden;
-
 }
 
 main {
@@ -14,10 +13,21 @@ main {
     display: flex;
     flex-direction: column;
     margin: auto;
-    color: blueviolet;
+
+    li {
+      list-style: none;
+
+      h1 {
+        font-family: Montserrat;
+        color: #fffed7;
+        font-size: 6em;
+        font-weight: 700;
+        line-height: 115%;
+      }
+    }
   }
 
-  .bg{
+  .bg {
     position: fixed;
     right: 0;
     bottom: 0;
@@ -25,4 +35,4 @@ main {
     min-height: 100%;
     z-index: -5;
   }
-};
+}

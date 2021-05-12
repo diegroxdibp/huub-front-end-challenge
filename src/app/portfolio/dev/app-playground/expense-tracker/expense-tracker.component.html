@@ -1,0 +1,30 @@
+<main>
+  <app-balance-manager></app-balance-manager>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Transaction:</mat-label>
+      <input matInput formControlName="transaction">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Amount:</mat-label>
+      <input matInput formControlName="amount">
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" [disabled]="!form.valid" color="accent">Add transaction</button>
+  </form>
+
+  <!-- <label for="transcation-name">Description:</label>
+  <input type="text" name="transcation-name" id="transcation-name" required>
+  <label for="transcation-name">Amount:</label>
+  <input type="text" name="transcation-value" id="transcation-value" required>
+  <input (click)="transactionsManagerService.sortTransactionsList()" type="button" value="Sort transcations"
+    id="sort-transcation">
+  <input (click)="onSubmit()" type="button" value="Add transcation" id="add-transcation"> -->
+
+  <app-history></app-history>
+  <app-expenses-details></app-expenses-details>
+  </main>
+
+<router-outlet></router-outlet>

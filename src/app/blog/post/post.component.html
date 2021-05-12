@@ -1,34 +1,32 @@
 <div class="post">
-  <div class="options">
-    <div class="edit" title="Edit post">
-      <button (click)="editPost()" mat-raised-button color="accent"><i class="fas fa-edit"></i></button>
-    </div>
-    <div (click)="deletePost()" class="delete" title="Delete post">
-      <button mat-raised-button color="accent"><i class="fas fa-trash"></i></button>
-    </div>
+  <div class="options fade-in">
+    <button class="fade-in" (click)="editPost()" mat-raised-button color="accent"><i class="fas fa-edit"></i></button>
+    <button class="fade-in" (click)="deletePost()" mat-raised-button color="accent"><i
+        class="fas fa-trash"></i></button>
   </div>
 
   <h1 class="title">
     {{ post.title }}
   </h1>
 
-  <mat-form-field *ngIf="editMode">
-    <mat-label>Post's title:</mat-label>
-    <input matInput name="title" [(ngModel)]="post.title"
-    (focusout)="editPostDialog()" (keyup.enter)="editPostDialog()" (keyup.escape)="editPostDialog()">
-  </mat-form-field>
-
   <div class="header-info">
     <div class="posting-info">
-      <h5 *ngIf="!post.postScheduled">
-        Posted on {{ post.date.toLocaleString() }} • By &nbsp; <div class="author-name">{{ post.posterEmail }}</div>
-      </h5>
-      <div *ngIf="post.postScheduled" class="posting-info">
-        <h5>
-          Written on {{ post.date.toLocaleString() }} • By &nbsp; <div class="author-name">{{ post.posterEmail }}</div>
+      <div class="post-date">
+        <h5 *ngIf="!post.postScheduled">
+          Posted on {{ post.date.toLocaleString() }}
         </h5>
-        <h5>
+
+        <h5 *ngIf="post.postScheduled">
+          Written on {{ post.date.toLocaleString() }}
+        </h5>
+        <h5 *ngIf="post.postScheduled">
           To be posted on {{ post.scheduledDate.toLocaleString() }}
+        </h5>
+      </div>
+      <h5 class="separator">•</h5>
+      <div class="author">
+        <h5>
+          By: &nbsp; <div class="author-name">{{ post.posterEmail }}</div>
         </h5>
       </div>
     </div>
@@ -44,11 +42,6 @@
   <p>
     {{ post.text }}
   </p>
-  <mat-form-field class="editTextInput" *ngIf="editMode">
-    <mat-label>Post's text:</mat-label>
-    <textarea matInput [(ngModel)]="post.text"></textarea>
-    <mat-hint align="end">{{post.text.length}} / 500</mat-hint>
-  </mat-form-field>
 </div>
 <mat-divider></mat-divider>
 <section class="comments-area">

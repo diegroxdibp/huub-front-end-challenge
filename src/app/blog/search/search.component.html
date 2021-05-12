@@ -6,8 +6,8 @@
 </div>
 
 <div class="search-field">
-  <mat-radio-group class="radio-buttons-wrapper" aria-label="Select an option">
-    <label color="accent">Search by:</label>
+  <label color="accent">Search by:</label>
+  <mat-radio-group class="radio-buttons-wrapper" [value]="activeRadioButton" aria-label="Select an option">
     <mat-radio-button (change)="radioButtonChange($event)" value="1">Title</mat-radio-button>
     <mat-radio-button (change)="radioButtonChange($event)" value="2">Date</mat-radio-button>
     <mat-radio-button (change)="radioButtonChange($event)" value="3">Tag</mat-radio-button>
@@ -17,7 +17,7 @@
   <form class="search-form">
     <mat-form-field class="example-full-width">
       <mat-label>Search:</mat-label>
-      <input type="text" placeholder="Pick one" aria-label="Number" color="accent" matInput [formControl]="myControl"
+      <input type="text" placeholder="Search terms here..." color="accent" matInput [formControl]="myControl"
         [matAutocomplete]="auto" matTooltip="Search for a blog post" [(ngModel)]="searchInputValue">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -25,11 +25,14 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+    <button mat-button (click)="search()" color="accent" mat-raised-button>Search</button>
   </form>
 </div>
 
-<mat-dialog-content>
-  <p *ngFor="let option of filteredOptions | async" [value]="option">
-    {{option}}
-  </p>
+<mat-dialog-content *ngIf="searchInputValue">
+  <div *ngFor="let option of filteredOptions | async">
+    <p>
+      {{option}}
+    </p>
+  </div>
 </mat-dialog-content>
