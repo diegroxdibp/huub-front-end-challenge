@@ -39,7 +39,7 @@ export class OverlayComponent implements OnInit {
   openNewPostDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
     window.innerWidth < 600 ? dialogConfig.width = '100%' : dialogConfig.width = '60%';
     this.dialog.open(NewPostFormComponent, dialogConfig);
 
@@ -48,7 +48,7 @@ export class OverlayComponent implements OnInit {
   openSearchDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
     window.innerWidth < 600 ? dialogConfig.width = '100%' : dialogConfig.width = '60%';
     this.dialog.open(SearchComponent, dialogConfig);
   }

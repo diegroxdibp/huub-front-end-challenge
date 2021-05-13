@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'blog', component: BlogComponent },
-  // { path: 'blog/:id', component: PostComponent },
+  { path: 'blog/:id', component: PostComponent },
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'dev/app-playground/expense-tracker', component: ExpenseTrackerComponent },
   { path: '**', component: PageNotFoundComponent },

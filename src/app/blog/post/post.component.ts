@@ -25,12 +25,12 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     // If url matches the ID of an post, se post to be the one that matches the ID on url
-    // const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-    // const numberOfPost = this.blogManager.getNumberOfPosts();
-    // if (id <= numberOfPost) {
-    //   const fetchedPost = this.blogManager.getPostById(id);
-    //   this.post = fetchedPost;
-    // }
+    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    const numberOfPost = this.blogManager.getNumberOfPosts();
+    if (id <= numberOfPost) {
+      const fetchedPost = this.blogManager.getPostById(id);
+      this.post = fetchedPost;
+    }
   }
 
   deletePost(): void {
@@ -40,7 +40,7 @@ export class PostComponent implements OnInit {
 
   editPost(): void {
     const dialogRef = this.dialog.open(EditPostDialogComponent, {
-      width: '60%',
+      width: '90%',
       disableClose: true,
       autoFocus: true,
       data: { unalteredPost: this.post },
@@ -57,29 +57,6 @@ export class PostComponent implements OnInit {
     this.blogManager.saveToLocalStorage();
   }
 
-  // editPostDialog($event): void {
-  //   $event.preventDefault();
-  //   if (this.confirmationDialogIsOn) { return; }
-  //   this.confirmationDialogIsOn = true;
-  //   const dialogRef = this.dialog.open(EditPostDialogComponent, {
-  //     width: '60%',
-  //     disableClose: true,
-  //     autoFocus: true,
-  //     data: { unalteredPost: this.post },
-  //   });
-  //   // tslint:disable-next-line: deprecation
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed', result.data);
-  //     this.editMode = false;
-  //     this.saveChange();
-  //   });
-  //   this.confirmationDialogIsOn = false;
-  // }
-  // const dialogConfig = new MatDialogConfig();
-  // dialogConfig.disableClose = true;
-  // dialogConfig.autoFocus = true;
-  // dialogConfig.width = '60%';
-  // this.dialog.open(EditPostDialogComponent, dialogConfig);
   backToTop(): void {
     backToTop();
   }

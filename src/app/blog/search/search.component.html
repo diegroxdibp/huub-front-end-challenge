@@ -5,7 +5,7 @@
   </button>
 </div>
 
-<div class="search-field">
+<div class="search-radio">
   <label color="accent">Search by:</label>
   <mat-radio-group class="radio-buttons-wrapper" [value]="activeRadioButton" aria-label="Select an option">
     <mat-radio-button (change)="radioButtonChange($event)" value="1">Title</mat-radio-button>
@@ -17,8 +17,8 @@
   <form class="search-form">
     <mat-form-field class="example-full-width">
       <mat-label>Search:</mat-label>
-      <input type="text" placeholder="Search terms here..." color="accent" matInput [formControl]="myControl"
-        [matAutocomplete]="auto" matTooltip="Search for a blog post" [(ngModel)]="searchInputValue">
+      <input #searchField type="text" placeholder="Search terms here..." color="accent" matInput
+        [formControl]="myControl" [matAutocomplete]="auto" matTooltip="Search for a blog post">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option}}
@@ -29,10 +29,13 @@
   </form>
 </div>
 
-<mat-dialog-content *ngIf="searchInputValue">
-  <div *ngFor="let option of filteredOptions | async">
+<mat-dialog-content *ngIf="queriedPosts">
+  <p *ngFor="let post of queriedPosts">
+    <a href="blog/{{post.id}}">{{post.title}}</a>,{{post.id}}
+  </p>
+  <!-- <div *ngFor="let option of filteredOptions | async">
     <p>
       {{option}}
     </p>
-  </div>
+  </div> -->
 </mat-dialog-content>

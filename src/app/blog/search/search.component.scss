@@ -14,7 +14,7 @@
   }
 }
 
-.search-field {
+.search-radio {
   display: flex;
   flex-direction: column;
   padding: 5px 0;
@@ -22,10 +22,52 @@
   .radio-buttons-wrapper {
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: space-between;
     padding: 5px 0 5px 0;
+
     mat-radio-button {
       padding: 5px 10px 5px 0;
+    }
+  }
+}
+
+.search-form {
+  width: 100%;
+  display: flex;
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    min-width: 80px;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "title button";
+    margin: 0;
+
+    .title {
+      line-height: 55px;
+      justify-self: start;
+    }
+  }
+
+  .radio-buttons-wrapper {
+    justify-content: space-between;
+  }
+
+  .search-form {
+    flex-direction: column;
+    mat-form-field {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+      margin: 0;
     }
   }
 }

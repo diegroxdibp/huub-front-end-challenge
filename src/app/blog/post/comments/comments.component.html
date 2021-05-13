@@ -1,7 +1,25 @@
 <mat-card>
-  <h5>
-    Commented on {{ comment.commentDate.toLocaleString() }} • By &nbsp; <div class="author-name">{{ comment.author }}</div>
-  </h5>
+  <div class="comment-header">
+    <div class="posting-info">
+      <div class="post-date">
+        <h5>
+          Posted on {{ comment.commentDate.toLocaleString() }}
+        </h5>
+      </div>
+      <div class="author">
+        <h5>
+          By: &nbsp; <div class="author-name">{{ comment.author }}</div>
+        </h5>
+      </div>
+    </div>
+    <div class="icons-wrapper">
+      <i (click)="addLike()" class="far fa-thumbs-up"></i>
+      <span> {{ comment.likes }}</span>
+      <i (click)="addDislike()" class="far fa-thumbs-down"></i>
+      <span> {{ comment.dislikes }}</span>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
   <div class="comment">
     {{ comment.comment }}
   </div>

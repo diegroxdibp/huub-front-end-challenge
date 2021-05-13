@@ -10,7 +10,10 @@
   <mat-dialog-content class="form">
     <mat-form-field color="accent">
       <mat-label>Post's title:</mat-label>
-      <input matInput formControlName="title">
+      <input #firstField matInput formControlName="title">
+      <mat-error *ngIf="form.get('title').hasError('required')">
+        Title is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field color="accent">
@@ -71,7 +74,7 @@
     </mat-form-field>
 
     <mat-form-field color="accent">
-      <mat-label>Relevant tags</mat-label>
+      <mat-label>Tags...</mat-label>
       <mat-chip-list formControlName="tags" #chipList aria-label="tag selection">
         <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
           {{tag}}

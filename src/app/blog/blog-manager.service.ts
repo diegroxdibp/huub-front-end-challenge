@@ -1,3 +1,4 @@
+import { PostComment } from 'src/app/models/post-comment';
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
 
@@ -19,6 +20,12 @@ export abstract class BlogManagerService {
     let arrayOfPosts: Array<Post> = [];
     if (arrayFromParsedObj) {
       arrayFromParsedObj.forEach(parsedObj => {
+        const listOfParsedCommentsToClassInstace: PostComment[] = [];
+        parsedObj.comments.forEach(comment => {
+          const parsedCommentToClassInstance = new PostComment(comment.author, comment.comment, comment.likes, comment.dislikes);
+          listOfParsedCommentsToClassInstace.push(parsedCommentToClassInstance);
+        });
+
         const parsedObjToClassInstance = new Post(
           parsedObj.title,
           parsedObj.img,
@@ -31,13 +38,17 @@ export abstract class BlogManagerService {
           new Date(parsedObj.date),
           parsedObj.likes,
           parsedObj.dislikes,
-          parsedObj.comments);
+          listOfParsedCommentsToClassInstace);
         arrayOfPosts.unshift(parsedObjToClassInstance);
         console.log(parsedObjToClassInstance);
       });
     }
     arrayOfPosts = this.sortPostsFromLastToFirst(arrayOfPosts);
     return arrayOfPosts;
+  }
+
+  getListOfPosts(): Array<Post> {
+    return this.blogPosts;
   }
 
   getPostById(id: number): Post {
@@ -59,7 +70,7 @@ export abstract class BlogManagerService {
   }
 
   getNumberOfPosts(): number {
-    const NumberOfPosts: number = this.blogPosts.length;
+    const NumberOfPosts: number = this.blogPosts.length + 1;
     return NumberOfPosts;
   }
 
@@ -111,7 +122,9 @@ export abstract class BlogManagerService {
 
   getListOfPostTags(): Array<string> {
     const listOfPostTags = [];
-    this.blogPosts.forEach(post => listOfPostTags.push(post.postTags));
+    this.blogPosts.forEach(post => post.postTags.forEach(tag => {
+      listOfPostTags.push(tag);
+    }));
     return listOfPostTags;
   }
 

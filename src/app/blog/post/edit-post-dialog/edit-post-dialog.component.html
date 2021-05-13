@@ -1,7 +1,9 @@
 <div mat-dialog-title class="header">
-  <h1 class="title" align="center" *ngIf="!editModeTitle && !editModeImage && !editModeTitle && !editModeTags">Edit post
+  <h1 class="title" align="center">Edit post
   </h1>
-  <div class="checkout" *ngIf="editModeTitle || editModeImage || editModeText || editModeTags">
+  <!-- <h1 class="title" align="center" *ngIf="!editModeTitle && !editModeImage && !editModeTitle && !editModeTags">Edit post
+  </h1> -->
+  <!-- <div class="checkout" *ngIf="editModeTitle || editModeImage || editModeText || editModeTags">
     <h2>Fields to be edited:</h2>
     <div class="checkbox-wrapper">
       <mat-checkbox [checked]="editModeTitle" (click)="editTitle()" color="accent">Title</mat-checkbox>
@@ -9,7 +11,7 @@
       <mat-checkbox [checked]="editModeText" (click)="editText()" color="accent">Text</mat-checkbox>
       <mat-checkbox [checked]="editModeTags" (click)="editTags()" color="accent">Tags</mat-checkbox>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <mat-dialog-content [@.disabled]="disableAnimation" color="accent">
@@ -17,10 +19,11 @@
 
     <mat-accordion class="example-headers-align" multi>
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
+      <mat-expansion-panel #title>
+        <mat-expansion-panel-header [ngStyle]="{'background-color': panelHeaderColor}">
           <mat-panel-title>
             <h2>Title</h2>
+            <span>Title edited</span>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <h3>Original title: <span>{{unalteredPost.title}}</span></h3>
@@ -30,7 +33,8 @@
             <mat-label>New title:</mat-label>
             <input matInput formControlName="title" [(ngModel)]="titleValue">
           </mat-form-field>
-          <button (click)="editTitle()" mat-raised-button color="accent">Cancel</button>
+          <button (click)="editTitleConfirm()" mat-raised-button color="accent">Confirm</button>
+          <button (click)="editTitleCancel()" mat-raised-button>Cancel</button>
         </div>
       </mat-expansion-panel>
 

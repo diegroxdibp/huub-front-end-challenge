@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { iif, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { BlogManagerService } from '../blog-manager.service';
 import { MatRadioChange } from '@angular/material/radio';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Post } from 'src/app/models/post';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
-
-  searchInputValue: string;
+export class SearchComponent implements OnInit, AfterViewInit {
+  @ViewChild('searchField') searchField: ElementRef;
   myControl = new FormControl();
   options: string[] = [];
   filteredOptions: Observable<string[]>;
@@ -22,11 +22,13 @@ export class SearchComponent implements OnInit {
   postsTags = [];
   postsId = [];
   activeRadioButton: string;
+  queriedPosts: Post[];
 
   constructor(
     private blogManager: BlogManagerService,
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     private dialogRef: MatDialogRef<SearchComponent>,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -44,33 +46,42 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.searchField.nativeElement.focus();
+    this.cd.detectChanges();
+  }
+
   radioButtonChange(event: MatRadioChange): void {
     this.activeRadioButton = event.value;
     const selectedOption = event.value;
-    this.changeOptions(selectedOption);
+    this.optionsFromRadioButton(selectedOption);
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
-    this.searchInputValue = '';
+    this.searchField.nativeElement.value = '';
   }
 
   private _filter(value: string): string[] {
-    this.changeOptions(this.activeRadioButton);
-    const filterValue = value.toLowerCase();
+    this.optionsFromRadioButton(this.activeRadioButton);
+    let filterValue: any;
     switch (this.activeRadioButton) {
       case '1':
+        filterValue = value.toLowerCase();
         return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
       case '2':
+        filterValue = value.toLocaleString().toLowerCase();
         return this.options.filter(option => option.toLocaleString().toLowerCase().indexOf(filterValue) === 0);
       case '3':
-        return this.options.filter(option => option[0].toLowerCase().indexOf(filterValue) === 0);
+        filterValue = value.toLowerCase();
+        return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
       case '4':
+        filterValue = value.toString().toLowerCase();
         return this.options.filter(option => option.toString().toLowerCase().indexOf(filterValue) === 0);
     }
   }
 
-  changeOptions(option: string): void {
+  optionsFromRadioButton(option: string): void {
     const key = option;
     switch (key) {
       case '1':
@@ -100,22 +111,77 @@ export class SearchComponent implements OnInit {
   }
 
   search(): void {
-    const filterValue = this.searchInputValue.toLowerCase();
-    let filterResult: string[] = [];
+    const listOfPosts = this.blogManager.getListOfPosts();
+    let filterValue: any;
+    let filteredResult: string[] = [];
+    console.log(this.options);
     switch (this.activeRadioButton) {
       case '1':
-        filterResult = this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+        filterValue = this.searchField.nativeElement.value.toLowerCase();
+        filteredResult = this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
         break;
       case '2':
-        filterResult = this.options.filter(option => option.toLocaleString().toLowerCase().indexOf(filterValue) === 0);
+        filterValue = this.searchField.nativeElement.value.toLocaleString().toLowerCase();
+        filteredResult = this.options.filter(option => option.toLocaleString().toLowerCase().indexOf(filterValue) === 0);
         break;
       case '3':
-        filterResult = this.options.filter(option => option[0].toLowerCase().indexOf(filterValue) === 0);
+        if (this.searchField.nativeElement.value) {
+          filterValue = this.searchField.nativeElement.value.toLowerCase();
+          filteredResult = this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+        }
         break;
       case '4':
-        filterResult = this.options.filter(option => option.toString().toLowerCase().indexOf(filterValue) === 0);
+        filterValue = this.searchField.nativeElement.value.toString().toLowerCase();
+        filteredResult = this.options.filter(option => option.toString().toLowerCase().indexOf(filterValue) === 0);
         break;
     }
-    console.log(filterResult);
+    let listOfMatchingPosts: Array<Post> = [];
+
+    filteredResult.forEach(result => {
+      listOfPosts.forEach(post => {
+        if (post.title === result) { listOfMatchingPosts.push(post); }
+      });
+    });
+
+    switch (this.activeRadioButton) {
+      case '1':
+        listOfMatchingPosts = [];
+        filteredResult.forEach(result => {
+          listOfPosts.forEach(post => {
+            if (post.title === result) { listOfMatchingPosts.push(post); }
+          });
+        });
+        break;
+      case '2':
+        listOfMatchingPosts = [];
+        filteredResult.forEach(result => {
+          listOfPosts.forEach(post => {
+            if (post.date.toLocaleString() === result) { listOfMatchingPosts.push(post); }
+          });
+        });
+        break;
+      case '3':
+        listOfMatchingPosts = [];
+        filteredResult.forEach(result => {
+          listOfPosts.forEach(post => {
+            post.postTags.forEach(tag => {
+              if (tag === result && !listOfMatchingPosts.includes(post)) {
+                listOfMatchingPosts.push(post);
+              }
+            });
+          });
+        });
+        break;
+      case '4':
+        listOfMatchingPosts = [];
+        filteredResult.forEach(result => {
+          listOfPosts.forEach(post => {
+            if (post.id === parseInt(result, 10)) { listOfMatchingPosts.push(post); }
+          });
+        });
+        break;
+    }
+    // console.log(listOfMatchingPosts);
+    this.queriedPosts = listOfMatchingPosts;
   }
 }

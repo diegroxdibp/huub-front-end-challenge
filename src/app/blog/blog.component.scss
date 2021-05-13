@@ -6,14 +6,6 @@ main {
   align-items: center;
   justify-content: center;
 
-  .posts-column {
-    max-width: 70%;
-  }
-
-  .new-post-form {
-    max-width: 70%;
-  }
-
   .createPostCallToAction {
     padding: 10%;
 
@@ -46,8 +38,4 @@ main {
       }
     }
   }
-}
-
-app-new-post {
-  width: 100%;
 }

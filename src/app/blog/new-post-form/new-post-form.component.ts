@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, ElementRef, ViewChild, Inject, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Post } from 'src/app/models/post';
 import { BlogManagerService } from '../blog-manager.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -17,11 +17,12 @@ import { backToTop } from 'src/app/shared/utilty';
   templateUrl: './new-post-form.component.html',
   styleUrls: ['./new-post-form.component.scss']
 })
-export class NewPostFormComponent implements OnInit {
+export class NewPostFormComponent implements OnInit, AfterViewInit {
 
   @Output() postCreationMode = new EventEmitter<boolean>();
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  @ViewChild('firstField') firstFIeld: ElementRef;
 
   form: FormGroup;
   minDate: Date = new Date();
@@ -38,7 +39,9 @@ export class NewPostFormComponent implements OnInit {
 
   constructor(
     private blogManager: BlogManagerService,
-    private dialogRef: MatDialogRef<NewPostFormComponent>) {
+    private dialogRef: MatDialogRef<NewPostFormComponent>,
+    private cd: ChangeDetectorRef
+  ) {
 
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
@@ -57,12 +60,16 @@ export class NewPostFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // tslint:disable-next-line: deprecation
     this.dialogRef.keydownEvents().subscribe(event => {
       if (event.key === 'Escape') {
         this.closeDialogWindow();
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.firstFIeld.nativeElement.focus();
+    this.cd.detectChanges();
   }
 
   onSubmit(): void {
@@ -76,11 +83,9 @@ export class NewPostFormComponent implements OnInit {
     const postTags = this.tags;
     const newTags = postTags.filter(tag => !this.blogManager.tags.includes(tag));
     this.blogManager.tags.push(...newTags);
-    console.log(postImage);
     if (this.form.value.scheduleCheckbox) {
       newPost = new Post(postTitle, postImage, postText, newPostId, posterEmail, postTags, this.schedulePost, postScheduledDate);
     } else {
-      console.log(newPost);
       newPost = new Post(postTitle, postImage, postText, newPostId, posterEmail, postTags);
     }
     this.blogManager.blogPosts.unshift(newPost);

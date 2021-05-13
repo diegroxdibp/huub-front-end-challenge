@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, Inject, OnInit, Optional } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit, Optional, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader } from '@angular/material/expansion';
 import { Post } from 'src/app/models/post';
 
 @Component({
@@ -9,6 +10,10 @@ import { Post } from 'src/app/models/post';
   styleUrls: ['./edit-post-dialog.component.scss']
 })
 export class EditPostDialogComponent implements AfterViewInit {
+  @ViewChild(MatAccordion) accordion;
+  @ViewChild('title') title: MatExpansionPanel;
+  @ViewChild('image') image: MatExpansionPanel;
+  @ViewChild('text') text: MatExpansionPanel;
   form: FormGroup;
   unalteredPost: Post;
   titleValue: string;
@@ -21,6 +26,8 @@ export class EditPostDialogComponent implements AfterViewInit {
   fromPage: string;
   fromDialog: string;
   disableAnimation = true;
+
+  panelHeaderColor: string;
   constructor(
     private dialogRef: MatDialogRef<EditPostDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any
@@ -60,6 +67,21 @@ export class EditPostDialogComponent implements AfterViewInit {
       this.titleValue = '';
     }
   }
+
+  editTitleConfirm(): void {
+    this.panelHeaderColor = 'springgreen';
+  }
+
+  editTitleCancel(): void {
+    this.editModeTitle = !this.editModeTitle;
+    if (!this.editModeTitle) {
+      this.titleValue = '';
+    }
+  }
+
+
+
+
 
   editImage(): void {
     this.editModeImage = !this.editModeImage;

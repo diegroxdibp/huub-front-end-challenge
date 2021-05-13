@@ -21,7 +21,7 @@ export class BlogComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
     dialogConfig.width = '60%';
     this.dialog.open(NewPostFormComponent, dialogConfig);
   }
@@ -30,7 +30,7 @@ export class BlogComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
     dialogConfig.width = '60%';
     this.dialog.open(SearchComponent, dialogConfig);
   }
