@@ -34,8 +34,10 @@ export abstract class BlogManagerService {
           parsedObj.posterEmail,
           parsedObj.postTags,
           parsedObj.postScheduled,
-          parsedObj.scheduledDate,
+          new Date(parsedObj.scheduledDate),
           new Date(parsedObj.date),
+          parsedObj.wasEdited,
+          new Date(parsedObj.editDate),
           parsedObj.likes,
           parsedObj.dislikes,
           listOfParsedCommentsToClassInstace);

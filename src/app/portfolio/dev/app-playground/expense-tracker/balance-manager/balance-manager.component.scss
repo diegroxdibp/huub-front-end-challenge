@@ -1,34 +1,50 @@
 .balance-area {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   max-width: 600px;
-  margin: 30px;
 
-  h1{
+  mat-panel-title {
+    margin: 0 0 0 8px;
+    display: block;
+    color: blueviolet;
+  }
+  h1 {
+    font-weight: 300;
     margin: 10px 0;
-  }
-}
-.income-expense {
-  display: grid;
-  grid-template-columns: 1fr 10px 1fr;
-  justify-content: center;
-  align-items: center;
 
-  mat-divider{
-    height: 24px;
-  }
-
-  h2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 10px 20px;
-
-    & > span {
-      padding-left: 5px;
+    & span {
+      font-weight: 300;
     }
   }
+  .income-expense {
+    display: grid;
+    grid-template-columns: 1fr 10px 1fr;
+    justify-content: center;
+    align-items: center;
+
+    mat-divider {
+      justify-self: center;
+      height: 24px;
+      margin: 0 10px;
+    }
+
+    h2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0 10px;
+      font-weight: 300;
+
+      & > span {
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+.income-expense-wrapper {
+  display: flex;
+  justify-content: space-around;
 }

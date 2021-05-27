@@ -87,6 +87,7 @@
         font-size: 1.5em;
 
         @media screen and (max-width: 580px) {
+          display: none;
           opacity: 0;
         }
       }

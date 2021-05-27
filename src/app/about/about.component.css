@@ -1,4 +1,4 @@
-main {
+.about {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,10 +10,11 @@ main {
   background-attachment: fixed;
   background-size: cover;
   color: #fff;
+  min-height: 100vh;
+  width: 100%;
 }
 
-main .content {
-  padding: 10%;
+.about .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,19 +22,43 @@ main .content {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-main .content .img-container {
-  height: 100%;
+.about .row:not(:first-child) {
+  margin-top: 40px 0;
 }
 
-main .test {
-  min-height: 100vh;
+.about .row h1 {
+  font-family: Montserrat;
+  color: #fffed7;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 115%;
+  margin-top: 16px;
 }
 
-.technologies-icons {
+.about .row h2 {
+  font-family: Montserrat;
+  color: #fffed7;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin: 20px 5px 20px 5px;
+  max-width: 800px;
+}
+
+.incons-wrapper {
   display: -ms-grid;
   display: grid;
   grid-gap: 1rem;
@@ -41,10 +66,10 @@ main .test {
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   font-size: 4em;
   margin: 40px 0;
-  max-width: 800px;
+  max-width: 80%;
 }
 
-.technologies-icons .icon-wrapper {
+.incons-wrapper .icon-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,5 +77,11 @@ main .test {
   width: -moz-fit-content;
   width: fit-content;
   justify-self: center;
+  padding: 10px 0;
+}
+
+.incons-wrapper .filter-bw {
+  -webkit-filter: brightness(100);
+          filter: brightness(100);
 }
 /*# sourceMappingURL=about.component.css.map */

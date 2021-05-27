@@ -18,20 +18,43 @@
   }
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  .submit {
+form {
+  mat-dialog-content {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-  }
-}
+    margin: 0;
+    padding: 0;
 
-mat-checkbox {
-  margin-bottom: 1em;
+    mat-form-field {
+      width: 99%;
+    }
+
+    mat-checkbox {
+      margin-bottom: 1em;
+    }
+  }
+
+  mat-dialog-actions {
+    button {
+      width: 100%;
+    }
+  }
 }
 
 .img-preview {
   padding-bottom: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "title button";
+    margin: 0;
+
+    .title {
+      line-height: 55px;
+      justify-self: start;
+    }
+  }
 }

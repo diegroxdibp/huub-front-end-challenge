@@ -1,5 +1,17 @@
-<app-transactions-table></app-transactions-table>
-<div *ngIf="transactionsManagerService.transactionsList.length !== 0">
+<div class="history">
+  <div *ngIf="transactionsManagerService.transactionsHistory.length > 0" class="wrapper">
+    <p *ngFor="let transaction of transactionsManagerService.transactionsHistory">
+      <span>{{transaction.transaction.name}}</span> was <span>{{ transaction.action}}</span> on
+      <span>{{transaction.actionDate.toLocaleString()}}</span>
+    </p>
+  </div>
+  <h3 *ngIf="transactionsManagerService.transactionsHistory.length === 0">
+    The historic is empty.
+  </h3>
+</div>
+
+
+<!-- <div *ngIf="transactionsManagerService.transactionsList.length !== 0">
   <h2>Transactions history:</h2>
   <ul>
     <li *ngFor="let transaction of transactionsManagerService.transactionsList">
@@ -15,7 +27,7 @@
 
 </div>
 <mat-accordion>
-  <mat-expansion-panel hideToggle>
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
         <h2>Transactions history:</h2>
@@ -36,5 +48,4 @@
       </li>
     </ul>
   </mat-expansion-panel>
-</mat-accordion>
-
+</mat-accordion> -->

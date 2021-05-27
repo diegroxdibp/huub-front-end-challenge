@@ -15,7 +15,6 @@ export class PostComponent implements OnInit {
 
   @Input() post: Post;
 
-  editMode = false;
   confirmationDialogIsOn = false;
   constructor(
     private blogManager: BlogManagerService,
@@ -42,13 +41,12 @@ export class PostComponent implements OnInit {
     const dialogRef = this.dialog.open(EditPostDialogComponent, {
       width: '90%',
       disableClose: true,
-      autoFocus: true,
-      data: { unalteredPost: this.post },
+      autoFocus: false,
+      data: { post: this.post },
     });
     // tslint:disable-next-line: deprecation
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result.data);
-      this.editMode = false;
+      // console.log('The dialog was closed', result.data);
       this.saveChange();
     });
   }

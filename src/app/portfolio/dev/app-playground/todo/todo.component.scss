@@ -9,16 +9,85 @@ section {
 
   mat-card {
     width: 90%;
+    max-width: 900px;
     margin: 10px 0;
 
+    mat-card-title {
+      color: blueviolet;
+    }
+
     mat-card-content {
-      margin-left: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 16px;
     }
 
     mat-form-field,
-    mat-checkbox {
-      margin-right: 10px;
+    .checkbox-wrapper,
+    button {
+      width: 100%;
     }
+
+    mat-form-field:nth-child(1),
+    mat-form-field:nth-child(2) {
+      width: 50%;
+    }
+
+    mat-form-field:nth-child(odd) {
+      padding-right: 16px;
+    }
+
+    mat-checkbox {
+      margin: 8px 0;
+    }
+
+    mat-form-field {
+      textarea {
+        line-height: 0.5;
+      }
+    }
+    button {
+      margin-top: 1.25em;
+    }
+    @media (max-width: 680px) {
+      mat-card-content {
+        flex-direction: column;
+
+        mat-form-field {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .todo-list {
+    display: flex;
+    align-items: center;
+
+    .task {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      .task-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        h3 {
+          margin: 0 4px 0 0;
+        }
+      }
+    }
+  }
+  .task-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: blueviolet;
   }
 
   li {
@@ -34,6 +103,39 @@ section {
     mat-divider {
       height: 20px;
       margin: 0 10px;
+    }
+  }
+}
+
+.listFooter {
+  display: flex;
+  color: rgb(105, 86, 122);
+  width: 100%;
+
+  .priorityLabels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 16px;
+    margin: 0 16px;
+
+    mat-divider {
+      width: 80%;
+    }
+
+    .label-wrapper {
+      display: flex;
+      align-items: center;
+
+      h3 {
+        margin: 4px 0 0 8px;
+      }
+
+      @media (max-width: 680px) {
+        h3 {
+          display: none;
+        }
+      }
     }
   }
 }

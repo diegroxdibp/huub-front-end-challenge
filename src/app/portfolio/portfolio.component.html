@@ -1,14 +1,10 @@
 <body>
   <main class="main">
     <section class="portfolio_intro">
-      <!-- <ul @welcomeAnimation class="portfolio_intro_welcome">
-          <li class="li" ><h1>Welcome to my Portfolio</h1></li>
-          <li class="li" ><h2>Here you can find some work I have done</h2></li>
-        </ul> -->
       <div class="porfolio_selection">
-        <div class="dev">
-          <h1>DEV</h1>
-          <div class="app-playground">
+        <div #dev class="dev" (click)="devPort()" (mouseover)="glitchClass='glitch'" (mouseout)="glitchClass=''">
+          <h1 [ngClass]="glitchClass">DEV</h1>
+          <!-- <div class="app-playground">
             <h2>Expense Manager</h2>
             <input routerLink="dev/app-playground/expense-tracker" routerLinkActive="active" type="button">
             <button mat-raised-button type="submit" color="accent" class="submit">Submit</button>
@@ -16,7 +12,7 @@
           <div class="app-playground">
             <h2>To do list</h2>
             <input type="button">
-          </div>
+          </div> -->
         </div>
         <div class="design">
           <h1>DESIGN</h1>
@@ -24,10 +20,19 @@
       </div>
     </section>
 
-    <app-expense-tracker></app-expense-tracker>
-    <app-todo></app-todo>
+    <div *ngIf="devIsOn || designIsOn" class="overlay">
+      <button (click)="backToTop()" mat-fab color="accent" matTooltip="Back to the top" aria-label="Back to the top">
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+    </div>
 
-    <section class="portfolio">
+    <section #devPortf *ngIf="devIsOn" class="dev-portolio">
+      <app-expense-tracker></app-expense-tracker>
+
+      <app-todo></app-todo>
+    </section>
+
+    <section *ngIf="designIsOn" class="portfolio">
 
       <div class="portfolio-post-wraper">
         <div class="portfolio-post">

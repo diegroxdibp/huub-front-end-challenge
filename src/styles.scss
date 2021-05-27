@@ -1,14 +1,12 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat-core();
-
 
 $my-black: (
   50: #ececed,
@@ -26,20 +24,20 @@ $my-black: (
   A400: #8a2be2,
   A700: #8a2be2,
   contrast: (
-    50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #ffffff,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #ffffff,
-    A700 : #ffffff,
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
   ),
 );
 
@@ -77,36 +75,36 @@ $my-purple: (
 );
 
 $md-mypurple: (
-    50 : #f1e6fc,
-    100 : #dcbff6,
-    200 : #c595f1,
-    300 : #ad6beb,
-    400 : #9c4be6,
-    500 : #8a2be2,
-    600 : #8226df,
-    700 : #7720da,
-    800 : #6d1ad6,
-    900 : #5a10cf,
-    A100 : #fdfcff,
-    A200 : #dcc9ff,
-    A400 : #bb96ff,
-    A700 : #aa7dff,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
+  50: #f1e6fc,
+  100: #dcbff6,
+  200: #c595f1,
+  300: #ad6beb,
+  400: #9c4be6,
+  500: #8a2be2,
+  600: #8226df,
+  700: #7720da,
+  800: #6d1ad6,
+  900: #5a10cf,
+  A100: #fdfcff,
+  A200: #dcc9ff,
+  A400: #bb96ff,
+  A700: #aa7dff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
 );
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -119,13 +117,15 @@ $webfolio-angular-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$webfolio-angular-theme: mat-light-theme((
-  color: (
-    primary: $webfolio-angular-primary,
-    accent: $webfolio-angular-accent,
-    warn: $webfolio-angular-warn,
+$webfolio-angular-theme: mat-light-theme(
+  (
+    color: (
+      primary: $webfolio-angular-primary,
+      accent: $webfolio-angular-accent,
+      warn: $webfolio-angular-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -133,15 +133,20 @@ $webfolio-angular-theme: mat-light-theme((
 @include angular-material-theme($webfolio-angular-theme);
 
 $hamburger-layer-color: #fff !default;
-@import '../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss';
+@import "../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
@@ -153,15 +158,15 @@ img {
 }
 
 .mat-tab-body-content {
-  max-height: calc(100vh - 48px)!important;
+  max-height: calc(100vh - 48px) !important;
 }
 
 .mat-tab-group {
-  flex: 1!important;
+  flex: 1 !important;
 }
 
 .mat-tab-body-wrapper {
-  flex: 1!important;
+  flex: 1 !important;
 }
 
 .display-none {
@@ -169,11 +174,29 @@ img {
 }
 
 nav a.active {
-  color:blueviolet!important;
+  color: blueviolet !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.accent {
+  color: blueviolet;
+}
+
+div.mat-chip-list-wrapper {
+  margin: 0 !important;
+}
+
+.transactions-list .mat-expansion-panel-body {
+  padding: 0 !important;
+}
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

@@ -1,0 +1,47 @@
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 100%;
+  min-height: calc(100vh - 66px);
+  padding: 15px;
+  background-color: blueviolet;
+}
+
+main mat-accordion, main app-balance-manager {
+  width: 80%;
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 600px) {
+  main mat-accordion, main app-balance-manager {
+    width: 100%;
+  }
+}
+
+main mat-accordion mat-expansion-panel, main app-balance-manager mat-expansion-panel {
+  margin-bottom: 15px;
+}
+
+main mat-accordion h2, main app-balance-manager h2 {
+  color: blueviolet;
+  margin: 16px 0;
+  font-weight: 500;
+}
+
+form mat-form-field,
+form button {
+  width: 100%;
+  margin-top: 10px;
+}
+/*# sourceMappingURL=expense-tracker.component.css.map */

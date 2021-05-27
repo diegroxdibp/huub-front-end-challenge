@@ -18,8 +18,9 @@ tr.mat-footer-row {
   margin-left: -4px;
   color: rgba(0, 0, 0, 0.54);
   cursor: pointer;
-
-  &:hover {
-    color: blueviolet;
-  }
 }
+
+.del:hover {
+  color: blueviolet;
+}
+/*# sourceMappingURL=transactions-table.component.css.map */

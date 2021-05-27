@@ -1,47 +1,20 @@
 <nav class="navbar" [ngClass]="{'navbar-fixed': isFixedNavbar}">
-  <!-- <a href="index.html" class="logo animateDown">Diego Braga Ponte</a>
-  <button class="hamburger hamburger--elastic" type="button" (click)="toggleActive()"
-    [ngClass]="{'is-active': isActive}">
-    <span class="hamburger-box">
-      <span class="hamburger-inner"></span>
-    </span>
+  <div class="navbar-logo">
+    <a routerLink="" class="logo animateDown">Diego Braga Ponte</a>
+  </div>
+  <button mat-icon-button class="navbar-toggle" (click)="toggleNavbar()">
+    <mat-icon>{{!navbarOpened ? 'menu': 'close'}}</mat-icon>
   </button>
-  <ul *ngIf="isActive" [@menuAnimation]="stateUl" class="menu" id="test">
-    <li><a routerLink="home" routerLink="" routerLinkActive="active">Home</a></li>
-    <li><a routerLink="about" routerLinkActive="active">About</a></li>
-    <li><a routerLink="blog" routerLinkActive="active">Blog</a></li>
-    <li><a routerLink="portfolio" routerLinkActive="active">Portfolio</a></li>
-    <li><a routerLink="contact" routerLinkActive="active">Contact</a></li>
-  </ul>
-  <ul *ngIf="large" class="menu">
-    <li><a routerLink="home" routerLink="" routerLinkActive="active">Home</a></li>
-    <li><a routerLink="about" routerLinkActive="active">About</a></li>
-    <li><a routerLink="blog" routerLinkActive="active">Blog</a></li>
-    <li><a routerLink="portfolio" routerLinkActive="active">Portfolio</a></li>
-    <li><a routerLink="contact" routerLinkActive="active">Contact</a></li>
-  </ul> -->
-  <div class="container">
-    <div class="navbar-mobile-top">
-      <div class="navbar-logo">
-        <a routerLink="" class="logo animateDown">Diego Braga Ponte</a>
-      </div>
-      <button mat-icon-button class="navbar-toggle" (click)="toggleNavbar()">
-        <mat-icon>{{!navbarOpened ? 'menu': 'close'}}</mat-icon>
-      </button>
-    </div>
 
-    <div class="top-navbar">
-      <span fxFlex></span>
-      <a class="navbartop-btn" mat-button routerLink="home" routerLinkActive="active"
-        (click)="toggleNavbar(); backToTop()">Home</a>
-      <a class="navbartop-btn" mat-button routerLink="about" routerLinkActive="active"
-        (click)="toggleNavbar(); backToTop()">About</a>
-      <a class="navbartop-btn" mat-button routerLink="blog" routerLinkActive="active"
-        (click)="toggleNavbar(); backToTop()">Blog</a>
-      <a class="navbartop-btn" mat-button routerLink="portfolio" routerLinkActive="active"
-        (click)="toggleNavbar(); backToTop()">Portfolio</a>
-      <a class="navbartop-btn" mat-button routerLink="contact" routerLinkActive="active"
-        (click)="toggleNavbar(); backToTop()">Contact</a>
-    </div>
+  <div class="top-navbar">
+    <!-- <span fxFlex></span> -->
+    <a class="navbartop-btn" mat-button routerLink="home" routerLinkActive="active"
+      (click)="toggleNavbar(); backToTop()">Home</a>
+    <a class="navbartop-btn" mat-button routerLink="about" routerLinkActive="active"
+      (click)="toggleNavbar(); backToTop()">About</a>
+    <a class="navbartop-btn" mat-button routerLink="portfolio" routerLinkActive="active"
+      (click)="toggleNavbar(); backToTop()">Portfolio</a>
+    <a class="navbartop-btn" mat-button routerLink="contact" routerLinkActive="active"
+      (click)="toggleNavbar(); backToTop()">Contact</a>
   </div>
 </nav>

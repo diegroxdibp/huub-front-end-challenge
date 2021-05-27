@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger, query, stagger } from '@angular/animations';
+import { backToTop } from '../shared/utilty';
 
 @Component({
   selector: 'app-portfolio',
@@ -19,10 +20,29 @@ import { animate, state, style, transition, trigger, query, stagger } from '@ang
   ]
 })
 export class PortfolioComponent implements OnInit {
-
+  @ViewChild('devPortf') devPortf: ElementRef;
+  glitchClass;
+  devIsOn = false;
+  designIsOn = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  backToTop(): void {
+    backToTop();
+  }
+
+  devPort() {
+    this.devIsOn = true;
+    setTimeout(() => {
+      this.devPortf.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start'});
+    });
+    // const scrolledY = window.scrollY;
+    // const navHeight = -66;
+    // if (scrolledY) {
+    //   window.scroll(0, scrolledY - navHeight);
+    // }
+
+  }
 }

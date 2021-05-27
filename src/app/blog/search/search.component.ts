@@ -1,19 +1,22 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, DoCheck, ElementRef, IterableDiffers, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { iif, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { BlogManagerService } from '../blog-manager.service';
 import { MatRadioChange } from '@angular/material/radio';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Post } from 'src/app/models/post';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit, AfterViewInit {
+export class SearchComponent implements OnInit, DoCheck, AfterViewInit {
   @ViewChild('searchField') searchField: ElementRef;
+  @ViewChild(MatSort) sort: MatSort;
   myControl = new FormControl();
   options: string[] = [];
   filteredOptions: Observable<string[]>;
@@ -23,13 +26,18 @@ export class SearchComponent implements OnInit, AfterViewInit {
   postsId = [];
   activeRadioButton: string;
   queriedPosts: Post[];
-
+  dataSource: MatTableDataSource<Post>;
+  displayedColumns = ['title', 'date', 'tags', 'id'];
+  iterableDiffer;
   constructor(
     private blogManager: BlogManagerService,
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<SearchComponent>,
-    private cd: ChangeDetectorRef
-  ) { }
+    private cd: ChangeDetectorRef,
+    private iterableDiffers: IterableDiffers
+  ) {
+    this.iterableDiffer = iterableDiffers.find([]).create(null);
+  }
 
   ngOnInit(): void {
     this.activeRadioButton = '1';
@@ -38,17 +46,27 @@ export class SearchComponent implements OnInit, AfterViewInit {
       startWith(''),
       map(value => this._filter(value))
     );
-    // tslint:disable-next-line: deprecation
     this.dialogRef.keydownEvents().subscribe(event => {
       if (event.key === 'Escape') {
         this.onCancel();
       }
     });
+    this.dataSource = new MatTableDataSource(this.queriedPosts);
+  }
+
+  ngDoCheck(): void {
+    const changes = this.iterableDiffer.diff(this.queriedPosts);
+    if (changes) {
+      console.log('changed');
+      this.dataSource = new MatTableDataSource(this.queriedPosts);
+      this.dataSource.sort = this.sort;
+    }
   }
 
   ngAfterViewInit(): void {
     this.searchField.nativeElement.focus();
     this.cd.detectChanges();
+    this.dataSource.sort = this.sort;
   }
 
   radioButtonChange(event: MatRadioChange): void {

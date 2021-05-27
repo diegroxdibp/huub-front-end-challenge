@@ -1,3 +1,4 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, DoCheck, IterableDiffers, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -17,13 +18,15 @@ export class TransactionsTableComponent implements AfterViewInit, OnInit, DoChec
   // dataSource: TransactionsTableDataSource;
   dataSource: MatTableDataSource<Transaction>;
   iterableDiffer;
+  displayedColumns = ['name', 'date', 'amount', 'select'];
+  selection = new SelectionModel<Transaction>(true, []);
   constructor(
-    private transactionsManagerService: TransactionManagerService,
+    public transactionsManagerService: TransactionManagerService,
     private iterableDiffers: IterableDiffers
   ) {
     this.iterableDiffer = iterableDiffers.find([]).create(null);
   }
-  displayedColumns = ['name', 'amount'];
+
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.transactionsManagerService.transactionsList);
   }
@@ -42,5 +45,25 @@ export class TransactionsTableComponent implements AfterViewInit, OnInit, DoChec
 
   getTotalCost(): number {
     return this.transactionsManagerService.transactionsList.map(t => t.amount).reduce((acc, value) => acc + value, 0);
+  }
+
+  isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle(): void {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource.data);
+  }
+
+  delete(): void {
+    console.log(this.selection.selected);
+    this.selection.selected.forEach((transacion: Transaction) => this.transactionsManagerService.delete(transacion));
   }
 }

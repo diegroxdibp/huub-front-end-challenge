@@ -16,12 +16,17 @@
           <h5 *ngIf="!post.postScheduled">
             Posted on {{ post.date.toLocaleString() }}
           </h5>
-
-          <h5 *ngIf="post.postScheduled">
+          <h5 *ngIf="!post.postScheduled && post.wasEdited">
+            Edited on {{ post.editDate.toLocaleString() }}
+          </h5>
+          <h5 *ngIf="post.postScheduled && post.wasEdited===false">
             Written on {{ post.date.toLocaleString() }}
           </h5>
+          <h5 *ngIf="post.postScheduled && post.wasEdited">
+            Edited on {{ post.date.toLocaleString() }}
+          </h5>
           <h5 *ngIf="post.postScheduled">
-            To be posted on {{ post.scheduledDate.toLocaleString() }}
+            Post on {{ post.scheduledDate.toLocaleString() }}
           </h5>
         </div>
         <h5 class="separator">•</h5>

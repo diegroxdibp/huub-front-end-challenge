@@ -13,9 +13,9 @@ export class TodoService {
     console.log(this.todoList);
   }
 
-  onRemoveTodo({ todo }): void {
+  deleteTodo(todo: Todo): void {
     this.todoList.forEach(todoItem => {
-      if (todoItem.task === todo.task) {
+      if (todoItem.id === todo.id) {
         const target = this.todoList.indexOf(todoItem);
         this.todoList.splice(target, 1);
       }

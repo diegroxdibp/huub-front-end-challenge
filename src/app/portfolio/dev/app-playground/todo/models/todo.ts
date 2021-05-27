@@ -4,19 +4,24 @@ export default class Todo {
   priority: string;
   createdAt: Date;
   id: number;
-  haveDescription: boolean;
+  setDescription: boolean;
   description: string;
+  setDate: boolean;
+  date: string;
+  createdOn: Date;
   completionStatus: boolean;
 
   constructor(
-    task: string, priority: string, id: number = 1, haveDescription: boolean,
-    description: string = '', createdAt: Date = new Date(), completionStatus: boolean = false
+    id: number = 1, task: string, priority: string, setDescription: boolean, description: string = '',
+    setDate: boolean = false, date: string, createdAt: Date = new Date(), completionStatus: boolean = false
   ) {
     this.task = task;
     this.priority = priority;
     this.createdAt = createdAt;
-    this.haveDescription = haveDescription;
+    this.setDescription = setDescription;
     this.description = description;
+    this.setDate = setDate;
+    this.date = date;
     this.id = id;
     this.completionStatus = completionStatus;
   }

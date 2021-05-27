@@ -9,52 +9,103 @@
         <mat-form-field color="accent">
           <mat-label>Task:</mat-label>
           <input matInput formControlName="task">
+          <mat-error *ngIf="form.get('task').hasError('required')">
+            A task name is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field color="accent">
           <mat-label>Task priority</mat-label>
-          <mat-select formControlName="priority">
-            <mat-option *ngFor="let priority of priorityList" [value]="priority">
+          <mat-select #priority formControlName="priority" [(ngModel)]="selectedValue">
+            <mat-option *ngFor="let priority of priorityList; let i = index" [value]="priorityList[i]">
               {{priority}}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
-        <mat-checkbox (click)="toggleHaveDescription()" [value]="haveDescription" color="accent">
-          Add a description to the task?
-        </mat-checkbox>
+        <div class="checkbox-wrapper">
+          <mat-checkbox #setDescription formControlName="setDescription" color="accent"> Add a description to the task?
+          </mat-checkbox>
+        </div>
 
-        <button mat-raised-button type="submit" [disabled]="!form.valid" color="accent" class="submit">Submit</button>
-
-        <mat-form-field appearance="fill" *ngIf="haveDescription">
-          <textarea matInput formControlName="description" placeholder="Ex... Get the less expensive brand."></textarea>
+        <mat-form-field *ngIf="setDescription.checked" color="accent">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
         </mat-form-field>
+
+        <div class="checkbox-wrapper">
+          <mat-checkbox #setDate formControlName="setDate" color="accent">
+            Set date and time?
+          </mat-checkbox>
+        </div>
+
+        <mat-form-field *ngIf="setDate.checked" color="accent">
+          <mat-label>Date:</mat-label>
+          <input matInput type="datetime-local" formControlName="date" [min]="minDate"
+            placeholder="Select a date on the calendar">
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="!form.valid || form.value.task === null" color="accent"
+          class="submit">Submit</button>
       </mat-card-content>
     </form>
+    <button mat-raised-button color="accent" (click)="test()">test</button>
   </mat-card>
 
   <mat-card *ngIf="todoService.todoList.length > 0">
     <mat-card-header>
       <mat-card-title>Todo List</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
-      <ul class="todo-list">
+    <mat-card-content class="todo-list">
+      <mat-card class="task" *ngFor="let todo of todoService.todoList">
+        <div class="task-content">
+          <h3>Task:</h3> {{todo.task}}
+          <!-- <h3>Priority:</h3> <span [className]="piorityColor(todo.priority)">{{ todo.priority }}</span> -->
+          <h3 *ngIf="todo.setDate">Date: </h3> <span *ngIf="todo.setDate">{{ todo.date }}</span>
+        </div>
+        <div class="task-buttons">
+          <mat-icon (click)="todo.toggleCompletionStatus()"
+            *ngIf="todo.priority === 'Low Priority' && !todo.completionStatus" class="text-info">warning</mat-icon>
+          <mat-icon (click)="todo.toggleCompletionStatus()"
+            *ngIf="todo.priority === 'Medium Priority' && !todo.completionStatus" class="text-warning">warning
+          </mat-icon>
+          <mat-icon (click)="todo.toggleCompletionStatus()"
+            *ngIf="todo.priority === 'High Priority' && !todo.completionStatus" class="text-danger">warning</mat-icon>
+          <mat-icon (click)="todo.toggleCompletionStatus()" *ngIf="todo.completionStatus">check</mat-icon>
+          <!-- <mat-icon>edit</mat-icon> -->
+          <mat-icon (click)="todoService.deleteTodo(todo)">delete</mat-icon>
+        </div>
+      </mat-card>
+      <!-- <ul class="todo-list">
         <li *ngFor="let todo of todoService.todoList">
           <h3>Task:</h3> {{todo.task}}
           <mat-divider vertical></mat-divider>
-          <h3>Priority:</h3> <span [className]="piorityColor(todo.priority)">{{todo.priority}}</span>
+          <h3>Priority:</h3> <span [className]="piorityColor(todo.priority)">{{ todo.priority }}</span>
+          <mat-divider *ngIf="todo.setDate" vertical></mat-divider>
+          <h3 *ngIf="todo.setDate">Date: </h3> <span *ngIf="todo.setDate">{{ todo.date }}</span>
         </li>
-      </ul>
-    </mat-card-content>
-    <mat-card-footer>
+      </ul> -->
+
       <div class="listFooter">
-        <span>Color labels:
-          <span class="text-danger"><i class="fas fa-exclamation-circle"></i> High priority</span>
-          <span class="text-warning"><i class="fas fa-exclamation-circle"></i> Medium priority</span>
-          <span class="text-info"><i class="fas fa-exclamation-circle"></i> Low priority</span>
-          <span class="text-success"><i class="fas fa-exclamation-circle"></i> Complete</span>
-        </span>
+        <div class="priorityLabels">
+          <div class="label-wrapper text-danger">
+            <mat-icon>warning</mat-icon>
+            <h3>High priority</h3>
+          </div>
+          <div class="label-wrapper text-warning">
+            <mat-icon>warning</mat-icon>
+            <h3>Medium priority</h3>
+          </div>
+          <div class="label-wrapper text-info">
+            <mat-icon>warning</mat-icon>
+            <h3>Low priority</h3>
+          </div>
+          <div class="label-wrapper accent">
+            <mat-icon>check</mat-icon>
+            <h3>Complete</h3>
+          </div>
+        </div>
       </div>
-    </mat-card-footer>
+    </mat-card-content>
   </mat-card>
 </section>

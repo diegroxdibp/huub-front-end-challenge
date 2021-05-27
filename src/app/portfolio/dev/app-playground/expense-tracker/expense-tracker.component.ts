@@ -1,8 +1,9 @@
-import { OnInit } from '@angular/core';
+import { ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { TransactionManagerService } from './transaction-manager.service';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-expense-tracker',
@@ -12,8 +13,10 @@ import { TransactionManagerService } from './transaction-manager.service';
 export class ExpenseTrackerComponent implements OnInit {
   title = 'expense-tracker';
   // inputs
-  transactionNameInput: HTMLInputElement;
-  transactionAmountInput: HTMLInputElement;
+  @ViewChild('transactionForm') transactionForm: FormGroup;
+  @ViewChild('transaction') transaction: ElementRef;
+  @ViewChild('amount') amount: ElementRef;
+  @ViewChild('submit') submit: MatButton;
   form: FormGroup;
   constructor(public transactionsManagerService: TransactionManagerService) {
     this.form = new FormGroup({
@@ -23,31 +26,17 @@ export class ExpenseTrackerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.form.valueChanges.subscribe(form => {
-    //   if (form.amount) {
-    //     this.form.patchValue({
-    //       amount: this.currencyPipe.transform(form.amount.replace(/\D/g, '').replace(/^0+/, ''), 'USD', 'symbol', '1.0-0')
-    //     }, { emitEvent: false });
-    //   }
-    // });
+
   }
 
   onSubmit(): void {
     // const amountValue = this.amountStringToNumber(this.form.value.amount);
     const amountValue = parseInt(this.form.value.amount, 10);
-    console.log(amountValue);
     this.transactionsManagerService.add(this.form.value.transaction, amountValue);
-    this.transactionsManagerService.updateTransactionsManager();
-    console.log(this.transactionsManagerService);
+    this.form.reset();
+    this.form.controls.transaction.setErrors(null);
+    this.form.controls.amount.setErrors(null);
+    // this.form.controls.amount.clearValidators();
+    // this.form.controls.amount.setValidators([Validators.required]);
   }
-
-  // submit(form): void {
-  //   console.log(form.value);
-  // }
-
-  // amountStringToNumber(amount: string): number {
-  //   let amountValue: number;
-  //   amountValue = parseInt(amount.replace(/\D/, ''), 10);
-  //   return amountValue;
-  // }
 }

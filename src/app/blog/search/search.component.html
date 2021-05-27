@@ -30,9 +30,35 @@
 </div>
 
 <mat-dialog-content *ngIf="queriedPosts">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 search-results">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+      <td mat-cell *matCellDef="let row"><a href="blog/{{row.id}}">{{row.title}}</a></td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let row">{{row.date.toLocaleString()}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tags">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tags</th>
+      <td mat-cell *matCellDef="let row"><span *ngFor="let tag of row.postTags">{{tag}}, </span></td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <!--
   <p *ngFor="let post of queriedPosts">
-    <a href="blog/{{post.id}}">{{post.title}}</a>,{{post.id}}
-  </p>
+    <a href="blog/{{post.id}}">{{post.title}}</a> - {{post.date.toLocaleString()}} - <span
+      *ngFor="let tag of post.postTags">{{tag}}</span> - {{post.id}}
+  </p> -->
   <!-- <div *ngFor="let option of filteredOptions | async">
     <p>
       {{option}}

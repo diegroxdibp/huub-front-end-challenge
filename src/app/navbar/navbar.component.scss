@@ -7,6 +7,7 @@
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
@@ -24,14 +25,10 @@
     &:active {
       color: white;
     }
+    &:hover {
+      color: blueviolet;
+    }
   }
-}
-.navbar > .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 50px;
-  padding: 0;
 }
 
 .navbar-fixed {
@@ -43,7 +40,7 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
   animation: 0.6s slideDown forwards;
 }
-.navbar-fixed .container {
+.navbar-fixed .wrapper {
   height: 60px !important;
 }
 .navbar-fixed .navbartop-btn {
@@ -51,7 +48,6 @@
 }
 .navbar-logo {
   display: flex;
-  flex: 1 0 50%;
   width: fit-content;
   align-items: center;
   padding-left: 10px;
@@ -78,14 +74,9 @@
   }
 }
 
-@media (max-width: 991px) {
-
+@media (max-width: 800px) {
   .navbar-toggle {
     display: block !important;
-  }
-  .navbar-opened:host .container {
-    height: auto !important;
-    padding: 0px !important;
   }
   .top-navbar {
     display: none !important;
