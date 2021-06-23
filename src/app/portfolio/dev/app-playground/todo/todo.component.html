@@ -1,4 +1,4 @@
-<section>
+<main>
   <mat-card>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-card-header>
@@ -49,21 +49,20 @@
           class="submit">Submit</button>
       </mat-card-content>
     </form>
-    <button mat-raised-button color="accent" (click)="test()">test</button>
+    <!-- <button mat-raised-button color="accent" (click)="test()">test</button> -->
   </mat-card>
 
-  <mat-card *ngIf="todoService.todoList.length > 0">
+  <mat-card class="todo-container" *ngIf="todoService.todoList.length > 0">
     <mat-card-header>
       <mat-card-title>Todo List</mat-card-title>
     </mat-card-header>
     <mat-card-content class="todo-list">
-      <mat-card class="task" *ngFor="let todo of todoService.todoList">
+      <mat-card class="task" *ngFor="let todo of todoService.todoList" matTooltip="{{todo.description}}">
         <div class="task-content">
           <h3>Task:</h3> {{todo.task}}
-          <!-- <h3>Priority:</h3> <span [className]="piorityColor(todo.priority)">{{ todo.priority }}</span> -->
-          <h3 *ngIf="todo.setDate">Date: </h3> <span *ngIf="todo.setDate">{{ todo.date }}</span>
         </div>
         <div class="task-buttons">
+          <h3 *ngIf="todo.setDate">Date: </h3> <span *ngIf="todo.setDate">{{ todo.date }}</span>
           <mat-icon (click)="todo.toggleCompletionStatus()"
             *ngIf="todo.priority === 'Low Priority' && !todo.completionStatus" class="text-info">warning</mat-icon>
           <mat-icon (click)="todo.toggleCompletionStatus()"
@@ -76,15 +75,6 @@
           <mat-icon (click)="todoService.deleteTodo(todo)">delete</mat-icon>
         </div>
       </mat-card>
-      <!-- <ul class="todo-list">
-        <li *ngFor="let todo of todoService.todoList">
-          <h3>Task:</h3> {{todo.task}}
-          <mat-divider vertical></mat-divider>
-          <h3>Priority:</h3> <span [className]="piorityColor(todo.priority)">{{ todo.priority }}</span>
-          <mat-divider *ngIf="todo.setDate" vertical></mat-divider>
-          <h3 *ngIf="todo.setDate">Date: </h3> <span *ngIf="todo.setDate">{{ todo.date }}</span>
-        </li>
-      </ul> -->
 
       <div class="listFooter">
         <div class="priorityLabels">
@@ -108,4 +98,4 @@
       </div>
     </mat-card-content>
   </mat-card>
-</section>
+</main>

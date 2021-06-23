@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+.cancerslug-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #1d1e20;
+  z-index: 999;
+
+  & a {
+    text-decoration: none;
+
+    &:visited {
+      color: white;
+    }
+  }
+
+  .logo {
+    height: 54px;
+    filter: invert(100%);
+    margin: 6px 0px 6px 15px;
+  }
+
+  .cancerslug-nav__menu {
+    display: flex;
+    list-style: none;
+    margin-right: 15px;
+    font-size: 1.8em;
+    text-align: center;
+    font-family: "Permanent Marker", cursive;
+    color: white;
+    margin-bottom: 0;
+
+    @media screen and (max-width: 500px) {
+      position: absolute;
+      top: 100%;
+      margin: 0 auto;
+      flex-direction: column;
+
+      transform: scale(1, 0);
+      transform-origin: top;
+      transition: transform 600ms ease-in-out;
+    }
+
+    & li {
+      margin-left: 20px;
+      width: 100%;
+      // transform: skew(-35deg);
+      // overflow: hidden;
+
+      @media screen and (max-width: 500px) {
+        display: block;
+        margin: 0 auto;
+        width: 100vw;
+        border-top: white 1px solid;
+        // background-color: black;
+        // background-color: #121212;
+        // transform: skew(0deg);
+      }
+
+      & a {
+        display: block;
+        padding: 15px;
+
+        & span {
+          //skewed box effect
+          display: block;
+          user-select: none;
+          // transform: skew(35deg);
+
+          @media screen and (max-width: 500px) {
+            // Unskew when in sandwich menu mode
+            // transform: skew(0deg);
+          }
+        }
+
+        &:hover > span {
+          transform: scale(140%);
+          // transform: scale(160%) skew(25deg);
+          transition: 200ms ease-in-out;
+
+          @media screen and (max-width: 500px) {
+            transform: scale(140%);
+          }
+        }
+
+        @media screen and (max-width: 500px) {
+          padding: 15px;
+          opacity: 0;
+          transition: opacity 150ms ease-in-out;
+        }
+
+        &:hover {
+          // background-color: darkred;
+        }
+      }
+    }
+  }
+
+  .nav-toggle-label {
+    // The Sandwich
+    position: absolute;
+    right: 15px;
+    top: 7.5px;
+    color: white;
+    font-size: 26px;
+    line-height: 60px;
+    // Same as logo
+    display: none;
+    z-index: 10;
+
+    @media screen and (max-width: 500px) {
+      display: block;
+
+      &:hover {
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: darkred;
+          height: 75px;
+          width: 53.35px;
+          z-index: -1;
+          // To match parent positioning
+          top: -7.5px;
+          right: -15px;
+        }
+      }
+    }
+  }
+
+  .nav-toggle {
+    // The checkbox
+    display: none;
+  }
+}
+
+.nav-toggle:checked ~ ul {
+  position: relative;
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ ul a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}

@@ -1,10 +1,10 @@
+import { CancerslugHomeComponent } from './portfolio/design/cancerslug/home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -57,6 +57,13 @@ import { ExpensesDetailsComponent } from './portfolio/dev/app-playground/expense
 import { HistoryComponent } from './portfolio/dev/app-playground/expense-tracker/history/history.component';
 import { TransactionsTableComponent } from './portfolio/dev/app-playground/expense-tracker/transactions-table/transactions-table.component';
 import { TodoComponent } from './portfolio/dev/app-playground/todo/todo.component';
+import { DevComponent } from './portfolio/dev/dev.component';
+import { DesignComponent } from './portfolio/design/design.component';
+import { CancerslugComponent } from './portfolio/design/cancerslug/cancerslug.component';
+import { CancerslugLandingComponent } from './portfolio/design/cancerslug/landing/landing.component';
+import { CancerslugNavbarComponent } from './portfolio/design/cancerslug/navbar/navbar.component';
+import { CancerslugStoreComponent } from './portfolio/design/cancerslug/store/store.component';
+import { CancerslugContactComponent } from './portfolio/design/cancerslug/contact/contact.component';
 
 
 @NgModule({
@@ -83,12 +90,19 @@ import { TodoComponent } from './portfolio/dev/app-playground/todo/todo.componen
     ExpensesDetailsComponent,
     HistoryComponent,
     TransactionsTableComponent,
-    TodoComponent
+    TodoComponent,
+    DevComponent,
+    DesignComponent,
+    CancerslugComponent,
+    CancerslugLandingComponent,
+    CancerslugNavbarComponent,
+    CancerslugHomeComponent,
+    CancerslugStoreComponent,
+    CancerslugContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

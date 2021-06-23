@@ -1,0 +1,33 @@
+<nav class="cancerslug-nav">
+  <div class="navbar-logo">
+    <a (click)="toLanding()" routerLink="/cancerslug" routerLinkActive="active"><img class="logo"
+        src="/../../../../../../assets/img/cslogo.png" alt="cancerslug logo"></a>
+  </div>
+  <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+  <ul class="cancerslug-nav__menu" routerLinkActive="active">
+    <li class="home"><a routerLink="home"><span>Home</span></a></li>
+    <li class="store"><a routerLink="store"><span>Store</span></a></li>
+    <li class="contact"><a routerLink="contact"><span>Contact</span></a></li>
+  </ul>
+</nav>
+<!--
+<nav class="navbar" [ngClass]="{'navbar-fixed': isFixedNavbar}">
+  <div class="navbar-logo">
+    <a routerLink="" class="logo animateDown">Diego Braga Ponte</a>
+  </div>
+  <button mat-icon-button class="navbar-toggle" (click)="toggleNavbar()">
+    <mat-icon>{{!navbarOpened ? 'menu': 'close'}}</mat-icon>
+  </button>
+
+  <div class="top-navbar">
+    <a class="navbartop-btn" mat-button routerLink="home" routerLinkActive="active"
+      (click)="toggleNavbar(); backToTop()">Home</a>
+    <a class="navbartop-btn" mat-button routerLink="about" routerLinkActive="active"
+      (click)="toggleNavbar(); backToTop()">About</a>
+    <a class="navbartop-btn" mat-button routerLink="portfolio" routerLinkActive="active"
+      (click)="toggleNavbar(); backToTop()">Portfolio</a>
+    <a class="navbartop-btn" mat-button routerLink="contact" routerLinkActive="active"
+      (click)="toggleNavbar(); backToTop()">Contact</a>
+  </div>
+</nav> -->

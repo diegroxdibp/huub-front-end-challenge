@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { BlogManagerService } from '../blog-manager.service';
 import { MatRadioChange } from '@angular/material/radio';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Post } from 'src/app/models/post';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -31,7 +31,6 @@ export class SearchComponent implements OnInit, DoCheck, AfterViewInit {
   iterableDiffer;
   constructor(
     private blogManager: BlogManagerService,
-    private dialog: MatDialog,
     private dialogRef: MatDialogRef<SearchComponent>,
     private cd: ChangeDetectorRef,
     private iterableDiffers: IterableDiffers
@@ -132,7 +131,6 @@ export class SearchComponent implements OnInit, DoCheck, AfterViewInit {
     const listOfPosts = this.blogManager.getListOfPosts();
     let filterValue: any;
     let filteredResult: string[] = [];
-    console.log(this.options);
     switch (this.activeRadioButton) {
       case '1':
         filterValue = this.searchField.nativeElement.value.toLowerCase();
@@ -199,7 +197,6 @@ export class SearchComponent implements OnInit, DoCheck, AfterViewInit {
         });
         break;
     }
-    // console.log(listOfMatchingPosts);
     this.queriedPosts = listOfMatchingPosts;
   }
 }

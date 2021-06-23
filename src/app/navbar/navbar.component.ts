@@ -29,80 +29,6 @@ import { animate, state, style, group, transition, trigger, query, stagger, anim
         animate('200ms ease-in')
       ])
     ])
-
-    // trigger('menuAnimation', [
-    //   transition(':enter', [
-    //     group([
-    //       query('ul', [
-    //         style({  height: '0px' }),
-    //         animate(1000)
-    //       ]),
-    //       query('.nav-items',
-    //         stagger(200, [
-    //           style({ opacity: 0, transform: 'translateX(-20px)' }),
-    //           animate(1000)
-    //         ])
-    //       )
-    //     ])
-    //   ])
-    // ])
-
-    // trigger('menuAnimation', [
-    //   state('hide', style({ height: '0px'})),
-    //   state('show', style({ height: '*'})),
-    //   transition('hide<=>show', animate(500)),
-
-    //   query('@navItemsAnimation', animateChild())
-    // ]),
-    // trigger('navItemsAnimation', [
-    //   state('hide', style({opacity: '0' })),
-    //   state('show', style({opacity: '1' })),
-    //   transition('hide<=>show', animate(500)),
-    // ]),
-
-    // trigger('menuAnimation', [
-    //   transition(':hide', [
-    //     // we set the width of the outer container to 0, and hide the
-    //     // overflow (so the inner container won't be visible)
-    //     style({ height: '0px' }),
-    //     group([
-    //       // we animate the outer container width to it's original value
-    //       animate('250ms ease-out', style({ height: '*' })),
-    //       // in the same time we translate the inner element all the
-    //       // way from left to right
-    //       query('.nav-items', [
-    //         style({ opacity: '0' }),
-    //         group([animate('250ms ease-out', style({  opacity: '1' }))]),
-    //       ]),
-    //     ]),
-    //   ]),
-    //   transition(':show', [
-    //     style({ }),
-    //     group([
-    //       animate('250ms ease-out', style({ width: '0' })),
-    //       query('.nav-items', [
-    //         style({  opacity: '1' }),
-    //         group([animate('250ms ease-out', style({ opacity: '0' }))]),
-    //       ]),
-    //     ]),
-    //   ]),
-    // ])
-
-    // trigger('listAnimation', [
-    //   transition('* <=> *', [ // each time the binding value changes
-    //     query(':none', [
-    //       stagger(1100, [
-    //         animate('1s', style({ opacity: 0 }))
-    //       ])
-    //     ]),
-    //     query(':show', [
-    //       style({ opacity: 0 }),
-    //       stagger(1100, [
-    //         animate('1s', style({ opacity: 1 }))
-    //       ])
-    //     ])
-    //   ])
-    // ])
   ]
 })
 export class NavbarComponent {
@@ -143,14 +69,6 @@ export class NavbarComponent {
   //     this.small = true;
   //     this.large = false;
   //   }
-  // }
-
-  // toggleActive(): void {
-  //   this.isActive = !this.isActive;
-  //   this.stateUl === 'collapsed' ? this.stateUl = 'expanded' : this.stateUl = 'collapsed';
-  //   this.stateLi === 'collapsed' ? this.stateLi = 'expanded' : this.stateLi = 'collapsed';
-  //   console.log('ul : ' + this.stateUl);
-  //   console.log('li : ' + this.stateLi);
   // }
 
   toggleNavbar(): void {

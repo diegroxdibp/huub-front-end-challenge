@@ -44,9 +44,9 @@ export class TodoComponent implements OnInit {
     const description = this.form.value.description;
     let date: string;
     if (this.setDate.checked) {
-      date = this.form.value.date?.toLocaleString();
+      date = new Date(this.form.value.date).toLocaleString();
     } else {
-      date = new Date().toDateString();
+      date = new Date().toLocaleString();
     }
     const todo = new Todo(id, task, priority, this.setDescription.checked, description, this.setDate.checked, date);
     this.todoService.todoList.push(todo);

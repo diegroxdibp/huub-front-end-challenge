@@ -1,4 +1,4 @@
-section {
+main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15,19 +15,26 @@ section {
   min-height: 100vh;
   width: 100%;
   background-color: blueviolet;
+  padding: 10% 15%;
 }
 
-section mat-card {
+@media (max-width: 800px) {
+  main {
+    padding: 10% 5%;
+  }
+}
+
+main mat-card {
   width: 90%;
   max-width: 900px;
   margin: 10px 0;
 }
 
-section mat-card mat-card-title {
+main mat-card mat-card-title {
   color: blueviolet;
 }
 
-section mat-card mat-card-content {
+main mat-card mat-card-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,46 +43,46 @@ section mat-card mat-card-content {
   margin: 0 16px;
 }
 
-section mat-card mat-form-field,
-section mat-card .checkbox-wrapper,
-section mat-card button {
+main mat-card mat-form-field,
+main mat-card .checkbox-wrapper,
+main mat-card button {
   width: 100%;
 }
 
-section mat-card mat-form-field:nth-child(1),
-section mat-card mat-form-field:nth-child(2) {
+main mat-card mat-form-field:nth-child(1),
+main mat-card mat-form-field:nth-child(2) {
   width: 50%;
 }
 
-section mat-card mat-form-field:nth-child(odd) {
+main mat-card mat-form-field:nth-child(odd) {
   padding-right: 16px;
 }
 
-section mat-card mat-checkbox {
+main mat-card mat-checkbox {
   margin: 8px 0;
 }
 
-section mat-card mat-form-field textarea {
+main mat-card mat-form-field textarea {
   line-height: 0.5;
 }
 
-section mat-card button {
+main mat-card button {
   margin-top: 1.25em;
 }
 
 @media (max-width: 680px) {
-  section mat-card mat-card-content {
+  main mat-card mat-card-content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  section mat-card mat-card-content mat-form-field {
+  main mat-card mat-card-content mat-form-field {
     width: 100%;
   }
 }
 
-section .todo-list {
+main .todo-container .todo-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,10 +91,13 @@ section .todo-list {
           align-items: center;
 }
 
-section .todo-list .task {
+main .todo-container .todo-list .task {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -97,21 +107,23 @@ section .todo-list .task {
   width: 100%;
 }
 
-section .todo-list .task .task-content {
+main .todo-container .todo-list .task .task-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
-section .todo-list .task .task-content h3 {
+main .todo-container .todo-list .task .task-content h3 {
   margin: 0 4px 0 0;
 }
 
-section .task-buttons {
+main .task-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -124,7 +136,11 @@ section .task-buttons {
   color: blueviolet;
 }
 
-section li {
+main .task-buttons h3 {
+  margin: 0;
+}
+
+main li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -134,12 +150,12 @@ section li {
   list-style: none;
 }
 
-section li h3 {
+main li h3 {
   font-weight: bold;
   margin: 0 5px 0 0;
 }
 
-section li mat-divider {
+main li mat-divider {
   height: 20px;
   margin: 0 10px;
 }

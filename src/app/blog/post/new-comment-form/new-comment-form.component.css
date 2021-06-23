@@ -1,0 +1,37 @@
+.new-comment-area {
+  margin: 10px 0;
+}
+
+.new-comment-area .leave-a-comment {
+  width: 100%;
+}
+
+.new-comment-area .email-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.new-comment-area mat-form-field {
+  width: 100%;
+}
+
+.new-comment-area .submit {
+  width: 100%;
+}
+
+.new-comment-area i {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  aspect-ratio: 1;
+  font-size: 1.4em;
+}
+
+.new-comment-area i:before {
+  margin: 0;
+}
+/*# sourceMappingURL=new-comment-form.component.css.map */

@@ -5,10 +5,11 @@ main {
   align-items: center;
   max-width: 100%;
   min-height: calc(100vh - 66px);
-  padding: 15px;
+  padding: 10% 15%;
   background-color: blueviolet;
 
-  mat-accordion, app-balance-manager {
+  mat-accordion,
+  app-balance-manager {
     width: 80%;
     margin: 10px 0;
 

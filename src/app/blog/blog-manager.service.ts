@@ -11,7 +11,7 @@ export abstract class BlogManagerService {
   tags: Array<string>;
   constructor() {
     this.blogPosts = this.arrayOfPostFromParsedJSON() || [];
-    this.tags = JSON.parse(localStorage.getItem('tags'));
+    this.tags = JSON.parse(localStorage.getItem('tags')) || [];
   }
 
   arrayOfPostFromParsedJSON(): Array<Post> {

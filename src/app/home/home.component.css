@@ -10,6 +10,7 @@ main {
   display: flex;
   width: 100%;
   height: calc(100vh - 66px);
+  background-color: #1d1e20;
 }
 
 main .text {
@@ -21,7 +22,25 @@ main .text {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: auto;
-  color: blueviolet;
+  z-index: 1;
+}
+
+main .text li {
+  list-style: none;
+}
+
+main .text li h1 {
+  font-family: Montserrat;
+  color: #fffed7;
+  font-size: 6em;
+  font-weight: 700;
+  line-height: 115%;
+}
+
+@media screen and (max-width: 500px) {
+  main .text li h1 {
+    font-size: 3.8em;
+  }
 }
 
 main .bg {
@@ -30,6 +49,5 @@ main .bg {
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  z-index: -5;
 }
 /*# sourceMappingURL=home.component.css.map */

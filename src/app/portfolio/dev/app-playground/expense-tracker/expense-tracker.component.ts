@@ -1,4 +1,4 @@
-import { ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
@@ -10,7 +10,7 @@ import { MatButton } from '@angular/material/button';
   templateUrl: './expense-tracker.component.html',
   styleUrls: ['./expense-tracker.component.scss']
 })
-export class ExpenseTrackerComponent implements OnInit {
+export class ExpenseTrackerComponent implements OnInit, AfterViewInit {
   title = 'expense-tracker';
   // inputs
   @ViewChild('transactionForm') transactionForm: FormGroup;
@@ -18,6 +18,7 @@ export class ExpenseTrackerComponent implements OnInit {
   @ViewChild('amount') amount: ElementRef;
   @ViewChild('submit') submit: MatButton;
   form: FormGroup;
+  disableAnimation = true;
   constructor(public transactionsManagerService: TransactionManagerService) {
     this.form = new FormGroup({
       transaction: new FormControl('', Validators.required),
@@ -38,5 +39,10 @@ export class ExpenseTrackerComponent implements OnInit {
     this.form.controls.amount.setErrors(null);
     // this.form.controls.amount.clearValidators();
     // this.form.controls.amount.setValidators([Validators.required]);
+  }
+
+  ngAfterViewInit(): void {
+    // timeout required to avoid the dreaded 'ExpressionChangedAfterItHasBeenCheckedError'
+    setTimeout(() => this.disableAnimation = false);
   }
 }
