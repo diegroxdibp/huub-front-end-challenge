@@ -16,6 +16,9 @@ import { CancerslugHomeComponent } from './portfolio/design/cancerslug/home/home
 import { CancerslugStoreComponent } from './portfolio/design/cancerslug/store/store.component';
 import { CancerslugLandingComponent } from './portfolio/design/cancerslug/landing/landing.component';
 import { CancerslugContactComponent } from './portfolio/design/cancerslug/contact/contact.component';
+import { ArienComponent } from './arien/arien.component';
+import { CharacterBuilderComponent } from './arien/character-builder/character-builder.component';
+import { CharactersComponent } from './arien/characters/characters.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +33,10 @@ const routes: Routes = [
   { path: 'portfolio/dev/todo', component: TodoComponent },
   { path: 'portfolio/design', component: GraphicDesignComponent, data: { animation: 'isRight' } },
   { path: 'portfolio/design/graphic-design', component: GraphicDesignComponent },
+  { path: 'arien', component: ArienComponent, children: [
+    { path: 'characters', component: CharactersComponent },
+    { path: 'characterbuilder', component: CharacterBuilderComponent },
+  ]},
   { path: 'cancerslug', component: CancerslugComponent, children: [
     { path: 'landing', component: CancerslugLandingComponent },
     { path: 'home', component: CancerslugHomeComponent },

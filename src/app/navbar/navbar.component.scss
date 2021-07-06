@@ -3,14 +3,15 @@
   width: 100%;
   background: #1d1e20;
   color: #fff;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
-  transition: padding 0.3s linear;
+  // transition: padding 0.3s linear;
+  padding: 0;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
   z-index: 999;
 
@@ -30,31 +31,22 @@
   }
 }
 
-.navbar-fixed {
-  position: fixed !important;
-  left: 0;
-  right: 0;
-  top: 0;
-  padding: 0 !important;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
-  animation: 0.6s slideDown forwards;
-}
-.navbar-fixed .wrapper {
-  height: 60px !important;
-}
-.navbar-fixed .navbartop-btn {
-  line-height: 66px !important;
-}
 .navbar-logo {
   display: flex;
+  height: 100%;
   width: fit-content;
   align-items: center;
-  padding-left: 10px;
+  padding-left: 20px;
 
   a:hover {
     color: blueviolet;
   }
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 }
+
 .navbar-toggle {
   display: none !important;
   position: absolute !important;
@@ -72,34 +64,31 @@
     }
   }
 }
+.top-navbar {
+  padding-right: 20px;
+}
 
 @media (max-width: 800px) {
   .navbar-toggle {
     display: block !important;
   }
   .top-navbar {
-    display: none !important;
+    height: 0;
+    width: 100% !important;
+    overflow: hidden;
+    transition: 500ms linear;
+
+    & a {
+      width: 100%;
+      line-height: 56px !important;
+    }
   }
   .navbar-opened:host {
     .top-navbar {
-      position: absolute;
-      top: 66px;
-      left: 0;
       display: block !important;
+      height: calc(56px * 4);
       width: 100% !important;
-      height: auto;
-      flex: none !important;
-      color: white;
       background: #0e0e0f;
-    }
-  }
-  .navbar-opened:host .top-navbar a {
-    display: block;
-    width: 100%;
-    line-height: 56px !important;
-
-    &:hover {
-      color: blueviolet;
     }
   }
 }

@@ -3,23 +3,30 @@
     <a (click)="toLanding()" routerLink="/cancerslug" routerLinkActive="active"><img class="logo"
         src="/../../../../../../assets/img/cslogo.png" alt="cancerslug logo"></a>
   </div>
-  <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
-  <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-  <ul class="cancerslug-nav__menu" routerLinkActive="active">
-    <li class="home"><a routerLink="home"><span>Home</span></a></li>
-    <li class="store"><a routerLink="store"><span>Store</span></a></li>
-    <li class="contact"><a routerLink="contact"><span>Contact</span></a></li>
-  </ul>
-</nav>
-<!--
-<nav class="navbar" [ngClass]="{'navbar-fixed': isFixedNavbar}">
-  <div class="navbar-logo">
-    <a routerLink="" class="logo animateDown">Diego Braga Ponte</a>
-  </div>
-  <button mat-icon-button class="navbar-toggle" (click)="toggleNavbar()">
+  <button mat-icon-button class="navbar-toggle" (click)="toggleNavbar() ">
     <mat-icon>{{!navbarOpened ? 'menu': 'close'}}</mat-icon>
   </button>
-
+  <!-- <div [@menuAnimation]="navbarOpened ? 'expanded' : 'collapsed'" class="cancerslug-nav__menu ul"
+    routerLinkActive="active"> -->
+  <div [class.active]="!navbarOpened" class="cancerslug-nav__menu ul active" routerLinkActive="active">
+    <a class="home nav-item" routerLink="home">
+      <span>Home
+        <img class="blood" src="../../../../../assets/img/blood.png" alt="BLOOD">
+      </span>
+    </a>
+    <a class="store nav-item" routerLink="store">
+      <span>Store
+        <img class="blood" src="../../../../../assets/img/blood.png" alt="BLOOD">
+      </span>
+    </a>
+    <a class="contact nav-item" routerLink="contact">
+      <span>Contact
+        <img class="blood" src="../../../../../assets/img/blood.png" alt="BLOOD">
+      </span>
+    </a>
+  </div>
+</nav>
+<!--
   <div class="top-navbar">
     <a class="navbartop-btn" mat-button routerLink="home" routerLinkActive="active"
       (click)="toggleNavbar(); backToTop()">Home</a>

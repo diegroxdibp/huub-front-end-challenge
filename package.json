@@ -34,6 +34,7 @@
     "moment": "^2.29.1",
     "ng": "0.0.0",
     "ngx-material-timepicker": "^5.5.3",
+    "random.org-javascript": "^1.0.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "web-animations-js": "^2.3.2",

@@ -64,6 +64,9 @@ import { CancerslugLandingComponent } from './portfolio/design/cancerslug/landin
 import { CancerslugNavbarComponent } from './portfolio/design/cancerslug/navbar/navbar.component';
 import { CancerslugStoreComponent } from './portfolio/design/cancerslug/store/store.component';
 import { CancerslugContactComponent } from './portfolio/design/cancerslug/contact/contact.component';
+import { ArienComponent } from './arien/arien.component';
+import { CharacterBuilderComponent } from './arien/character-builder/character-builder.component';
+import { CharactersComponent } from './arien/characters/characters.component';
 
 
 @NgModule({
@@ -98,7 +101,10 @@ import { CancerslugContactComponent } from './portfolio/design/cancerslug/contac
     CancerslugNavbarComponent,
     CancerslugHomeComponent,
     CancerslugStoreComponent,
-    CancerslugContactComponent
+    CancerslugContactComponent,
+    ArienComponent,
+    CharacterBuilderComponent,
+    CharactersComponent
   ],
   imports: [
     BrowserModule,

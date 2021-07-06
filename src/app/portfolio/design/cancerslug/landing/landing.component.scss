@@ -44,6 +44,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      align-items: center;
       width: 100%;
       text-align: center;
       color: white;
@@ -51,22 +52,43 @@
       cursor: pointer;
       user-select: none;
 
-      h1 {
-        font-family: "Permanent Marker", cursive;
-        font-size: clamp(2rem, 4vw, 2rem);
+      a {
+        position: relative;
+        display: flex;
+        width: fit-content;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        padding-bottom: 30px;
 
-        a {
+        .blood {
+          position: absolute;
+          transform: scale(1.5);
+          user-select: none;
+          pointer-events: none;
+          opacity: 0;
+        }
+
+        &:hover > .blood {
+          opacity: 1;
+          transition: 300ms ease-in-out;
+        }
+
+        h1 {
           color: white;
-          text-decoration: none;
-        }
-        &:hover {
-          transform: scale(1.2) skew(-10deg);
-          transition: 100ms ease-in-out;
-        }
+          font-family: "Permanent Marker", cursive;
+          font-size: clamp(2rem, 4vw, 2rem);
+          width: fit-content;
+          margin: 0;
 
-        @media screen and (max-height: 700px) {
-          font-size: 2.8em;
-          margin-bottom: 30px;
+          &:hover {
+            transform: scale(1.2) skew(-10deg);
+            transition: 100ms ease-in-out;
+          }
+
+          @media screen and (max-height: 700px) {
+            font-size: 2.8em;
+          }
         }
       }
     }

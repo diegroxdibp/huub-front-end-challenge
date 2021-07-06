@@ -7,29 +7,29 @@ import { animate, state, style, group, transition, trigger, query, stagger, anim
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  animations: [
-    trigger('menuAnimation', [
-      state('collapsed', style({
-        height: 0,
-        paddingTop: 0,
-        paddingBottom: 0,
-        opacity: 0
-      })),
+  // animations: [
+  //   trigger('menuAnimation', [
+  //     state('collapsed', style({
+  //       height: 0,
+  //       paddingTop: 0,
+  //       paddingBottom: 0,
+  //       opacity: 0
+  //     })),
 
-      transition('collapsed => expanded', [
-        animate('300ms ease-out', style({
-          height: '*',
-          paddingTop: '*',
-          paddingBottom: '*'
-        })),
-        animate('1s', style({ opacity: 1 }))
-      ]),
+  //     transition('collapsed => expanded', [
+  //       animate('300ms ease-out', style({
+  //         height: '*',
+  //         paddingTop: '*',
+  //         paddingBottom: '*'
+  //       })),
+  //       animate('1s', style({ opacity: 1 }))
+  //     ]),
 
-      transition('expanded => collapsed', [
-        animate('200ms ease-in')
-      ])
-    ])
-  ]
+  //     transition('expanded => collapsed', [
+  //       animate('200ms ease-in')
+  //     ])
+  //   ])
+  // ]
 })
 export class NavbarComponent {
 
@@ -37,9 +37,6 @@ export class NavbarComponent {
   isFixedNavbar;
   screenHeight: number;
   screenWidth: number;
-  isActive = false;
-  stateUl = 'collapsed';
-  stateLi = 'collapsed';
   large = false;
   small = false;
 
