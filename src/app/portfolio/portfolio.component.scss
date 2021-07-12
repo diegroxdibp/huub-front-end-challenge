@@ -5,6 +5,8 @@ body {
 }
 
 .portfolio_intro {
+  position: absolute;
+  top: 66px;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 66px);

@@ -4,19 +4,16 @@
         routerLinkActive="active" (click)="backToTop()">
         <h1 class="blogging-app" [ngClass]="bloggingGlitchClass">Blogging<br>App</h1>
       </a></div>
-    <div (mouseover)="expenseGlitchClass='glitch'" (mouseout)="expenseGlitchClass=''" class="app"><a routerLink="expense-tracker"
-        routerLinkActive="active" (click)="backToTop()">
+    <div (mouseover)="expenseGlitchClass='glitch'" (mouseout)="expenseGlitchClass=''" class="app"><a
+        routerLink="expense-tracker" routerLinkActive="active" (click)="backToTop()">
         <h1 class="expense-tracker" [ngClass]="expenseGlitchClass">Expense<br>Tracker</h1>
       </a></div>
     <div (mouseover)="todoGlitchClass='glitch'" (mouseout)="todoGlitchClass=''" class="app"><a routerLink="todo"
         routerLinkActive="active" (click)="backToTop()">
         <h1 class="todo-list" [ngClass]="todoGlitchClass">Todo List</h1>
       </a></div>
+    <a class="back-arrow-anchor" routerLink="../" routerLinkActive="active" (click)="backToTop()">
+      <mat-icon matTooltip="Back to Portfolio" class="back-arrow">arrow_forward</mat-icon>
+    </a>
   </div>
-<!--
-  <div class="overlay">
-    <button routerLink="../" routerLinkActive="active" mat-fab color="accent" matTooltip="Back to Portfolio" aria-label="Back to Portfolio">
-      <mat-icon>arrow_right</mat-icon>
-    </button>
-  </div> -->
 </main>

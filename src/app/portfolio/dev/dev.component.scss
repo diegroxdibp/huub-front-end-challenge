@@ -1,7 +1,10 @@
 @import "/src/app/shared/glitch.scss";
 
 .dev {
+  position: absolute;
+  top: 66px;
   height: calc(100vh - 66px);
+  width: 100%;
   scroll-margin-top: 66px;
   background-color: #1d1e20;
 
@@ -9,6 +12,7 @@
     scroll-margin-top: 58px;
   }
   .app-selection {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -55,24 +59,55 @@
         }
       }
     }
-  }
-}
 
-.overlay {
-  position: fixed;
-  display: flex;
-  top: 91px;
-  right: 25px;
-  flex-direction: column;
-  align-items: flex-end;
-  z-index: 5;
+    .back-arrow-anchor {
+      display: flex;
+      width: fit-content;
+      height: fit-content;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      margin: calc(50% - 30px) calc(15% - 30px) calc(50% - 30px)
+        calc(85% - 30px);
+      text-decoration: none;
+      // @media screen and (max-width: 500px) {
+      //   margin: calc(50% - 30px) calc(15% - 30px) calc(50% - 30px)
+      //     calc(85% - 30px);
+      // }
+      &:hover {
+        margin: calc(50% - 30px) calc(15% - 30px) calc(50% - 30px)
+          calc(85% - 30px);
+      }
+      .back-arrow {
+        position: absolute;
+        color: #fffed7;
+        opacity: 0.3;
+        height: max(8vw, 66px);
+        width: max(8vw, 66px);
+        font-size: max(8vw, 66px);
+        // height: 60px;
+        // width: 60px;
+        // font-size: 60px;
+        cursor: pointer;
+        vertical-align: middle;
+        @media screen and (max-width: 500px) {
+          height: 30px;
+          width: 30px;
+          font-size: 30px;
+        }
 
-  button {
-    margin-top: 10px;
-
-    &:focus {
-      outline: none;
-      box-shadow: none;
+        &:hover {
+          color: blueviolet;
+          margin: calc(50% - 45px) calc(50% - 45px) calc(50% - 45px)
+            calc(50% - 45px);
+          // height: 90px;
+          // width: 90px;
+          // font-size: 90px;
+          transform: scale(1.5);
+          opacity: 1;
+          transition: 200ms ease-in;
+        }
+      }
     }
   }
 }

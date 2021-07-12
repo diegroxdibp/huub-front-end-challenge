@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { backToTop } from 'src/app/shared/utilty';
 
 @Component({
   selector: 'app-graphic-design',
@@ -12,4 +13,7 @@ export class GraphicDesignComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  backToTop(): void {
+    backToTop();
+  }
 }

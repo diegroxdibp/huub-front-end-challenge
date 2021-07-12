@@ -1,3 +1,47 @@
+.back-arrow-anchor {
+  position: fixed;
+  display: flex;
+  top: 66px;
+  left: 0;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin: calc(50vh - 30px) calc(85vw - 30px) calc(50vh - 30px)
+    calc(15vw - 30px);
+  text-decoration: none;
+  z-index: 10;
+
+  &:hover {
+    margin: calc(50vh - 30px) calc(85vw - 30px) calc(50vh - 30px)
+      calc(15vw - 30px);
+  }
+  .back-arrow {
+    position: absolute;
+    color: #fffed7;
+    opacity: 0.3;
+    height: max(8vw, 66px);
+    width: max(8vw, 66px);
+    font-size: max(8vw, 66px);
+    cursor: pointer;
+    vertical-align: middle;
+    @media screen and (max-width: 500px) {
+      height: 30px;
+      width: 30px;
+      font-size: 30px;
+    }
+
+    &:hover {
+      color: blueviolet;
+      margin: calc(50vh - 45px) calc(50vw - 45px) calc(50vh - 45px)
+        calc(50vw - 45px);
+      transform: scale(1.5);
+      opacity: 1;
+      transition: 200ms ease-in;
+    }
+  }
+}
+
 .portfolio {
   background-color: rgba(99, 40, 238, 1);
   scroll-margin-top: 66px;
