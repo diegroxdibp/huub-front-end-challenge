@@ -27,7 +27,6 @@ export class PaginatorComponent implements OnInit {
   }
 
   onPageChange($event: PageEvent): void {
-    console.log(this.paginator);
     const pageEvent = {
       page: $event.pageIndex + 1,
       pageSize: $event.pageSize,

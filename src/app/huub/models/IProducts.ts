@@ -9,5 +9,5 @@ export interface IProducts {
   subfamily: string;
   supplier: string;
   type: string;
-  variants: any;
+  variants: Array<object>;
 }

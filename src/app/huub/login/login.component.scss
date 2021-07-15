@@ -20,9 +20,9 @@ main {
     max-width: 250px;
     z-index: 5;
 
-
     @media screen and (max-width: 500px) {
-      min-height: 80%;
+      min-height: 70%;
+      width: 90%;
     }
 
     form {

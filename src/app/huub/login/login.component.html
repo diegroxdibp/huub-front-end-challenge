@@ -33,8 +33,8 @@
 
       <button [textContent]="loginBtnText" [@inOutAnimation] mat-raised-button type="submit"
         *ngIf="!accountCreationMode" [disabled]="!loginForm.valid" class="submit" color="accent"></button>
-      <button [@inOutAnimation] mat-raised-button type="submit" *ngIf="accountCreationMode"
-        [disabled]="!loginForm.valid" class="submit" color="accent">Register</button>
+      <button [textContent]="createAccBtnText" [@inOutAnimation] mat-raised-button type="submit"
+        *ngIf="accountCreationMode" [disabled]="!loginForm.valid" class="submit" color="accent"></button>
 
     </form>
   </mat-card>

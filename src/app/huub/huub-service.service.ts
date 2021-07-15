@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, last, map, share, tap } from 'rxjs/operators';
+import { catchError, last, map, share, shareReplay, tap } from 'rxjs/operators';
+import { IProducts } from './models/IProducts';
 import { IResponse } from './models/IResponse';
 
 @Injectable({
@@ -21,17 +22,18 @@ export class HuubServiceService {
   };
   constructor(public http: HttpClient) { }
 
-  getToken() {
-    return this.http.post(this.authEndpoint, this.authInfo);
+  getToken(): Observable<any> {
+    return this.http.post<any>(this.authEndpoint, this.authInfo);
   }
 
   endpoint(pageNumber: number = 1, pageSize: number = 10): string {
     return `https://api.brand.uat.thehuub.io/products?page=${pageNumber}&page_size=${pageSize}`;
   }
 
+  // Response with given endpoint default parameters
   getResponse(pageNumber: number = 1, pageSize: number = 10): Observable<IResponse> {
     return this.http.get<IResponse>(this.endpoint(pageNumber, pageSize), this.httpOptions).pipe(
-      share()
+      shareReplay()
     );
   }
 
@@ -41,12 +43,9 @@ export class HuubServiceService {
     return paginator;
   }
 
-  getAllProducts() {
-    return this.http.get<any>(this.endpoint(), this.httpOptions).pipe(
-      map(response => this.http.get<any>(this.endpoint(1, response.paginator.total_items_count), this.httpOptions)));
-  }
-
-  getProducts() {
-    return this.http.get<any>(this.endpoint(), this.httpOptions).pipe(map(response => response.data));
+  // Response that gets the total item count from paginator and use as paramatere to get all procuts
+  getAllProducts(): Observable<any> {
+    return this.http.get<IResponse>(this.endpoint(), this.httpOptions).pipe(
+      map(response => this.http.get<IResponse>(this.endpoint(1, response.paginator.total_items_count), this.httpOptions)));
   }
 }
