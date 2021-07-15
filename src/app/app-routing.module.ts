@@ -19,6 +19,9 @@ import { CancerslugContactComponent } from './portfolio/design/cancerslug/contac
 import { ArienComponent } from './arien/arien.component';
 import { CharacterBuilderComponent } from './arien/character-builder/character-builder.component';
 import { CharactersComponent } from './arien/characters/characters.component';
+import { HuubComponent } from './huub/huub.component';
+import { ProductsComponent } from './huub/products/products.component';
+import { LoginComponent } from './huub/login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +36,11 @@ const routes: Routes = [
   { path: 'portfolio/dev/todo', component: TodoComponent },
   { path: 'portfolio/design', component: GraphicDesignComponent, data: { animation: 'isRight' } },
   { path: 'portfolio/design/graphic-design', component: GraphicDesignComponent },
+  { path: 'huub', component: HuubComponent, children: [
+    { path: 'home', component: HomeComponent },
+    { path: 'products', component: ProductsComponent },
+    { path: 'login', component: LoginComponent },
+  ]},
   { path: 'arien', component: ArienComponent, children: [
     { path: 'characters', component: CharactersComponent },
     { path: 'characterbuilder', component: CharacterBuilderComponent },

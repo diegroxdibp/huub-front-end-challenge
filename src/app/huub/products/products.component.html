@@ -1,0 +1,16 @@
+<main>
+  <mat-card>
+
+    <mat-tab-group mat-align-tabs="center" color="accent" mat-stretch-tabs dynamicHeight>
+      <mat-tab label="Products List">
+        <app-products-list [products$]="products$"></app-products-list>
+      </mat-tab>
+
+      <mat-tab label="Search">
+        <app-product-search [allProducts$]="allProducts$"></app-product-search>
+      </mat-tab>
+    </mat-tab-group>
+
+    <!-- <button  class="ml-4" (click)="test()">Click</button> -->
+  </mat-card>
+</main>

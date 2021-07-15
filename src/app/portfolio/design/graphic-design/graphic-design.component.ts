@@ -13,7 +13,8 @@ export class GraphicDesignComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  backToTop(): void {
+  backToTop($event): void {
+    $event.target.style.opacity = 0;
     backToTop();
   }
 }

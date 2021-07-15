@@ -67,6 +67,14 @@ import { CancerslugContactComponent } from './portfolio/design/cancerslug/contac
 import { ArienComponent } from './arien/arien.component';
 import { CharacterBuilderComponent } from './arien/character-builder/character-builder.component';
 import { CharactersComponent } from './arien/characters/characters.component';
+import { HuubComponent } from './huub/huub.component';
+import { ProductsComponent } from './huub/products/products.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PaginatorComponent } from './huub/paginator/paginator.component';
+import { MinMaxPipe } from './huub/min-max.pipe';
+import { ProductsSearchComponent } from './huub/search/search.component';
+import { ProductsListComponent } from './huub/products-list/products-list.component';
+import { LoginComponent } from './huub/login/login.component';
 
 
 @NgModule({
@@ -104,11 +112,19 @@ import { CharactersComponent } from './arien/characters/characters.component';
     CancerslugContactComponent,
     ArienComponent,
     CharacterBuilderComponent,
-    CharactersComponent
+    CharactersComponent,
+    HuubComponent,
+    ProductsComponent,
+    PaginatorComponent,
+    LoginComponent,
+    ProductsSearchComponent,
+    MinMaxPipe,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

@@ -10,14 +10,14 @@ import { CancerslugNavbarVisibilityService } from '../navbar/cancerslug-navbar-v
 export class CancerslugContactComponent implements OnInit {
 
   constructor(public navbarVisibilityService: NavbarVisibilityService,
-    public cancerslugNavbarVisibilityService: CancerslugNavbarVisibilityService) {
+              public cancerslugNavbarVisibilityService: CancerslugNavbarVisibilityService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     setTimeout(() => {
       this.cancerslugNavbarVisibilityService.updateUrl();
       this.cancerslugNavbarVisibilityService.checkIsLanding();
       this.cancerslugNavbarVisibilityService.show();
-    })
+    });
   }
 }

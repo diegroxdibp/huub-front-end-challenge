@@ -11,8 +11,4 @@ export class CancerslugLandingComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  mute($event){
-    console.log($event.target.tag)
-  }
 }

@@ -10,10 +10,10 @@ import { CancerslugNavbarVisibilityService } from 'src/app/portfolio/design/canc
 export class CancerslugStoreComponent implements OnInit {
 
   constructor(public navbarVisibilityService: NavbarVisibilityService,
-    public cancerslugNavbarVisibilityService: CancerslugNavbarVisibilityService) {
+              public cancerslugNavbarVisibilityService: CancerslugNavbarVisibilityService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     setTimeout(() => {
       this.cancerslugNavbarVisibilityService.updateUrl();
       this.cancerslugNavbarVisibilityService.checkIsLanding();

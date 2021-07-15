@@ -1,0 +1,14 @@
+<mat-card>
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill" color="accent">
+      <mat-label>Search:</mat-label>
+      <input matInput placeholder="Ex. Leggings" (keyup)="search($event)">
+    </mat-form-field>
+  </form>
+  <div *ngIf="searchResult" class="search-results">
+    <p *ngFor="let result of searchResult">
+      {{result.name}}
+      {{result.id}}
+    </p>
+  </div>
+</mat-card>

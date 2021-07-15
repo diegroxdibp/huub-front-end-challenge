@@ -70,10 +70,7 @@
       margin: calc(50% - 30px) calc(15% - 30px) calc(50% - 30px)
         calc(85% - 30px);
       text-decoration: none;
-      // @media screen and (max-width: 500px) {
-      //   margin: calc(50% - 30px) calc(15% - 30px) calc(50% - 30px)
-      //     calc(85% - 30px);
-      // }
+
       &:hover {
         margin: calc(50% - 30px) calc(15% - 30px) calc(50% - 30px)
           calc(85% - 30px);
@@ -85,9 +82,6 @@
         height: max(8vw, 66px);
         width: max(8vw, 66px);
         font-size: max(8vw, 66px);
-        // height: 60px;
-        // width: 60px;
-        // font-size: 60px;
         cursor: pointer;
         vertical-align: middle;
         @media screen and (max-width: 500px) {
