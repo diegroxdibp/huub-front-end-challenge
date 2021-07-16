@@ -3,36 +3,6 @@ main {
   padding: 20px 10%;
   background-color: blueviolet;
 
-  @media screen and (max-width: 600px) {
-    padding: 10px;
-  }
-
-  mat-card {
-    max-width: 800px;
-
-    mat-card-header{
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-
-      .avatar {
-        font-size: 40px;
-        color: blueviolet;
-      }
-
-      mat-card-header-text {
-        flex-grow: 1;
-      }
-
-      button {
-        height: 40px;
-      }
-    }
-
-    section {
-      padding-top: 16px;
-    }
-  }
-
   nav {
     display: flex;
     width: 100%;
@@ -45,21 +15,31 @@ main {
       flex-grow: 1;
       display: flex;
       cursor: pointer;
-      box-shadow: 3px 5px 15px 0px #8a2be2;
 
       h1 {
-        line-height: 56px;
+        line-height: 50px;
         font-size: 36px;
         color: blueviolet;
         font-weight: 500;
         margin-left: 15px;
       }
     }
-
     @media screen and (max-width: 600px) {
       flex-direction: column;
       padding: 10px 0;
       gap: 10px;
     }
+  }
+
+  mat-card {
+    max-width: 800px;
+
+    span {
+      color: blueviolet;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 10px;
   }
 }

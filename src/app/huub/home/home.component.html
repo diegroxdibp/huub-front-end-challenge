@@ -1,32 +1,49 @@
 <main>
-
   <mat-card>
-    <mat-card-header class="home-acc-info">
+
+    <mat-card-header>
+
       <div mat-card-avatar>
         <mat-icon class="avatar">account_circle</mat-icon>
       </div>
+
       <mat-card-title>{{user.username}} </mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+
+      <mat-card-subtitle>New user</mat-card-subtitle>
+
       <button mat-raised-button color="accent" (click)="logout()" routerLink="../login"
         routerLinkActive="active">Logout</button>
+
     </mat-card-header>
+
     <mat-divider></mat-divider>
+
     <section>
-      <h1>Hello {{user.username}}</h1>
+
+      <h1>Hello {{user.username}}, welcome to my App for the Front-end challenge :) I hope you enjoy it!</h1>
+
     </section>
-    <nav>
-      <mat-card routerLink="../products" routerLinkActive="active">
-        <button mat-fab matTooltip="Back to the home" aria-label="Back to the home">
-          <mat-icon>shopping_basket</mat-icon>
-        </button>
-        <h1>Products</h1>
-      </mat-card>
-      <mat-card>
-        <button mat-fab matTooltip="Back to the top" aria-label="Back to the top">
-          <mat-icon>star_border</mat-icon>
-        </button>
-        <h1>Wishlist</h1>
-      </mat-card>
-    </nav>
+
+    <mat-divider></mat-divider>
+
   </mat-card>
+
+  <nav>
+
+    <mat-card routerLink="../wishlist" routerLinkActive="active">
+      <button mat-fab matTooltip="Go to Wishlist" aria-label="Go to Wishlist">
+        <mat-icon>star_border</mat-icon>
+      </button>
+      <h1>Wishlist</h1>
+    </mat-card>
+
+    <mat-card routerLink="../products" routerLinkActive="active">
+      <button mat-fab matTooltip="Go to Products" aria-label="Go to Products">
+        <mat-icon>shopping_basket</mat-icon>
+      </button>
+      <h1>Products</h1>
+    </mat-card>
+
+  </nav>
+
 </main>

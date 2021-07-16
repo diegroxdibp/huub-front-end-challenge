@@ -29,9 +29,4 @@ export class ProductsComponent implements OnInit {
       response.subscribe((data: IResponse) => this.allProducts = data.data);
     });
   }
-
-  test() {
-    console.log(this.products);
-    console.log(this.allProducts);
-  }
 }

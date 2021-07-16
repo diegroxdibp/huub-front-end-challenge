@@ -5,6 +5,7 @@
   width: 100%;
   margin-bottom: 5px;
   background-color: white;
+
   .expand-more {
     position: absolute;
     color: rgba(0, 0, 0, 0.54);
@@ -16,13 +17,18 @@
       color: blueviolet;
     }
   }
+
   .goto-wrapper {
     display: flex;
     width: 100%;
 
-    .goto {
+    mat-form-field {
       width: 100%;
       padding-left: 16px;
+    }
+
+    button {
+      margin-left: 16px;
     }
   }
 }

@@ -1,4 +1,3 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,60 +10,32 @@ import { User } from '../models/user';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [
-    trigger(
-      'inOutAnimation',
-      [
-        transition(':enter', [
-          style({ opacity: 0, transform: ' rotateY(0) scale(0.8)' }),
-          animate(
-            '300ms ease-in',
-            style({ opacity: 1, transform: ' rotateY(160deg) scale(1)' })
-          ),
-        ]),
-      ]
-    )
-  ],
 })
 
 export class LoginComponent {
   subject$: Subject<User>;
   loginForm: FormGroup;
-  loginMode = false;
-  passwordHide = true;
-  loginBtnText = 'New Session';
-  createAccBtnText = 'Create Account';
+  login = 'New Session';
 
-  constructor(private huub: HuubServiceService,
-              private auth: HuubAuthService,
-              private router: Router,
+  constructor(
+    private huub: HuubServiceService,
+    private auth: HuubAuthService,
+    private router: Router
   ) {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
-    }
-    );
-  }
-  toggleAccountCreatrion(): void {
-    this.loginMode = !this.loginMode;
+      username: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    });
   }
 
-  submit($event): void {
+  submit(): void {
+    const username = this.loginForm.value.username;
+    this.huub.getToken().subscribe(response => {
+      this.subject$.next(new User(username, response.data.jwt, response.data.expiration_time));
+    });
     this.createAccountOnServerResponse();
-
-    if ($event.submitter.textContent === this.loginBtnText) {
-      this.auth.getUserFromLocalStorage();
-    }
-    if ($event.submitter.textContent === this.createAccBtnText) {
-      const username = this.loginForm.value.email;
-      const password = this.loginForm.value.password;
-      this.huub.getToken().subscribe(response => {
-        this.subject$.next(new User(username, password, response.data.jwt, response.data.expiration_time));
-      });
-    }
   }
 
-  // Waiting for the token from server
+  // Wait for the token from server
   createAccountOnServerResponse(): void {
     this.subject$ = new Subject();
     this.subject$.subscribe(user => {
@@ -72,8 +43,5 @@ export class LoginComponent {
       this.router.navigate(['huub/home']);
       this.subject$.complete();
     });
-  }
-
-  logout(): void {
   }
 }

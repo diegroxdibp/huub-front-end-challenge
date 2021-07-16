@@ -77,6 +77,7 @@ import { ProductsListComponent } from './huub/products-list/products-list.compon
 import { LoginComponent } from './huub/login/login.component';
 import { ProductComponent } from './huub/product/product.component';
 import { HuubHomeComponent } from './huub/home/home.component';
+import { WishlistComponent } from './huub/wishlist/wishlist.component';
 
 
 @NgModule({
@@ -124,6 +125,7 @@ import { HuubHomeComponent } from './huub/home/home.component';
     PaginatorComponent,
     ProductsSearchComponent,
     MinMaxPipe,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,

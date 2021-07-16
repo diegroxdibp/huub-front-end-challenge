@@ -1,20 +1,21 @@
 <div class="paginator-wrapper">
+
   <mat-icon class="expand-more" matTooltip="More options">expand_more</mat-icon>
+
   <mat-paginator [pageIndex]="0" [length]="paginator?.total_items_count" [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
   </mat-paginator>
-  <!-- <button (click)="test()"> test</button> -->
+
   <div class="more-options">
     <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()"> -->
     <div class="goto-wrapper">
-      <mat-form-field class="goto" appearance="fill" color="accent">
+
+      <mat-form-field appearance="fill" color="accent">
         <mat-label>Go to product:</mat-label>
         <input #page matInput type="number" name="gotoInput" [(ngModel)]="goToProductNumer" (keyup)="minMaxer()">
         <mat-hint align="end">{{page.value ? page.value : 0}} / {{paginator?.total_items_count}}</mat-hint>
-        <button *ngIf="page" matSuffix mat-icon-button aria-label="Clear" (click)="gotoInput=''">
-          <mat-icon>close</mat-icon>
-        </button>
       </mat-form-field>
+
       <button mat-raised-button type="submit" color="accent">Go to</button>
     </div>
 

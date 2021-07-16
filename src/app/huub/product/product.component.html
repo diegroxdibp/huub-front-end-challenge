@@ -1,37 +1,47 @@
 <mat-expansion-panel>
-  <mat-expansion-panel-header>
+  <mat-expansion-panel-header [ngStyle]="{'background-color': isInWishlistColorTitle}">
+
     <mat-panel-title>
       <h2>{{product.name}}</h2>
     </mat-panel-title>
+
     <mat-panel-description class="id">
       ID:{{product.id}}
     </mat-panel-description>
+
   </mat-expansion-panel-header>
+
   <h3>Description:<span> {{product.description}} </span>
     <span *ngIf="!product.description">No description available</span>
   </h3>
+
   <h3>Fabric:<span> {{product.fabric}} </span>
     <span *ngIf="!product.fabric">No information about the fabric</span>
   </h3>
+
   <h3>Family:<span> {{product.family}}</span>
     <span *ngIf="!product.family">No information about the family </span>
   </h3>
+
   <h3>Sub Family:<span> {{product.subfamily}} </span>
     <span *ngIf="!product.subfamily">No information about the sub family</span>
   </h3>
+
   <h3>Season:<span> {{product.season}} </span>
     <span *ngIf="!product.season">No information about the season</span>
   </h3>
+
   <h3>Type:<span> {{product.type}} </span>
-    <span *ngIf="!product.type">
-      No information about the type
-    </span>
+    <span *ngIf="!product.type"> No information about the type </span>
   </h3>
+
   <h3>Supplier:<span> {{product.supplier}} </span>
     <span *ngIf="!product.supplier">No information about the supplier</span>
   </h3>
+
   <h3>Variants: <span *ngIf="product.variants?.length === 0">Product has no variants</span>
   </h3>
+
   <h4 *ngFor="let variant of product.variants; ; let i = index">
     Variant{{i+1}}:
     <ul>
@@ -43,4 +53,12 @@
       </li>
     </ul>
   </h4>
+
+  <button (click)="wishlistToggle()" mat-raised-button matTooltip="Add to Wishlist" color="accent"
+    [ngStyle]="{'background-color': isInWishlistColorButton}">
+
+    <mat-icon>star_border</mat-icon>
+
+  </button>
+
 </mat-expansion-panel>
