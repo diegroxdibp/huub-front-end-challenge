@@ -133,9 +133,6 @@ $webfolio-angular-theme: mat-light-theme(
 // that you are using.
 @include angular-material-theme($webfolio-angular-theme);
 
-$hamburger-layer-color: #fff !default;
-@import "../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
-
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -153,27 +150,6 @@ html {
   padding: 0;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-}
-
-.mat-tab-group {
-  flex: 1 !important;
-}
-
-.mat-tab-body-wrapper {
-  flex: 1 !important;
-}
-
-.display-none {
-  display: none;
-}
-
-nav a.active {
-  color: blueviolet !important;
-}
-
 html,
 body {
   height: 100%;
@@ -186,14 +162,3 @@ body {
 .accent {
   color: blueviolet;
 }
-
-div.mat-chip-list-wrapper {
-  margin: 0 !important;
-}
-
-.transactions-list .mat-expansion-panel-body {
-  padding: 0 !important;
-}
-
-/* Importing Bootstrap SCSS file. */
-@import "~bootstrap/scss/bootstrap";
