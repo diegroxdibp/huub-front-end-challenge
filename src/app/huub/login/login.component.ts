@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { HuubAuthService } from '../huub-auth.service';
 import { HuubServiceService } from '../huub-service.service';
@@ -38,6 +39,7 @@ export class LoginComponent {
 
   constructor(private huub: HuubServiceService,
     private auth: HuubAuthService,
+    private router: Router,
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -50,21 +52,27 @@ export class LoginComponent {
   }
 
   submit($event): void {
-    this.subject$ = new Subject();
-    this.subject$.subscribe(user => {
-      this.auth.saveToLocalStorage(user);
-      this.auth.getUserFromLocalStorage();
-      this.subject$.complete();
-    });
     if ($event.submitter.textContent === this.loginBtnText) {
+      this.auth.getUserFromLocalStorage();
     }
     if ($event.submitter.textContent === this.createAccBtnText) {
+      this.createAccountOnServerResponse();
       const username = this.loginForm.value.email;
       const password = this.loginForm.value.password;
       this.huub.getToken().subscribe(response => {
         this.subject$.next(new User(username, password, response.data.jwt, response.data.expiration_time));
       });
     }
+  }
+
+  // Waiting for the token from server
+  createAccountOnServerResponse(): void {
+    this.subject$ = new Subject();
+    this.subject$.subscribe(user => {
+      this.auth.saveToLocalStorage(user);
+      this.router.navigate(['huub/home']);
+      this.subject$.complete();
+    });
   }
 
   logout(): void {

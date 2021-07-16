@@ -2,4 +2,8 @@ main {
   min-height: calc(100vh - 66px);
   padding: 10%;
   background-color: blueviolet;
+
+  @media screen and (max-width: 500px) {
+    padding: 0;
+  }
 }

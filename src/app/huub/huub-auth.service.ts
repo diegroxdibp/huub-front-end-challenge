@@ -28,7 +28,8 @@ export class HuubAuthService {
   }
 
   public isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
+    return !!localStorage.getItem('user');
+    // return moment().isBefore(this.getExpiration());
   }
 
   isLoggedOut() {

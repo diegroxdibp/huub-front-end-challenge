@@ -75,6 +75,7 @@ import { MinMaxPipe } from './huub/min-max.pipe';
 import { ProductsSearchComponent } from './huub/search/search.component';
 import { ProductsListComponent } from './huub/products-list/products-list.component';
 import { LoginComponent } from './huub/login/login.component';
+import { ProductComponent } from './huub/product/product.component';
 
 
 @NgModule({
@@ -119,7 +120,8 @@ import { LoginComponent } from './huub/login/login.component';
     LoginComponent,
     ProductsSearchComponent,
     MinMaxPipe,
-    ProductsListComponent
+    ProductsListComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
