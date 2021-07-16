@@ -3,36 +3,7 @@ main {
   padding: 20px 10%;
   background-color: blueviolet;
 
-  nav {
-    display: flex;
-    width: 100%;
-    max-width: 800px;
-    justify-content: space-around;
-    padding: 20px 0;
-    gap: 20px;
-
-    mat-card {
-      flex-grow: 1;
-      display: flex;
-      cursor: pointer;
-
-      h1 {
-        line-height: 50px;
-        font-size: 36px;
-        color: blueviolet;
-        font-weight: 500;
-        margin-left: 15px;
-      }
-    }
-    @media screen and (max-width: 600px) {
-      flex-direction: column;
-      padding: 10px 0;
-      gap: 10px;
-    }
-  }
-
   mat-card {
-    max-width: 800px;
 
     span {
       color: blueviolet;

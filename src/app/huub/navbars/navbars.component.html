@@ -1,0 +1,9 @@
+<nav>
+
+  <app-huub-nav-home *ngIf="router.url !== '/huub/home'"></app-huub-nav-home>
+
+  <app-huub-nav-products *ngIf="router.url !== '/huub/products'"></app-huub-nav-products>
+
+  <app-huub-nav-wishlist *ngIf="router.url !== '/huub/wishlist'"></app-huub-nav-wishlist>
+
+</nav>

@@ -78,6 +78,10 @@ import { LoginComponent } from './huub/login/login.component';
 import { ProductComponent } from './huub/product/product.component';
 import { HuubHomeComponent } from './huub/home/home.component';
 import { WishlistComponent } from './huub/wishlist/wishlist.component';
+import { NavbarsComponent } from './huub/navbars/navbars.component';
+import { HuubNavHomeComponent } from './huub/navbars/huub-nav-home/huub-nav-home.component';
+import { HuubNavProductsComponent } from './huub/navbars/huub-nav-products/huub-nav-products.component';
+import { HuubNavWishlistComponent } from './huub/navbars/huub-nav-wishlist/huub-nav-wishlist.component';
 
 
 @NgModule({
@@ -126,6 +130,11 @@ import { WishlistComponent } from './huub/wishlist/wishlist.component';
     ProductsSearchComponent,
     MinMaxPipe,
     WishlistComponent,
+    NavbarsComponent,
+    ProductsComponent,
+    HuubNavHomeComponent,
+    HuubNavProductsComponent,
+    HuubNavWishlistComponent,
   ],
   imports: [
     BrowserModule,

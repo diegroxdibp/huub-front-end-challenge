@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HuubServiceService } from './huub-service.service';
+import { Router } from '@angular/router';
+import { HuubAuthService } from './huub-auth.service';
 
 @Component({
   selector: 'app-huub',
@@ -8,11 +9,18 @@ import { HuubServiceService } from './huub-service.service';
 })
 export class HuubComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private auth: HuubAuthService,
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
+    if (this.auth.isLoggedIn()){
+      this.router.navigate(['huub/home']);
+    } else{
+      this.router.navigate(['huub/login']);
+    }
     // this.huub.getToken().subscribe(data => console.log(data));
-
   }
 
 }

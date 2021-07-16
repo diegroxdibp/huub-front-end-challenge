@@ -1,13 +1,12 @@
 <div class="paginator-wrapper">
 
-  <mat-icon class="expand-more" matTooltip="More options">expand_more</mat-icon>
+  <!-- <mat-icon class="expand-more" matTooltip="More options">expand_more</mat-icon> -->
 
   <mat-paginator [pageIndex]="0" [length]="paginator?.total_items_count" [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
   </mat-paginator>
 
-  <div class="more-options">
-    <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()"> -->
+  <!-- <div class="more-options">
     <div class="goto-wrapper">
 
       <mat-form-field appearance="fill" color="accent">
@@ -18,6 +17,6 @@
 
       <button mat-raised-button type="submit" color="accent">Go to</button>
     </div>
+  </div> -->
 
-  </div>
 </div>

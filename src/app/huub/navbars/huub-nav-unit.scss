@@ -1,0 +1,18 @@
+:host {
+  width: 100%;
+}
+
+mat-card {
+  flex-grow: 1;
+  display: flex;
+  cursor: pointer;
+  box-shadow: 3px 5px 15px 0px #8a2be2;
+
+  h1 {
+    line-height: 56px;
+    font-size: 36px;
+    color: blueviolet;
+    font-weight: 500;
+    margin-left: 15px;
+  }
+}
