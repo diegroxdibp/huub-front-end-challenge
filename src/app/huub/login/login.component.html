@@ -25,16 +25,13 @@
         </button>
       </mat-form-field>
 
-      <span [@inOutAnimation] class="create-account" *ngIf="!accountCreationMode"
-        (click)="toggleAccountCreatrion()">Create
-        accont</span>
-      <span [@inOutAnimation] class="create-account" *ngIf="accountCreationMode" (click)="toggleAccountCreatrion()">Back
-        to login</span>
+      <span [@inOutAnimation] class="create-account" *ngIf="!loginMode" (click)="toggleAccountCreatrion()">Login</span>
+      <span [@inOutAnimation] class="create-account" *ngIf="loginMode" (click)="toggleAccountCreatrion()">Back</span>
 
-      <button [textContent]="loginBtnText" [@inOutAnimation] mat-raised-button type="submit"
-        *ngIf="!accountCreationMode" [disabled]="!loginForm.valid" class="submit" color="accent"></button>
-      <button [textContent]="createAccBtnText" [@inOutAnimation] mat-raised-button type="submit"
-        *ngIf="accountCreationMode" [disabled]="!loginForm.valid" class="submit" color="accent"></button>
+      <button [textContent]="loginBtnText" [@inOutAnimation] mat-raised-button type="submit" *ngIf="!loginMode"
+        [disabled]="!loginForm.valid" class="submit" color="accent"></button>
+      <button [textContent]="createAccBtnText" [@inOutAnimation] mat-raised-button type="submit" *ngIf="loginMode"
+        [disabled]="!loginForm.valid" class="submit" color="accent"></button>
 
     </form>
   </mat-card>

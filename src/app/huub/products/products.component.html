@@ -1,6 +1,21 @@
 <main>
-  <mat-card>
 
+  <nav>
+    <mat-card routerLink="../home" routerLinkActive="active">
+      <button mat-fab matTooltip="Back to the home" aria-label="Back to the home">
+        <mat-icon>home</mat-icon>
+      </button>
+      <h1>Home</h1>
+    </mat-card>
+    <mat-card>
+      <button mat-fab matTooltip="Back to the top" aria-label="Back to the top">
+        <mat-icon>star_border</mat-icon>
+      </button>
+      <h1>Wishlist</h1>
+    </mat-card>
+  </nav>
+
+  <mat-card>
     <mat-tab-group mat-align-tabs="center" color="accent" mat-stretch-tabs dynamicHeight>
       <mat-tab label="Products List">
         <app-products-list [products$]="products$"></app-products-list>
@@ -11,6 +26,6 @@
       </mat-tab>
     </mat-tab-group>
 
-    <button  class="ml-4" (click)="test()">Click</button>
+    <button class="ml-4" (click)="test()">Click</button>
   </mat-card>
 </main>

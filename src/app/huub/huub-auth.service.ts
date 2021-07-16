@@ -46,9 +46,12 @@ export class HuubAuthService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  getUserFromLocalStorage() {
+  getUserFromLocalStorage(): User {
     const userJSON = JSON.parse(localStorage.getItem('user'));
+    const user = new User(userJSON.username, userJSON.password, userJSON.jwt, userJSON.expiresAt);
     console.log(userJSON);
+    console.log(user);
+    return user;
   }
 }
 

@@ -38,21 +38,27 @@ const routes: Routes = [
   { path: 'portfolio/dev/todo', component: TodoComponent },
   { path: 'portfolio/design', component: GraphicDesignComponent, data: { animation: 'isRight' } },
   { path: 'portfolio/design/graphic-design', component: GraphicDesignComponent },
-  { path: 'huub', component: HuubComponent, children: [
-    { path: 'home', component: HuubHomeComponent },
-    { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
-    { path: 'login', component: LoginComponent },
-  ]},
-  { path: 'arien', component: ArienComponent, children: [
-    { path: 'characters', component: CharactersComponent },
-    { path: 'characterbuilder', component: CharacterBuilderComponent },
-  ]},
-  { path: 'cancerslug', component: CancerslugComponent, children: [
-    { path: 'landing', component: CancerslugLandingComponent },
-    { path: 'home', component: CancerslugHomeComponent },
-    { path: 'store', component: CancerslugStoreComponent },
-    { path: 'contact', component: CancerslugContactComponent },
-  ] },
+  {
+    path: 'huub', component: HuubComponent, children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'home', component: HuubHomeComponent, canActivate: [AuthGuard] },
+      { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
+    ]
+  },
+  {
+    path: 'arien', component: ArienComponent, children: [
+      { path: 'characters', component: CharactersComponent },
+      { path: 'characterbuilder', component: CharacterBuilderComponent },
+    ]
+  },
+  {
+    path: 'cancerslug', component: CancerslugComponent, children: [
+      { path: 'landing', component: CancerslugLandingComponent },
+      { path: 'home', component: CancerslugHomeComponent },
+      { path: 'store', component: CancerslugStoreComponent },
+      { path: 'contact', component: CancerslugContactComponent },
+    ]
+  },
   { path: '**', component: PageNotFoundComponent },
 
 ];

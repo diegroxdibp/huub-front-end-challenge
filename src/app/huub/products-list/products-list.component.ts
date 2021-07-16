@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HuubServiceService } from '../huub-service.service';
-import { IProducts } from '../models/IProducts';
+import { IProduct } from '../models/IProduct';
 import { IResponse } from '../models/IResponse';
 
 @Component({
@@ -11,7 +11,7 @@ import { IResponse } from '../models/IResponse';
 })
 export class ProductsListComponent implements OnInit {
   @Input() products$: Observable<IResponse>;
-  products: IProducts[];
+  products: IProduct[];
   paginator;
   constructor(private huub: HuubServiceService) { }
 

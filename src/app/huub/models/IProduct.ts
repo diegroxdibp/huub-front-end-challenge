@@ -1,4 +1,4 @@
-export interface IProducts {
+export interface IProduct {
   currencyIso3code: string;
   description: string;
   fabric: string;

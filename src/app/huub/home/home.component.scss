@@ -1,0 +1,86 @@
+main {
+  min-height: calc(100vh - 66px);
+  padding: 20px 10%;
+  background-color: blueviolet;
+
+  @media screen and (max-width: 600px) {
+    padding: 10px;
+  }
+
+  mat-card {
+    max-width: 800px;
+    .home-acc-info {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      .avatar {
+        font-size: 40px;
+        color: blueviolet;
+      }
+      mat-card-header-text {
+        flex-grow: 1;
+      }
+      button {
+        height: 40px;
+      }
+    }
+  }
+  nav {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    justify-content: space-around;
+    padding: 20px 0;
+    gap: 20px;
+
+    mat-card {
+      flex-grow: 1;
+      display: flex;
+      cursor: pointer;
+      box-shadow: 5px 5px 15px 5px #8a2be2;
+      h1 {
+        line-height: 50px;
+        font-size: 36px;
+        color: blueviolet;
+        font-weight: 500;
+        margin-left: 15px;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      padding: 10px 0;
+      gap: 10px;
+    }
+  }
+
+  .avatar {
+    font-size: 40px;
+    color: blueviolet;
+  }
+  nav {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    justify-content: space-around;
+    padding: 20px 0;
+    gap: 20px;
+
+    mat-card {
+      flex-grow: 1;
+      display: flex;
+      cursor: pointer;
+      box-shadow: 5px 5px 15px 5px #8a2be2;
+      h1 {
+        line-height: 50px;
+        font-size: 36px;
+        color: blueviolet;
+        font-weight: 500;
+        margin-left: 15px;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      padding: 10px 0;
+      gap: 10px;
+    }
+  }
+}

@@ -1,8 +1,8 @@
-import { IProducts } from './IProducts';
+import { IProduct } from './IProduct';
 
 export class Wishlist {
-  products: IProducts[];
-  constructor(products: IProducts[] = []) {
+  products: IProduct[];
+  constructor(products: IProduct[] = []) {
     this.products = products;
   }
 }

@@ -76,6 +76,7 @@ import { ProductsSearchComponent } from './huub/search/search.component';
 import { ProductsListComponent } from './huub/products-list/products-list.component';
 import { LoginComponent } from './huub/login/login.component';
 import { ProductComponent } from './huub/product/product.component';
+import { HuubHomeComponent } from './huub/home/home.component';
 
 
 @NgModule({
@@ -115,13 +116,14 @@ import { ProductComponent } from './huub/product/product.component';
     CharacterBuilderComponent,
     CharactersComponent,
     HuubComponent,
-    ProductsComponent,
-    PaginatorComponent,
+    HuubHomeComponent,
     LoginComponent,
+    ProductsComponent,
+    ProductsListComponent,
+    ProductComponent,
+    PaginatorComponent,
     ProductsSearchComponent,
     MinMaxPipe,
-    ProductsListComponent,
-    ProductComponent
   ],
   imports: [
     BrowserModule,

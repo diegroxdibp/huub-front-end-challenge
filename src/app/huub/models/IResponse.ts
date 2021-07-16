@@ -1,8 +1,8 @@
-import { IProducts } from './IProducts';
+import { IProduct } from './IProduct';
 
 export interface IResponse {
   code: number;
-  data: IProducts[];
+  data: IProduct[];
   details: string;
   message: string;
   paginator: any;

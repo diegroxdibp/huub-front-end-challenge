@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, last, map, share, shareReplay, tap } from 'rxjs/operators';
-import { IProducts } from './models/IProducts';
+import { map,  shareReplay, tap } from 'rxjs/operators';
 import { IResponse } from './models/IResponse';
 
 @Injectable({

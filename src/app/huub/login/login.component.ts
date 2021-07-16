@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -28,18 +28,16 @@ import { User } from '../models/user';
 })
 
 export class LoginComponent {
-  @ViewChild('logo') logo: ElementRef;
-  @ViewChild('form') form: ElementRef;
   subject$: Subject<User>;
   loginForm: FormGroup;
-  accountCreationMode = false;
+  loginMode = false;
   passwordHide = true;
-  loginBtnText = 'Login';
+  loginBtnText = 'New Session';
   createAccBtnText = 'Create Account';
 
   constructor(private huub: HuubServiceService,
-    private auth: HuubAuthService,
-    private router: Router,
+              private auth: HuubAuthService,
+              private router: Router,
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -48,15 +46,16 @@ export class LoginComponent {
     );
   }
   toggleAccountCreatrion(): void {
-    this.accountCreationMode = !this.accountCreationMode;
+    this.loginMode = !this.loginMode;
   }
 
   submit($event): void {
+    this.createAccountOnServerResponse();
+
     if ($event.submitter.textContent === this.loginBtnText) {
       this.auth.getUserFromLocalStorage();
     }
     if ($event.submitter.textContent === this.createAccBtnText) {
-      this.createAccountOnServerResponse();
       const username = this.loginForm.value.email;
       const password = this.loginForm.value.password;
       this.huub.getToken().subscribe(response => {
