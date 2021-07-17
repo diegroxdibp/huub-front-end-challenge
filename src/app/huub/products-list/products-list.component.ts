@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { HuubServiceService } from '../huub-service.service';
 import { IProduct } from '../models/IProduct';
@@ -23,8 +24,8 @@ export class ProductsListComponent implements OnInit {
   }
 
   // Get response with the custom parameters of products per page and/or what page to go
-  updatePage(pageEvent: any): void {
-    this.products$ = this.huub.getResponse(pageEvent.page, pageEvent.pageSize);
+  updatePage(pageEvent: PageEvent): void {
+    this.products$ = this.huub.getResponse(pageEvent.pageIndex + 1, pageEvent.pageSize);
     this.products$.subscribe((response: IResponse) => this.products = response.data);
   }
 }

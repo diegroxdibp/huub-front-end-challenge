@@ -29,11 +29,7 @@ export class PaginatorComponent implements OnInit {
   }
 
   onPageChange($event: PageEvent): void {
-    const pageEvent = {
-      page: $event.pageIndex + 1,
-      pageSize: $event.pageSize,
-    };
-    this.updatePage.emit(pageEvent);
+    this.updatePage.emit($event);
   }
 
   onSubmit(): void { }

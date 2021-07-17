@@ -27,13 +27,13 @@ export class HuubServiceService {
   }
 
   // Response with given with default parameters
-  getResponse(pageNumber: number = 1, pageSize: number = 10): Observable<IResponse> {
+  getResponse(pageNumber: number = 1, pageSize: number = 20): Observable<IResponse> {
     return this.http.get<IResponse>(this.endpoint(pageNumber, pageSize), this.httpOptions).pipe(
       shareReplay()
     );
   }
 
-  endpoint(pageNumber: number = 1, pageSize: number = 10): string {
+  endpoint(pageNumber: number = 1, pageSize: number = 20): string {
     return `https://api.brand.uat.thehuub.io/products?page=${pageNumber}&page_size=${pageSize}`;
   }
 
