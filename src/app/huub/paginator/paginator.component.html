@@ -2,7 +2,7 @@
 
   <!-- <mat-icon class="expand-more" matTooltip="More options">expand_more</mat-icon> -->
 
-  <mat-paginator [pageIndex]="0" [length]="paginator?.total_items_count" [pageSize]="pageSize"
+  <mat-paginator [pageIndex]="0" [length]="numberOfElements" [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
   </mat-paginator>
 

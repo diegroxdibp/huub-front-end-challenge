@@ -4,4 +4,4 @@
 
 </mat-accordion>
 
-<app-paginator [paginator]="paginator" (updatePage)="updatePage($event)"></app-paginator>
+<app-paginator [numberOfElements]="paginator?.total_items_count" (updatePage)="updatePage($event)"></app-paginator>

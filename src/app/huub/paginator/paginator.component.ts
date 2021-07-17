@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -8,49 +7,45 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit {
-  @Output() updatePage = new EventEmitter<any>();
-  @Input() paginator;
-  form: FormGroup;
-  pageSize = 20;
+  @Output() updatePage = new EventEmitter<object>();
+  @Input() numberOfElements: number;
   pageSizeOptions = [10, 20, 30];
-  page = 0;
-  goToProductNumer: number;
+  // form: FormGroup;
+  // goToProductNumer: number;
   constructor() {
-    this.form = new FormGroup({
-      goToProduct: new FormControl('', [Validators.min(0), Validators.max(100)]),
-      lastName: new FormControl(''),
-      age: new FormControl('')
-    });
+    // this.form = new FormGroup({
+    //   goToProduct: new FormControl('', [Validators.min(0), Validators.max(100)]),
+    //   lastName: new FormControl(''),
+    //   age: new FormControl('')
+    // });
   }
 
   ngOnInit(): void {
   }
 
+  get pageSize(): number {
+    return this.pageSizeOptions[1];
+  }
+
   onPageChange($event: PageEvent): void {
-    const pageEvent = {
-      page: $event.pageIndex + 1,
-      pageSize: $event.pageSize,
-    };
-    this.updatePage.emit(pageEvent);
+    this.updatePage.emit($event);
   }
 
-  onSubmit(): void {
+  onSubmit(): void { }
 
-  }
-
-  minMaxer(): void {
-    const inputValue = this.goToProductNumer;
-    const min = 0;
-    const max = this.paginator?.total_items_count;
-    let output: number;
-    if (inputValue < min) {
-      output = min;
-    } else if (inputValue > max) {
-      output = max;
-    } else {
-      output = inputValue;
-    }
-    this.goToProductNumer = output;
-  }
-
+  // WIP Feature
+  // minMaxer(): void {
+  //   const inputValue = this.goToProductNumer;
+  //   const min = 0;
+  //   const max = this.numberOfElements;
+  //   let output: number;
+  //   if (inputValue < min) {
+  //     output = min;
+  //   } else if (inputValue > max) {
+  //     output = max;
+  //   } else {
+  //     output = inputValue;
+  //   }
+  //   this.goToProductNumer = output;
+  // }
 }
