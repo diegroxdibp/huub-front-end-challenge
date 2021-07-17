@@ -16,4 +16,6 @@
 
   </mat-accordion>
 
+  <app-paginator [numberOfElements]="numberOfProductsFoundOnSearch" (updatePage)="updatePage($event)"></app-paginator>
+
 </mat-card>
