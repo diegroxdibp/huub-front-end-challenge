@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+.cancerslug-nav {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #1d1e20;
+  color: white;
+  // overflow: hidden;
+  z-index: 999;
+  // &:after {
+  //   background-image: url("../../../../../assets/img/TexturesCom_DecalsStain0094_2_masked_S.png");
+  // }
+
+  .logo {
+    height: 54px;
+    filter: invert(100%);
+    margin: 6px 0px 6px 15px;
+  }
+
+  .navbar-toggle {
+    display: none !important;
+    position: absolute !important;
+    top: 10px;
+    right: 10px;
+
+    .mat-icon {
+      color: white;
+      font-size: 36px;
+      line-height: 36px;
+      height: auto;
+      width: auto;
+
+      &:hover {
+        color: #820909;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    height: 66px;
+
+    .navbar-toggle {
+      display: block !important;
+    }
+
+    .active {
+      transform: translateY(-140%);
+    }
+  }
+
+  & a {
+    position: relative;
+    text-decoration: none;
+    color: #fff !important;
+    cursor: pointer;
+  }
+
+  .cancerslug-nav__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    margin-right: 30px;
+    font-size: 1.8em;
+    font-family: "Permanent Marker", cursive;
+    transition: transform 300ms ease-in;
+    z-index: -1;
+    overflow: hidden;
+
+    @media screen and (max-width: 500px) {
+      width: 100%;
+      margin: 0 auto;
+      flex-direction: column;
+      background-color: #1d1e20;
+    }
+
+    a {
+      margin-left: 20px;
+      display: flex;
+      width: fit-content;
+      justify-content: center;
+      align-items: center;
+      z-index: -1;
+
+      @media screen and (max-width: 500px) {
+        width: 100% !important;
+        margin: 0;
+        opacity: 0;
+      }
+
+      &:hover > span {
+        transform: scale(140%);
+        transition: 200ms ease-in-out;
+      }
+
+      &:hover > span .blood {
+        opacity: 1;
+        transition: 300ms ease-in-out;
+      }
+      span {
+        display: flex;
+        width: fit-content;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        position: relative;
+
+        .blood {
+          position: absolute;
+          transform: scale(1);
+          user-select: none;
+          pointer-events: none;
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+@keyframes navItemsFade {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

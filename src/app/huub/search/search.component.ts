@@ -2,10 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
-<<<<<<< HEAD
-=======
-import { HuubServiceService } from '../huub-service.service';
->>>>>>> 6245a1522fe599a3c18f98f1baca09b3e8a8c316
 import { IProduct } from '../models/IProduct';
 import { IResponse } from '../models/IResponse';
 
@@ -25,7 +21,6 @@ export class ProductsSearchComponent implements OnInit {
   pageSize = 20;
   // Total number of products found
   numberOfProductsFoundOnSearch: number;
-<<<<<<< HEAD
   constructor() { }
 
   ngOnInit(): void {
@@ -69,51 +64,6 @@ export class ProductsSearchComponent implements OnInit {
     this.searchResult = this.splitArrayByPageSizeAndReturnChunkCorrespondingToPageNumber(this.arrayOfSearchedProducts, pageSize, page);
   }
 
-=======
-  constructor(private huub: HuubServiceService) { }
-
-  ngOnInit(): void {
-  }
-
-  search($event: KeyboardEvent): void {
-    console.log($event);
-    const searchTerm = ($event.target as HTMLInputElement).value;
-    this.allProducts$.pipe(
-      map((response: IResponse) => response.data),
-      map((products: IProduct[]) => {
-        const arrayOfSearchedProducts = products.filter(
-          (product: IProduct) => product.name.toLowerCase().includes(searchTerm.toLowerCase().toString())
-        );
-        this.arrayOfSearchedProducts = arrayOfSearchedProducts;
-        this.numberOfProductsFoundOnSearch = arrayOfSearchedProducts.length;
-        const chunkSize = this.pageSize;
-        this.splitArrayByPageSizeAndReturnChunkCorrespondingToPageNumber(arrayOfSearchedProducts, chunkSize, this.pageSize);
-        const chunkedArraysOfSearchedProducts = this.splitArrayByPage(arrayOfSearchedProducts, chunkSize);
-        return chunkedArraysOfSearchedProducts[0];
-      }),
-      debounceTime(2000),
-    ).subscribe((response: IProduct[]) => {
-      console.log(response);
-      this.searchResult = response;
-    });
-  }
-
-  splitArrayByPageSizeAndReturnChunkCorrespondingToPageNumber(array: IProduct[], chunkSize: number, page: number): IProduct[] {
-    const pageAsIndex = page - 1;
-    const splittedArray = this.splitArrayByPage(array, chunkSize);
-    const chunkReferringToPage = splittedArray[pageAsIndex];
-    return chunkReferringToPage;
-  }
-
-  // Triggered by paginator // Updates the view with the parameters sent by the paginator
-  updatePage(pageEvent: PageEvent): void {
-    const page = pageEvent.pageIndex + 1;
-    const pageSize = pageEvent.pageSize;
-    this.pageSize = pageSize;
-    this.searchResult = this.splitArrayByPageSizeAndReturnChunkCorrespondingToPageNumber(this.arrayOfSearchedProducts, pageSize, page);
-  }
-
->>>>>>> 6245a1522fe599a3c18f98f1baca09b3e8a8c316
   splitArrayByPage(array: IProduct[], chunkSize: number): IProduct[][] {
     const numberOfElementsInArray = array.length;
     const chunkedArrays = [];

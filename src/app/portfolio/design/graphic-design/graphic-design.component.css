@@ -1,0 +1,276 @@
+.portfolio {
+  background-color: #6328ee;
+  scroll-margin-top: 66px;
+}
+
+.portfolio .portfolio-post-wraper {
+  width: 100%;
+  min-height: calc(100vh - 66px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.portfolio .portfolio-post-wraper:nth-child(even) {
+  background-color: #fc466b;
+}
+
+.portfolio .portfolio-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 600px;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.portfolio .portfolio-post .text,
+.portfolio .portfolio-post .text-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 0px;
+          flex: 0 1 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  color: #fffed7;
+  padding: 35px 0;
+}
+
+.portfolio .portfolio-post .text h1,
+.portfolio .portfolio-post .text-tab h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 115%;
+  letter-spacing: 0.01em;
+  margin-left: -4px;
+  margin-top: 3px;
+  padding-left: 3px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: solid 1px #fffed7;
+  -o-border-image: linear-gradient(270deg, rgba(255, 254, 215, 0) 0%, rgba(255, 254, 215, 0.5) 100%) 1;
+     border-image: -webkit-gradient(linear, right top, left top, from(rgba(255, 254, 215, 0)), to(rgba(255, 254, 215, 0.5))) 1;
+     border-image: linear-gradient(270deg, rgba(255, 254, 215, 0) 0%, rgba(255, 254, 215, 0.5) 100%) 1;
+}
+
+.portfolio .portfolio-post .text p,
+.portfolio .portfolio-post .text-tab p {
+  font-size: 1.5rem;
+  line-height: 1.2em;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  padding: 5px 0;
+}
+
+.portfolio .portfolio-post .text-tab {
+  padding: 15px 0;
+}
+
+.portfolio .portfolio-post .img-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 10px;
+  margin: auto;
+}
+
+.portfolio .portfolio-post .img-container img {
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  z-index: 2;
+}
+
+.brightnessUp {
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+}
+
+@-webkit-keyframes up {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(16px);
+            transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes up {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(16px);
+            transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.animateUp {
+  -webkit-animation-name: up;
+          animation-name: up;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+}
+
+@-webkit-keyframes down {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-16px);
+            transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes down {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-16px);
+            transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.animateDown {
+  -webkit-animation-name: down;
+          animation-name: down;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+}
+
+.caixa {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 500px;
+  height: 500px;
+  background: black;
+  margin: auto;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: green;
+  margin: auto;
+}
+
+.flip {
+  position: relative;
+}
+
+.flip > .front,
+.flip > .back {
+  display: block;
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+}
+
+.flip > .front {
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+}
+
+.flip > .back {
+  position: absolute;
+  opacity: 0;
+  top: 0px;
+  left: 0px;
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
+.flip:hover > .front {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.flip:hover > .back {
+  opacity: 1;
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+}
+
+.flip.flip-vertical > .back {
+  -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
+}
+
+.flip.flip-vertical:hover > .front {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.flip.flip-vertical:hover > .back {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+
+.with-tabs {
+  height: calc(100vh - 66px);
+}
+
+.with-tabs mat-tab-group {
+  height: 100%;
+}
+
+.flip {
+  position: relative;
+  overflow: hidden;
+}
+
+.flip > .front,
+.flip > .back {
+  display: block;
+  color: white;
+  border-radius: 4px;
+  max-width: 770px;
+}
+/*# sourceMappingURL=graphic-design.component.css.map */

@@ -1,0 +1,96 @@
+<div mat-dialog-title class="header">
+  <h1 class="title" align="center">Edit post</h1>
+  <button class="close-button" (click)="closeDialogWindow()" mat-raised-button mat-dialog-close mat-fab color="accent"
+    matTooltip="Close">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content [@.disabled]="disableAnimation" color="accent">
+
+  <mat-accordion class="example-headers-align" multi>
+
+    <mat-expansion-panel #title>
+      <mat-expansion-panel-header [ngStyle]="{'background-color': panelHeaderColorTitle}">
+        <mat-panel-title>
+          <h2>Title</h2>
+          <span *ngIf="wasEditedTitle">Title edited</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <h3>Original title: <span>{{originalTitle}}</span></h3>
+      <h3 *ngIf="wasEditedTitle">New title: <span>{{data.post.title}}</span></h3>
+      <button *ngIf="!editModeTitle" (click)="editTitle()" mat-raised-button color="accent">Edit</button>
+      <div class="edit-title" *ngIf="editModeTitle">
+        <form [formGroup]="formTitle" (ngSubmit)="onSubmitTitle()">
+          <mat-form-field color="accent">
+            <mat-label>New title:</mat-label>
+            <input matInput formControlName="title" #titleValue>
+          </mat-form-field>
+          <button mat-raised-button type="submit" [disabled]="!formTitle.valid" color="accent"
+            class="submit">Submit</button>
+          <button (click)="editTitleCancel()" mat-raised-button>Cancel</button>
+        </form>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel #image>
+      <mat-expansion-panel-header [ngStyle]="{'background-color': panelHeaderColorImage}">
+        <mat-panel-title>
+          <h2>Image</h2>
+          <span *ngIf="wasEditedImage">Title edited</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <h3>Original Image: </h3>
+      <h3 *ngIf="wasEditedImage">New Image: <span>{{data.post.img}}</span></h3>
+      <img class="img-preview" [src]="originalImage" alt="Original image">
+      <h3 *ngIf="formImage.valid && formImage.value.image!==''">New Image: </h3>
+      <img *ngIf="formImage.valid && formImage.value.image!==''" class="img-preview" [src]="formImage?.value.image"
+        alt="New image">
+      <button *ngIf="!editModeImage" (click)="editImage()" mat-raised-button color="accent">Edit</button>
+      <div class="edit-image" *ngIf="editModeImage">
+        <form [formGroup]="formImage" (ngSubmit)="onSubmitImage()">
+          <mat-form-field color="accent">
+            <mat-label>New Image:</mat-label>
+            <input matInput formControlName="image" #imageValue placeholder="Image URL here...">
+            <mat-error *ngIf="formImage.get('image').hasError('pattern')">
+              Not a valid URL or wrong format.
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button type="submit" [disabled]="!formImage.valid || formImage.value.image===''"
+            color="accent" class="submit">Submit</button>
+          <button (click)="editImageCancel()" mat-raised-button>Cancel</button>
+        </form>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel #text>
+      <mat-expansion-panel-header [ngStyle]="{'background-color': panelHeaderColorText}">
+        <mat-panel-title>
+          <h2>Text</h2>
+          <span *ngIf="wasEditedText">Title edited</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <h3>Original Text: <span>{{originalText}}</span></h3>
+      <h3 *ngIf="wasEditedText">New Text: <span>{{data.post.text}}</span></h3>
+      <button *ngIf="!editModeText" (click)="editText()" mat-raised-button color="accent">Edit</button>
+      <div class="edit-text" *ngIf="editModeText">
+        <form [formGroup]="formText" (ngSubmit)="onSubmitText()">
+          <mat-form-field color="accent">
+            <mat-label>New text:</mat-label>
+            <textarea matInput formControlName="text" #textValue></textarea>
+            <mat-hint align="end">{{formText.value.text?.length}} / 500</mat-hint>
+            <mat-error *ngIf="formText.get('text').hasError('maxLength')">
+              Maximum of <strong>500</strong> characters
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button type="submit" [disabled]="!formText.valid || formText.value.text===''"
+            color="accent" class="submit">Submit</button>
+          <button (click)="editTextCancel()" mat-raised-button>Cancel</button>
+        </form>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-dialog-content>
+<!-- <mat-dialog-actions align="center">
+  <button mat-raised-button (click)="closeDialogWindow()">Cancel</button>
+</mat-dialog-actions> -->

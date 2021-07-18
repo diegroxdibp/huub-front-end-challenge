@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,AAAA,yBAAyB,CAAC;EAC3B,OAAO,EAAE,YAAY;CACtB;;AAED,AAAA,CAAC,CAAC,IAAI,CAAC;EACL,WAAW,EAAE,GAAG;EAChB,KAAK,EAAE,UAAU;CAClB",
+    "sources": [
+        "history.component.scss"
+    ],
+    "names": [],
+    "file": "history.component.css"
+}

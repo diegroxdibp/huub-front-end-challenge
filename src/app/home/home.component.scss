@@ -1,0 +1,43 @@
+body {
+  max-height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 66px);
+  background-color:#1d1e20;
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    z-index: 1;
+
+    li {
+      list-style: none;
+
+      h1 {
+        font-family: Montserrat;
+        color: #fffed7;
+        font-size: 6em;
+        font-weight: 700;
+        line-height: 115%;
+
+        @media screen and (max-width: 500px) {
+          font-size: 2.8em;
+        }
+      }
+    }
+  }
+
+  .bg {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}

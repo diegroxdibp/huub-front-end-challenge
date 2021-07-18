@@ -1,0 +1,155 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: blueviolet;
+  padding: 10% 15%;
+
+  @media (max-width: 800px) {
+    padding: 10% 5%;
+  }
+
+  mat-card {
+    width: 90%;
+    max-width: 900px;
+    margin: 10px 0;
+
+    mat-card-title {
+      color: blueviolet;
+    }
+
+    mat-card-content {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 16px;
+    }
+
+    mat-form-field,
+    .checkbox-wrapper,
+    button {
+      width: 100%;
+    }
+
+    mat-form-field:nth-child(1),
+    mat-form-field:nth-child(2) {
+      width: 50%;
+    }
+
+    mat-form-field:nth-child(odd) {
+      padding-right: 16px;
+    }
+
+    mat-checkbox {
+      margin: 8px 0;
+    }
+
+    mat-form-field {
+      textarea {
+        line-height: 0.5;
+      }
+    }
+    button {
+      margin-top: 1.25em;
+    }
+    @media (max-width: 680px) {
+      mat-card-content {
+        flex-direction: column;
+
+        mat-form-field {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .todo-container {
+    .todo-list {
+      display: flex;
+      align-items: center;
+
+      .task {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .task-content {
+          display: flex;
+          align-items: center;
+          width: fit-content;
+
+          h3 {
+            margin: 0 4px 0 0;
+          }
+        }
+      }
+    }
+  }
+
+  .task-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: blueviolet;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+
+    h3 {
+      font-weight: bold;
+      margin: 0 5px 0 0;
+    }
+
+    mat-divider {
+      height: 20px;
+      margin: 0 10px;
+    }
+  }
+}
+
+.listFooter {
+  display: flex;
+  color: rgb(105, 86, 122);
+  width: 100%;
+
+  .priorityLabels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 16px;
+    margin: 0 16px;
+
+    mat-divider {
+      width: 80%;
+    }
+
+    .label-wrapper {
+      display: flex;
+      align-items: center;
+
+      h3 {
+        margin: 4px 0 0 8px;
+      }
+
+      @media (max-width: 680px) {
+        h3 {
+          display: none;
+        }
+      }
+    }
+  }
+}

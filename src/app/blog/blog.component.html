@@ -1,0 +1,38 @@
+<main>
+  <div *ngIf="blogManager.blogPosts.length === 0" class="createPostCallToAction">
+    <mat-divider></mat-divider>
+    <h1 class="status-message">There are currently no posts</h1>
+    <mat-divider></mat-divider>
+    <div class="row">
+      <h1>
+        You can create a post clicking on this button
+      </h1>
+      <button mat-fab color="accent" (click)="openNewPostDialog()" matTooltip="New post" aria-label="New post">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="row">
+      <h1>
+        You can search for posts on this button
+      </h1>
+      <button (click)="openSearchDialog()" mat-fab color="accent" matTooltip="Search post" aria-label="Search post">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div class="row">
+      <h1>
+        You can scroll back to the top of the page on this button
+      </h1>
+      <button (click)="backToTop()" mat-fab color="accent" matTooltip="Back to the top" aria-label="Back to the top">
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <section class="posts-column">
+    <article *ngFor="let post of blogManager.blogPosts" class="post">
+      <app-post [post]="post"></app-post>
+    </article>
+  </section>
+</main>
+<app-overlay></app-overlay>

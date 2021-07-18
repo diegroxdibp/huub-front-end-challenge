@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+}
+
+h3 {
+  margin-left: 24px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
+
+.del {
+  margin-left: -4px;
+  color: rgba(0, 0, 0, 0.54);
+  cursor: pointer;
+}
+
+.del:hover {
+  color: blueviolet;
+}
+/*# sourceMappingURL=transactions-table.component.css.map */

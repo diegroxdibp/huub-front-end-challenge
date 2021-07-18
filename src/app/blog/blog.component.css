@@ -1,0 +1,58 @@
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .createPostCallToAction {
+  padding: 10%;
+}
+
+main .createPostCallToAction .status-message {
+  color: blueviolet;
+}
+
+main .createPostCallToAction h1 {
+  max-width: 610px;
+  padding: 30px;
+  font-size: 2.8em;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  line-height: 1.2em;
+  color: #1d1e20;
+  line-height: 1.6;
+  margin: 0;
+}
+
+main .createPostCallToAction .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 30px;
+}
+
+main .createPostCallToAction .row button {
+  width: 6em;
+  height: 6em;
+}
+/*# sourceMappingURL=blog.component.css.map */

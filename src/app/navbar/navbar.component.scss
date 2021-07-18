@@ -1,0 +1,94 @@
+.navbar {
+  height: 66px;
+  width: 100%;
+  background: #1d1e20;
+  color: #fff;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  // transition: padding 0.3s linear;
+  padding: 0;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+
+  a {
+    color: white;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    &:active {
+      color: white;
+    }
+    &:hover {
+      color: blueviolet;
+    }
+  }
+}
+
+.navbar-logo {
+  display: flex;
+  height: 100%;
+  width: fit-content;
+  align-items: center;
+  padding-left: 20px;
+
+  a:hover {
+    color: blueviolet;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+}
+
+.navbar-toggle {
+  display: none !important;
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+
+  .mat-icon {
+    font-size: 36px;
+    line-height: 36px;
+    height: auto;
+    width: auto;
+
+    &:hover {
+      color: blueviolet;
+    }
+  }
+}
+.top-navbar {
+  padding-right: 20px;
+}
+
+@media (max-width: 800px) {
+  .navbar-toggle {
+    display: block !important;
+  }
+  .top-navbar {
+    height: 0;
+    width: 100% !important;
+    overflow: hidden;
+    transition: 200ms linear;
+
+    & a {
+      width: 100%;
+      line-height: 56px !important;
+    }
+  }
+  .navbar-opened:host {
+    .top-navbar {
+      display: block !important;
+      height: calc(56px * 4);
+      width: 100% !important;
+      background: #0e0e0f;
+    }
+  }
+}

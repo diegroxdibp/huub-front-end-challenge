@@ -1,0 +1,114 @@
+.design {
+  height: calc(100vh - 66px);
+  scroll-margin-top: 66px;
+  background: linear-gradient(-45deg, #3f5efb, #fc466b);
+  background-size: 150% 150%;
+  -webkit-transition: background-color 1s ease-out, font-size 2s ease-out;
+  transition: background-color 1s ease-out, font-size 2s ease-out;
+}
+
+@media screen and (max-width: 500px) {
+  .design {
+    scroll-margin-top: 58px;
+  }
+}
+
+.design .app-selection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 10% 0;
+}
+
+.design .app-selection .app {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  color: #fffed7;
+  cursor: pointer;
+}
+
+.design .app-selection .app a {
+  text-decoration: none;
+}
+
+.design .app-selection .app a h1 {
+  color: #fffed7;
+  opacity: 30%;
+  text-align: center;
+  -webkit-transition: font-size 0.3s ease-out;
+  transition: font-size 0.3s ease-out;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Montserrat", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2em;
+  letter-spacing: 0.6rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .design .app-selection .app a h1 {
+    font-size: 1.6rem;
+  }
+}
+
+.design .app-selection .app a:hover h1 {
+  font-size: 4.4em;
+  opacity: 100%;
+  -webkit-animation: flow 5s ease-in-out infinite;
+          animation: flow 5s ease-in-out infinite;
+  background: linear-gradient(45deg, #ff1395, #ffa600, #fc466b);
+  background-size: 300%;
+  color: transparent;
+  background-clip: text;
+}
+
+@media screen and (max-width: 500px) {
+  .design .app-selection .app a:hover h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@-webkit-keyframes flow {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes flow {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+/*# sourceMappingURL=design.component.css.map */
