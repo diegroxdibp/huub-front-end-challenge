@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatExpansionPanel } from '@angular/material/expansion';
 import { HuubAuthService } from '../huub-auth.service';
 import { IProduct } from '../models/IProduct';
 import { User } from '../models/user';
@@ -9,6 +10,7 @@ import { User } from '../models/user';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
+  @ViewChild('expansionPanel') expansionPanel: MatExpansionPanel;
   @Input() product: IProduct;
   user: User;
   isInWishlist: boolean;
@@ -35,6 +37,9 @@ export class ProductComponent implements OnInit {
       this.removeFromWishlist();
     }
     this.checkIfInWishlist();
+    console.log(this.expansionPanel)
+    this.expansionPanel._body.nativeElement.scrollIntoView({behavior: 'smooth'});
+    this.expansionPanel.expanded = !this.expansionPanel.expanded;
   }
 
   removeFromWishlist(): void {

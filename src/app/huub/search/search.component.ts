@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { PageEvent } from '@angular/material/paginator';
-import { Observable } from 'rxjs';
-import { debounceTime, map } from 'rxjs/operators';
 import { IProduct } from '../models/IProduct';
 import { IResponse } from '../models/IResponse';
 
@@ -11,7 +11,7 @@ import { IResponse } from '../models/IResponse';
   styleUrls: ['./search.component.scss']
 })
 export class ProductsSearchComponent implements OnInit {
-  // Obervable sent by the parent
+  // Obervable with products sent by the parent component
   @Input() allProducts$: Observable<IResponse>;
   // Array of products to be used on pagination
   arrayOfSearchedProducts: IProduct[];
@@ -19,16 +19,28 @@ export class ProductsSearchComponent implements OnInit {
   searchResult: IProduct[];
   // Starting value of paginator page size
   pageSize = 20;
-  // Total number of products found
+  // Total number of products found to make pagination calculations and to be show on view
   numberOfProductsFoundOnSearch: number;
+  // Subject to watch keyup events and debounce so we don't have to send a server request on every keystroke
+  searchTextChanged = new Subject<string>();
+
   constructor() { }
 
   ngOnInit(): void {
+    this.searchTextChanged.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+    ).subscribe((searchTerm: string) => {
+      this.getProducts(searchTerm);
+    });
   }
 
   search($event: KeyboardEvent): void {
-    console.log($event);
     const searchTerm = ($event.target as HTMLInputElement).value;
+    this.searchTextChanged.next(searchTerm);
+  }
+
+  getProducts(searchTerm: string): void {
     this.allProducts$.pipe(
       map((response: IResponse) => response.data),
       map((products: IProduct[]) => {
@@ -42,11 +54,17 @@ export class ProductsSearchComponent implements OnInit {
         const chunkedArraysOfSearchedProducts = this.splitArrayByPage(arrayOfSearchedProducts, chunkSize);
         return chunkedArraysOfSearchedProducts[0];
       }),
-      debounceTime(2000),
     ).subscribe((response: IProduct[]) => {
-      console.log(response);
       this.searchResult = response;
     });
+  }
+
+  // Triggered by paginator, updates the view with the parameters sent by the paginator
+  updatePage(pageEvent: PageEvent): void {
+    const page = pageEvent.pageIndex + 1;
+    const pageSize = pageEvent.pageSize;
+    this.pageSize = pageSize;
+    this.searchResult = this.splitArrayByPageSizeAndReturnChunkCorrespondingToPageNumber(this.arrayOfSearchedProducts, pageSize, page);
   }
 
   splitArrayByPageSizeAndReturnChunkCorrespondingToPageNumber(array: IProduct[], chunkSize: number, page: number): IProduct[] {
@@ -54,14 +72,6 @@ export class ProductsSearchComponent implements OnInit {
     const splittedArray = this.splitArrayByPage(array, chunkSize);
     const chunkReferringToPage = splittedArray[pageAsIndex];
     return chunkReferringToPage;
-  }
-
-  // Triggered by paginator // Updates the view with the parameters sent by the paginator
-  updatePage(pageEvent: PageEvent): void {
-    const page = pageEvent.pageIndex + 1;
-    const pageSize = pageEvent.pageSize;
-    this.pageSize = pageSize;
-    this.searchResult = this.splitArrayByPageSizeAndReturnChunkCorrespondingToPageNumber(this.arrayOfSearchedProducts, pageSize, page);
   }
 
   splitArrayByPage(array: IProduct[], chunkSize: number): IProduct[][] {
