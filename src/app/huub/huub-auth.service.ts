@@ -8,8 +8,7 @@ import { Wishlist } from './models/wishlist';
   providedIn: 'root'
 })
 export class HuubAuthService {
-  constructor(private http: HttpClient) {
-
+  constructor() {
   }
 
   saveToLocalStorage(user: User): void {
@@ -19,11 +18,13 @@ export class HuubAuthService {
   getUserFromLocalStorage(): User {
     const userJSON = JSON.parse(localStorage.getItem('user'));
     const wishlist = new Wishlist();
-    userJSON.wishlist.products.forEach((product: IProduct) => {
-      wishlist.add(product);
-    })
-    const user = new User(userJSON.username, userJSON.jwt, userJSON.expiresAt, wishlist);
-    return user;
+    if (userJSON) {
+      userJSON.wishlist.products.forEach((product: IProduct) => {
+        wishlist.add(product);
+      })
+      const user = new User(userJSON.username, userJSON.jwt, userJSON.expiresAt, wishlist);
+      return user;
+    }
   }
 
   logout(): void {
