@@ -16,7 +16,7 @@ export abstract class BlogManagerService {
 
   arrayOfPostFromParsedJSON(): Array<Post> {
     const arrayFromParsedObj = JSON.parse(localStorage.getItem('blogPosts'));
-    console.log(arrayFromParsedObj);
+    // console.log(arrayFromParsedObj);
     let arrayOfPosts: Array<Post> = [];
     if (arrayFromParsedObj) {
       arrayFromParsedObj.forEach(parsedObj => {

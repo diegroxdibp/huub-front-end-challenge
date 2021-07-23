@@ -27,7 +27,13 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field color="accent">
+    <label color="accent">Image:</label>
+    <mat-radio-group class="radio-buttons-wrapper" [value]="activeRadioButton" aria-label="Select an option">
+      <mat-radio-button (change)="radioButtonChange($event)" value="1">Use an random placeholder image</mat-radio-button>
+      <mat-radio-button (change)="radioButtonChange($event)" value="2">Image URL</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field color="accent" [ngStyle]="{'display': (activeRadioButton=='2') ? 'block' : 'none'}">
       <img class="img-preview" [src]="form?.value.image" alt="">
       <mat-label>Image:</mat-label>
       <input matInput formControlName="image" placeholder="Image URL here...">

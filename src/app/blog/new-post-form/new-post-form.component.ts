@@ -1,14 +1,12 @@
-import { Component, Output, EventEmitter, OnInit, ElementRef, ViewChild, Inject, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Post } from 'src/app/models/post';
 import { BlogManagerService } from '../blog-manager.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { isPriorToDate } from 'src/app/shared/validators';
 import { MatDialogRef } from '@angular/material/dialog';
 import { backToTop } from 'src/app/shared/utilty';
 
@@ -36,7 +34,7 @@ export class NewPostFormComponent implements OnInit, AfterViewInit {
   filteredtags: Observable<string[]>;
   tags: string[] = [];
   alltags: string[];
-
+  activeRadioButton = '1';
   constructor(
     private blogManager: BlogManagerService,
     private dialogRef: MatDialogRef<NewPostFormComponent>,
@@ -50,7 +48,7 @@ export class NewPostFormComponent implements OnInit, AfterViewInit {
       date: new FormControl(),
       tags: new FormControl(),
       text: new FormControl('', [Validators.required, Validators.maxLength(500)]),
-      image: new FormControl('', [Validators.required, Validators.pattern(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)]),
+      image: new FormControl('', [Validators.pattern(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)]),
     });
     this.filteredtags = this.tagCtrl.valueChanges.pipe(
       // tslint:disable-next-line: deprecation
@@ -77,7 +75,12 @@ export class NewPostFormComponent implements OnInit, AfterViewInit {
     const newPostId: number = this.blogManager.generateNewPostId();
     const postTitle: string = this.form.value.title;
     const posterEmail: string = this.form.value.email;
-    const postImage: string = this.form.value.image;
+    let postImage: string;
+    if (this.activeRadioButton === '1') {
+      postImage = 'https://source.unsplash.com/random';
+    } else {
+      postImage = this.form.value.image;
+    }
     const postText: string = this.form.value.text;
     const postScheduledDate: Date = this.form.value.date;
     const postTags = this.tags;
@@ -146,6 +149,10 @@ export class NewPostFormComponent implements OnInit, AfterViewInit {
     const filterValue = value.toLowerCase();
 
     return this.alltags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  radioButtonChange($event): void {
+    this.activeRadioButton = $event.value;
   }
 
   closeDialogWindow(): void {

@@ -13,10 +13,8 @@ export class WishlistComponent implements OnInit {
   wishlist: Wishlist;
   constructor(private auth: HuubAuthService) {
     const user = this.auth.getUserFromLocalStorage();
-    console.log(user)
     this.user = user;
     this.wishlist = user.wishlist;
-    console.log(this.wishlist)
   }
 
   ngOnInit(): void {

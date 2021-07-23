@@ -71,7 +71,6 @@ import { HuubComponent } from './huub/huub.component';
 import { ProductsComponent } from './huub/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginatorComponent } from './huub/paginator/paginator.component';
-import { MinMaxPipe } from './huub/min-max.pipe';
 import { ProductsSearchComponent } from './huub/search/search.component';
 import { ProductsListComponent } from './huub/products-list/products-list.component';
 import { LoginComponent } from './huub/login/login.component';
@@ -128,7 +127,6 @@ import { HuubNavWishlistComponent } from './huub/navbars/huub-nav-wishlist/huub-
     ProductComponent,
     PaginatorComponent,
     ProductsSearchComponent,
-    MinMaxPipe,
     WishlistComponent,
     NavbarsComponent,
     ProductsComponent,

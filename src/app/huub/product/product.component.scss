@@ -1,6 +1,10 @@
 mat-expansion-panel {
   position: relative;
 
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+  }
   .id {
     margin: 16px 16px 16px auto;
     flex-grow: 0 !important;
@@ -45,5 +49,11 @@ mat-expansion-panel {
     position: absolute;
     right: 16px;
     bottom: 32px;
+
+    @media screen and (max-width: 500px) {
+      position: initial;
+      width: 100%;
+      margin-top: 10px;
+    }
   }
 }

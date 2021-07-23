@@ -22,7 +22,7 @@ export class BlogComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = false;
-    dialogConfig.width = '60%';
+    dialogConfig.width = '80%';
     this.dialog.open(NewPostFormComponent, dialogConfig);
   }
 
