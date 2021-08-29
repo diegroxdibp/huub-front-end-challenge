@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HuubAuthService } from '../huub-auth.service';
 import { HuubServiceService } from '../huub-service.service';
 import { User } from '../models/user';

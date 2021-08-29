@@ -10,6 +10,7 @@ import { IResponse } from '../models/IResponse';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
+
 export class ProductsSearchComponent implements OnInit {
   // Obervable with products sent by the parent component
   @Input() allProducts$: Observable<IResponse>;
