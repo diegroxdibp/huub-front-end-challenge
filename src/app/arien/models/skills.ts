@@ -1,93 +1,63 @@
-import { byFour, calcLevelStage, skillIncrementLimit } from '../utility';
-import { Attributes } from './attributes';
-import { Bonus } from './bonus';
-
 export class Skills {
-  private attributes: Attributes;
-  // athletics: {};
-  private ATHLETICS_INCREMENT = 0;
-  private ATHLETICS_BONUS: number;
-  private ATHLETICS_BONUS_TOTAL: number;
-  private ATHLETICS_TOTAL: number;
-  // stealth: {};
-  private STEALTH_BASE: number;
-  private STEALTH_INCREMENT: number;
-  private STEALTH_BONUS: number;
-  private STEALTH_TOTAL: number;
-  // initiative: ;
-  ride;
-  perseption;
-  strengthBaseModifiers = [];
-  strengthIncrement = 0;
-  private strengthBonus = [];
-  agilityBaseModifiers = [];
-  agilityIncrement = 0;
-  private agilityBonus = [];
-  vigorBaseModifiers = [];
-  vigorIncrement = 0;
-  private vigorBonus = [];
-  intelligenceBaseModifiers = [];
-  intelligenceIncrement = 0;
-  private intelligenceBonus = [];
-  essenceBaseModifiers = [];
-  essenceIncrement = 0;
-  private essenceBonus = [];
+  // Perícias Naturais
+  athetics = 0;
+  //  (Agarrar, Arremessar, Derrubar, Correr, Saltar, Escalar, Nadar, Espremer - se, Equilibrar - se, Forçar Aberturas)[FORÇA e AGILIDADE]
+  stealth = 0;
+  // (Esconder - se, Esgueirar - se)[AGILIDADE e INTELIGÊNCIA]
+  initiative = 0;
+  // [AGILIDADE e INTELIGÊNCIA]
+  riding = 0;
+  // [AGILIDADE e INTELIGÊNCIA]
+  nature = 0;
+  // (Conhecimento da Fauna, Flora e Clima, Lidar com Animais)[ESSÊNCIA e INTELIGÊNCIA]
+  perception = 0;
+  // (Visão, Audição, Paladar, Tato, Olfato e Intuição)[SOMA DOS SENTIDOS]
+  prestidigitation = 0;
+  // [AGILIDADE]
+  society = 0;
+  // (História, Leis, Etiqueta, Heráldica)[INTELIGÊNCIA]
 
-  constructor(private level: number, attributes: Attributes) {
-    this.attributes = attributes;
-  }
+  // Perícias Treinadas:
+  arcanism = null;
+  // (Conhecimento Arcano, Conjuração)[INTELIGÊNCIA]
+  traps = null;
+  // [AGILIDADE e INTELIGÊNCIA]
+  espiritism = null;
+  // (Conhecimento Astral, Rituais, Totens)[ESSÊNCIA e INTELIGÊNCIA]
+  ocultism = null;
+  // (Conhecimento Extraplanar, Rituais)[ESSÊNCIA e INTELIGÊNCIA]
+  craft = null;
+  // escolha(Agricultor, Alfaiate, Alquimista, Aia, Arquiteto, Ator, Barbeiro, Caçador, Camareiro, Capelão, Carpinteiro, Carreteiro, Cartógrafo, Castelão, Cocheiro, Construtor, Coveiro, Cozinheiro, Curtidor, Dançarino, Domador, Embaixador, Escriba, Ferreiro, Flecheiro, Funileiro, Latoeiro, Lenhador, Lutier, Matemático, Medicina, Mercador, Minerador, Moleiro, Navegador, Oleiro, Ourives, Pecuarista, Pedreiro, Pintor, Professor, Soldado, Tanoeiro, Taverneiro, Vidreiro, etc.)[VARIÁVEL]
+  performance = null;
+  // (Atuar, Cantar, Dançar, Tocar Instrumento, Oratória)[AGILIDADE e INTELIGÊNCIA]
+  religion = null;
+  // (Conhecimento Divino, Ritos)[ESSÊNCIA e INTELIGÊNCIA]
+  combatTechnique = null;
+  // (Atacar, Aparar, Bloquear, Desarmar, Esquivar)[VARIÁVEL]
 
-  addBonus(bonus: Bonus): void {
+  // Lista de Idiomas
 
-  }
-
-  get athleticsBase(): number {
-    return this.calcAthleticsBase(this.attributes.strengthTotal, this.attributes.agilityTotal);
-  }
-
-  calcAthleticsBase(strength: number, agility: number): number {
-    return byFour(strength, agility);
-  }
-
-  get athleticsIncrement(): number {
-    return this.ATHLETICS_INCREMENT;
-  }
-
-  // set athleticsIncrement(increment: number) {
-  //   if (increment > skillIncrementLimit(this.level)) {
-  //     throw new Error(`The skill increment of your level stage is ${skillIncrementLimit(this.level)}`);
-  //   }
-  //   this.ATHLETICS_INCREMENT = increment;
-  // }
-
-  get athleticsBonus(): number {
-    return this.calcAthleticsBonus();
-  }
-
-  calcAthleticsBonus(...bonus: Array<Bonus>): number {
-    let totalBonus: number;
-    if (bonus.length === 0) {
-      totalBonus = 0;
-    } else {
-      totalBonus = bonus.reduce((t, n) => t + n.value, 0);
-    }
-    return totalBonus;
-  }
-
-  get athleticsTotal(): number {
-    return this.athleticsBase + this.athleticsIncrement + this.athleticsBonus;
-  }
-
-  get skills() {
-    const skills = {
-      athletics: byFour(this.attributes.strengthTotal, this.attributes.agilityTotal),
-      stealth: byFour(this.attributes.agilityTotal, this.attributes.intelligenceTotal),
-      initiative: byFour(this.attributes.agilityTotal, this.attributes.intelligenceTotal),
-      ride: byFour(this.attributes.essenceTotal, this.attributes.intelligenceTotal),
-      perseption: 6,
-      prestidigitation: this.attributes.agilityTotal / 2,
-      society: this.attributes.intelligenceTotal / 2,
-    };
-    return skills;
-  }
+  human = null;
+  // (Adanyano, Khreani, Valanyano e Antigo).
+  elvish = null;
+  // (Comum e Elevado).
+  runar = null;
+  // (Alto e Baixo).
+  magi = null;
+  laryan = null;
+  lufyan = null;
+  iordyan = null;
+  aqticyan = null;
+  // (Unificado, Làryan, Lùfyan, Ïòrdyan, Àqticyan).
+  dracon = null;
+  // (Comum e Verdadeiro).
+  rani = null;
+  // (Felino, Lupino, Ursino).
+  graaltull = null;
+  // (Comum, Órquico, Goblinóide, Nagashico, Batráquico).
+  ancil = null;
+  moryan = null;
+  fyth = null;
+  ursar = null;
+  inuki = null;
 }

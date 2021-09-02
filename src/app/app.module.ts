@@ -81,7 +81,8 @@ import { NavbarsComponent } from './huub/navbars/navbars.component';
 import { HuubNavHomeComponent } from './huub/navbars/huub-nav-home/huub-nav-home.component';
 import { HuubNavProductsComponent } from './huub/navbars/huub-nav-products/huub-nav-products.component';
 import { HuubNavWishlistComponent } from './huub/navbars/huub-nav-wishlist/huub-nav-wishlist.component';
-
+import { AttributesComponent } from './arien/attributes/attributes.component';
+import { SkillsComponent } from './arien/skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -133,6 +134,8 @@ import { HuubNavWishlistComponent } from './huub/navbars/huub-nav-wishlist/huub-
     HuubNavHomeComponent,
     HuubNavProductsComponent,
     HuubNavWishlistComponent,
+    AttributesComponent,
+    SkillsComponent,
   ],
   imports: [
     BrowserModule,

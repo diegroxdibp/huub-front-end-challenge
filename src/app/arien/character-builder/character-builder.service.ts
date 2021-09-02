@@ -4,7 +4,7 @@ import { InnerSpirit, InnerSpirits } from '../models/inner-spirits';
 import { Race } from '../models/race';
 import { RaceTraits } from '../models/race-traits';
 import { getRaceByName, getRacesList } from '../models/races/races-list';
-import { addBonuses, byFour, calcCorporalEnergy, calcLevelStageString, calcResistance } from '../utility';
+import { byFour, calcCorporalEnergy, calcLevelStageString, calcResistance } from '../utility';
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +26,12 @@ export class CharacterBuilderService {
 
   createBaseCharacter(name: string, race: string): Character {
     const level = 1;
+    const selectedRace = getRaceByName(race);
     const char = new Character(name, level, getRaceByName(race));
     return char;
   }
 
-  getLvl() {
+  getLvl(): number {
     return this.level;
   }
 
@@ -50,56 +51,13 @@ export class CharacterBuilderService {
 
   getBaseAttributes() {
     const baseAttributes = {
-      strength: this.character.attributes.strengthBase,
-      agility: this.character.attributes.agilityBase,
-      vigor: this.character.attributes.vigorBase,
-      inteligence: this.character.attributes.intelligenceBase,
-      essence: this.character.attributes.essenceBase,
+      strength: this.character.strengthBase,
+      agility: this.character.vigorBase,
+      vigor: this.character.vigorBase,
+      inteligence: this.character.intelligenceBase,
+      essence: this.character.essenceBase,
     };
     return baseAttributes;
-  }
-
-  getAttributes(...bonuses) {
-    const bonus = bonuses;
-    const baseAttributes = this.getBaseAttributes();
-    const attributes = {
-      strength: baseAttributes.strength + addBonuses(0),
-      agility: baseAttributes.agility + addBonuses(0),
-      vigor: baseAttributes.vigor + addBonuses(0),
-      inteligence: baseAttributes.inteligence + addBonuses(0),
-      essence: baseAttributes.essence + addBonuses(0),
-    };
-    return attributes;
-  }
-
-  getPhysicalResistance(): number {
-    const attributes = this.getAttributes();
-    return calcResistance(attributes.strength, attributes.vigor);
-  }
-
-  getMentalResistance(): number {
-    const attributes = this.getAttributes();
-    return calcResistance(attributes.inteligence, attributes.essence);
-  }
-
-  getCorporalEnergy(): number {
-    const attributes = this.getAttributes();
-    const corporalEnergy = calcCorporalEnergy(this.level, attributes.vigor, attributes.essence, 0);
-    return corporalEnergy;
-  }
-
-  getSkills() {
-    const attributes = this.getAttributes();
-    const skills = {
-      athletics: byFour(attributes.strength, attributes.agility),
-      stealth: byFour(attributes.agility, attributes.inteligence),
-      initiative: byFour(attributes.agility, attributes.inteligence),
-      ride: byFour(attributes.essence, attributes.inteligence),
-      perception: 6,
-      prestidigitation: byFour(attributes.agility, attributes.agility),
-      society: byFour(attributes.inteligence, attributes.inteligence),
-    };
-    return skills;
   }
 
   getLevelStage(): string {

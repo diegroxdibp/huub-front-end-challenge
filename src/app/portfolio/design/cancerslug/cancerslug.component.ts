@@ -9,9 +9,10 @@ import { CancerslugNavbarVisibilityService } from 'src/app/portfolio/design/canc
 })
 export class CancerslugComponent implements OnInit {
 
-  constructor(public navbarVisibilityService: NavbarVisibilityService,
-    public cancerslugNavbarVisibilityService: CancerslugNavbarVisibilityService) {
-  }
+  constructor(
+    public navbarVisibilityService: NavbarVisibilityService,
+    public cancerslugNavbarVisibilityService: CancerslugNavbarVisibilityService
+  ) { }
 
   ngOnInit() {
     setTimeout(() => {

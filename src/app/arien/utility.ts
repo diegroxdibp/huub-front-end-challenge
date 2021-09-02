@@ -207,12 +207,13 @@ export function calcFeatsByLevel(level: number = 1): number {
     return 38 + over20;
   }
 }
-export function addBonuses(...bonuses) {
-  return bonuses ? bonuses.reduce((accum, curr) => accum + curr) : 0;
-}
 
 export function byFour(a: number, b: number,): number {
   return Math.floor((a + b) / 4);
+}
+
+export function byTwo(a: number): number {
+  return Math.floor(a / 2);
 }
 
 export function calcResistance(MostRelevant: number, LeastRelevant: number,): number {

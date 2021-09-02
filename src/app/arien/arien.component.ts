@@ -2,10 +2,8 @@ import { Character } from './models/character';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AshariEmbeld } from './models/races/ashari-embeld';
 import { Race } from './models/race';
-import { getRaceByName, getRacesList } from './models/races/races-list';
 import { CharacterBuilderService } from './character-builder/character-builder.service';
 import { CaracteristicsBuilder } from './characteristics-builder';
-import { Characteristics } from './models/characteristcs';
 
 @Component({
   selector: 'app-arien',
@@ -25,7 +23,7 @@ export class ArienComponent implements OnInit {
   ngOnInit(): void {
     this.characteristicsBuilder = new CaracteristicsBuilder();
     const lurfadrinoriel = this.characterBuilder.createBaseCharacter('Lurfadrinoriel', AshariEmbeld.RACE_NAME);
-    console.log(lurfadrinoriel)
+    console.log(lurfadrinoriel);
     // console.log('Inner Spirit test:', lurfadrinoriel.testInnerSpirit(lurfadrinoriel.innerSpirits.adaj))
   }
 
@@ -34,7 +32,7 @@ export class ArienComponent implements OnInit {
       this.character = null;
       return;
     }
-    const baseCharacter = this.characterBuilder.createBaseCharacter(name, race)
+    const baseCharacter = this.characterBuilder.createBaseCharacter(name, race);
     this.character = baseCharacter;
     return baseCharacter;
   }
